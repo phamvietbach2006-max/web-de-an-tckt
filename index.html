@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Custom CSS -->
@@ -20,72 +23,69 @@
         extend: {
           fontFamily: {
             sans: ['"Be Vietnam Pro"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              blue: '#1E3A8A',
-              red: '#DC2626',
-              green: '#059669',
-              gold: '#D97706',
-              dark: '#0F172A'
-            }
           }
         }
       }
     }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
 
-  <!-- TOP BANNER -->
-  <header class="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white shadow-lg sticky top-0 z-40">
+  <!-- TOP BANNER & NAVBAR -->
+  <header id="main-header" class="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white shadow-xl sticky top-0 z-40 border-b border-blue-800/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo & Title -->
-        <div class="flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center font-extrabold text-xl shadow-md border border-red-400">
-            ★
+        <!-- Logo Ban & Title -->
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 p-1 flex items-center justify-center border border-white/20 shadow-md backdrop-blur-md overflow-hidden flex-shrink-0">
+            <img src="assets/logo_ban.png" alt="Logo Ban TCKT" class="w-full h-full object-contain drop-shadow" onerror="this.src=''; this.innerHTML='<span class=\'text-2xl font-bold text-red-500\'>★</span>';">
           </div>
           <div>
-            <div class="text-xs uppercase tracking-wider font-semibold text-blue-200">ĐOÀN TNCS HỒ CHÍ MINH • BAN TỔ CHỨC - KIỂM TRA</div>
-            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white line-clamp-1">ĐỀ ÁN TÁI CẤU TRÚC VÀ QUY CHUẨN HÓA VẬN HÀNH</h1>
+            <div class="text-xs uppercase tracking-wider font-semibold text-blue-300 flex items-center gap-1.5">
+              <span>ĐOÀN TNCS HỒ CHÍ MINH</span>
+              <span>•</span>
+              <span class="text-blue-200 font-bold">BAN TỔ CHỨC - KIỂM TRA</span>
+            </div>
+            <h1 class="text-lg sm:text-xl font-black tracking-tight text-white line-clamp-1">
+              ĐỀ ÁN TÁI CẤU TRÚC VÀ QUY CHUẨN HÓA VẬN HÀNH
+            </h1>
           </div>
         </div>
 
         <!-- Controls: Font Scaler & Download Docx -->
         <div class="flex items-center gap-3">
-          <!-- Font Size Controls -->
-          <div class="hidden sm:flex items-center bg-blue-900/80 rounded-lg p-1 border border-blue-700/60 text-xs">
+          <!-- Font Size Scaler Buttons -->
+          <div class="hidden md:flex items-center bg-blue-900/60 rounded-xl p-1 border border-blue-700/50 text-xs shadow-inner">
             <span class="text-blue-300 px-2 font-medium">Cỡ chữ:</span>
-            <button id="btn-font-sm" class="px-2 py-1 rounded hover:bg-blue-800 text-blue-200" title="Chữ vừa">A-</button>
-            <button id="btn-font-md" class="px-2 py-1 rounded bg-blue-600 text-white font-bold" title="Mặc định">A</button>
-            <button id="btn-font-lg" class="px-2 py-1 rounded hover:bg-blue-800 text-blue-200" title="Chữ to">A+</button>
-            <button id="btn-font-xl" class="px-2 py-1 rounded hover:bg-blue-800 text-blue-200 font-bold" title="Chữ rất to (Chiếu TV)">A++</button>
+            <button id="btn-font-sm" class="px-2.5 py-1 rounded-lg hover:bg-blue-800 text-blue-200 transition font-medium" title="Chữ vừa (95%)">A-</button>
+            <button id="btn-font-md" class="px-2.5 py-1 rounded-lg bg-blue-600 text-white font-bold transition shadow-sm" title="Mặc định (108%)">A</button>
+            <button id="btn-font-lg" class="px-2.5 py-1 rounded-lg hover:bg-blue-800 text-blue-200 transition font-medium" title="Chữ to (125%)">A+</button>
+            <button id="btn-font-xl" class="px-2.5 py-1 rounded-lg hover:bg-blue-800 text-blue-200 transition font-bold" title="Chữ rất to (140% - Chiếu TV)">A++</button>
           </div>
 
-          <!-- Download Word File Button -->
-          <a href="assets/De_An_Ban_TCKT.docx" download class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-3.5 py-2 rounded-lg font-semibold text-xs sm:text-sm shadow transition">
+          <!-- Download Word Button -->
+          <a href="assets/De_An_Ban_TCKT.docx" download class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-xl font-bold text-xs sm:text-sm shadow-md transition transform active:scale-95">
             <i data-lucide="file-down" class="w-4 h-4"></i>
-            <span class="hidden md:inline">Tải File Word</span>
+            <span class="hidden sm:inline">Tải File Word</span>
           </a>
         </div>
       </div>
 
-      <!-- MAIN NAVIGATION TABS -->
-      <nav class="flex space-x-1 sm:space-x-4 border-t border-blue-800/80 overflow-x-auto py-2 text-sm font-medium">
-        <button data-tab="tab-presentation" class="nav-tab-btn active inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-blue-600 text-blue-600 bg-blue-50 font-bold whitespace-nowrap transition">
+      <!-- NAVIGATION TABS -->
+      <nav class="flex space-x-1 sm:space-x-3 border-t border-slate-800/80 overflow-x-auto py-2.5 text-sm font-semibold">
+        <button data-tab="tab-presentation" class="nav-tab-btn active inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-blue-600 text-blue-600 bg-blue-50 whitespace-nowrap transition shadow-sm">
           <i data-lucide="presentation" class="w-4 h-4"></i>
           <span>1. Báo cáo Lãnh đạo</span>
         </button>
-        <button data-tab="tab-full-doc" class="nav-tab-btn inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border-transparent text-slate-300 hover:text-white hover:bg-blue-800/50 whitespace-nowrap transition">
+        <button data-tab="tab-full-doc" class="nav-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-xl border-transparent text-slate-300 hover:text-white hover:bg-blue-900/50 whitespace-nowrap transition">
           <i data-lucide="book-open" class="w-4 h-4"></i>
           <span>2. Toàn văn Đề án (10 Mục)</span>
         </button>
-        <button data-tab="tab-units" class="nav-tab-btn inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border-transparent text-slate-300 hover:text-white hover:bg-blue-800/50 whitespace-nowrap transition">
+        <button data-tab="tab-units" class="nav-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-xl border-transparent text-slate-300 hover:text-white hover:bg-blue-900/50 whitespace-nowrap transition">
           <i data-lucide="users" class="w-4 h-4"></i>
           <span>3. Tra cứu 12 Đơn vị</span>
         </button>
-        <button data-tab="tab-kpi" class="nav-tab-btn inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border-transparent text-slate-300 hover:text-white hover:bg-blue-800/50 whitespace-nowrap transition">
+        <button data-tab="tab-kpi" class="nav-tab-btn inline-flex items-center gap-2 px-4 py-2 rounded-xl border-transparent text-slate-300 hover:text-white hover:bg-blue-900/50 whitespace-nowrap transition">
           <i data-lucide="calculator" class="w-4 h-4"></i>
           <span>4. Tính điểm KPI (100đ)</span>
         </button>
@@ -97,138 +97,518 @@
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
     <!-- ========================================================================= -->
-    <!-- TAB 1: BÁO CÁO LÃNH ĐẠO (PRESENTATION MODE) -->
+    <!-- TAB 1: BÁO CÁO LÃNH ĐẠO (PRESENTATION MODE WITH NATIVE HTML DIAGRAMS) -->
     <!-- ========================================================================= -->
-    <section id="tab-presentation" class="tab-content-panel space-y-10">
+    <section id="tab-presentation" class="tab-content-panel space-y-12">
       
       <!-- HERO SUMMARY CARD -->
-      <div class="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl shadow-md border border-blue-100 p-6 sm:p-8">
-        <div class="max-w-3xl">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 mb-3">
-            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> BẢNG TỔNG QUAN CHIẾN LƯỢC
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Tái cấu trúc Toàn diện Ban Tổ chức - Kiểm tra
+      <div class="hero-summary-box bg-gradient-to-br from-white via-slate-50 to-blue-50/70 rounded-3xl shadow-lg border border-blue-200/80 p-6 sm:p-10 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-4xl relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 mb-4 shadow-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-blue-600"></i> BẢNG TỔNG QUAN CHIẾN LƯỢC TÁI CẤU TRÚC
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-snug">
+            Đề án Nâng cao Năng lực Hoạt động Ban Tổ chức - Kiểm tra
           </h2>
-          <p class="mt-2 text-slate-600 scalable-text leading-relaxed">
-            Giải quyết dứt điểm tình trạng quá tải, phân tán nghiệp vụ của mô hình 3 Tổ cũ; chuyển đổi sang mô hình <b>Chuyên môn hóa 5 Mảng</b> kết hợp cơ chế <b>Cặp Bài Trùng Bọc Lót</b> phụ trách 12 đơn vị cơ sở và <b>Thống nhất quyền lực Core Ban</b> làm việc trực tiếp với Văn phòng Đoàn.
+          <p class="mt-3 text-slate-700 scalable-text leading-relaxed text-base sm:text-lg">
+            Khắc phục triệt để nhược điểm <i>"vạn năng nhưng không tinh thông"</i> của mô hình 3 Tổ địa bàn cũ; chuyển đổi toàn diện sang mô hình <b>Chuyên môn hóa 5 Mảng</b>, kết hợp cơ chế <b>Cặp Bài Trùng Bọc Lót</b> phụ trách 12 đơn vị cơ sở và <b>Thống nhất quyền lực Core Ban</b> làm việc chặt chẽ cùng Văn phòng Đoàn.
           </p>
         </div>
 
-        <!-- 4 Stat Badges -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-200">
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-            <div class="text-3xl font-extrabold text-blue-600">67</div>
-            <div class="text-xs font-semibold text-slate-500 uppercase mt-1">Tổng Quân Số</div>
-            <div class="text-[11px] text-slate-400">3 BCN + 64 Thành viên</div>
+        <!-- 4 Stat Counters with GSAP -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-8 pt-8 border-t border-slate-200/80">
+          <div class="bg-white/90 p-5 rounded-2xl border border-slate-200 shadow-sm text-center hover:shadow-md transition">
+            <div class="text-4xl font-black text-blue-600 stat-number" data-target="67">00</div>
+            <div class="text-xs font-bold text-slate-700 uppercase tracking-wide mt-1.5">Tổng Quân Số</div>
+            <div class="text-xs text-slate-500 mt-0.5">03 BCN + 64 Thành viên</div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-            <div class="text-3xl font-extrabold text-emerald-600">08</div>
-            <div class="text-xs font-semibold text-slate-500 uppercase mt-1">Core Ban Lãnh Đạo</div>
-            <div class="text-[11px] text-slate-400">Trưởng ban + 2 PB + 5 TM</div>
+          <div class="bg-white/90 p-5 rounded-2xl border border-slate-200 shadow-sm text-center hover:shadow-md transition">
+            <div class="text-4xl font-black text-emerald-600 stat-number" data-target="8">00</div>
+            <div class="text-xs font-bold text-slate-700 uppercase tracking-wide mt-1.5">Core Ban Lãnh Đạo</div>
+            <div class="text-xs text-slate-500 mt-0.5">Trưởng ban + 2 PB + 5 TM</div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-            <div class="text-3xl font-extrabold text-red-600">05</div>
-            <div class="text-xs font-semibold text-slate-500 uppercase mt-1">Mảng Chuyên Môn</div>
-            <div class="text-[11px] text-slate-400">Đảng, CĐS, Đoàn vụ, ĐRL, TT</div>
+          <div class="bg-white/90 p-5 rounded-2xl border border-slate-200 shadow-sm text-center hover:shadow-md transition">
+            <div class="text-4xl font-black text-red-600 stat-number" data-target="5">00</div>
+            <div class="text-xs font-bold text-slate-700 uppercase tracking-wide mt-1.5">Mảng Chuyên Môn</div>
+            <div class="text-xs text-slate-500 mt-0.5">Đảng, CĐS, Đoàn vụ, ĐRL, TT</div>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
-            <div class="text-3xl font-extrabold text-indigo-600">12 / 3</div>
-            <div class="text-xs font-semibold text-slate-500 uppercase mt-1">12 Đơn vị / 3 Cụm</div>
-            <div class="text-[11px] text-slate-400">Buddy System 2:2 bọc lót</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SƠ ĐỒ 1: CƠ CẤU TỔ CHỨC BAN -->
-      <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Sơ đồ Số 01 • Khổ giấy Nằm ngang</span>
-            <h3 class="text-xl sm:text-2xl font-bold text-slate-900">Sơ đồ Cơ cấu Tổ chức Ban TCKT (Org Chart)</h3>
-            <p class="text-sm text-slate-500 mt-1">Core Ban 08 người (2 Phó ban đồng trách nhiệm linh hoạt chia đổi quản lý) & 05 Mảng chuyên môn</p>
-          </div>
-          <button class="lightbox-trigger inline-flex items-center gap-2 bg-blue-50 text-blue-700 hover:bg-blue-100 px-4 py-2 rounded-lg font-semibold text-sm transition" data-title="Sơ đồ 1: Cơ cấu Tổ chức Ban TCKT">
-            <i data-lucide="maximize-2" class="w-4 h-4"></i> Phóng to Toàn màn hình
-          </button>
-        </div>
-
-        <div class="mt-6 rounded-xl overflow-hidden border border-slate-200 diagram-container cursor-pointer group">
-          <img src="assets/so_do_1_co_cau_to_chuc.png" alt="Sơ đồ 1: Cơ cấu tổ chức Ban TCKT" class="w-full h-auto lightbox-trigger" data-title="Sơ đồ 1: Cơ cấu Tổ chức Ban TCKT">
-          <div class="bg-slate-50 text-center py-2 text-xs text-slate-500 group-hover:text-blue-600 transition flex items-center justify-center gap-1.5">
-            <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> Nhấp vào ảnh để phóng to xem chi tiết từng phòng ban
-          </div>
-        </div>
-
-        <!-- 5 Department Summary Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mt-6">
-          <div class="p-4 rounded-xl border border-red-200 bg-red-50/50">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-200 text-red-800">14 Thành viên</span>
-            <h4 class="font-bold text-red-900 mt-2">1. Phát triển Đảng</h4>
-            <p class="text-xs text-slate-600 mt-1">01 Trưởng + 01 Phó + 12 TV. Phụ trách kết nạp Đoàn, ĐVƯT, hồ sơ Đảng nộp VP Đoàn.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/50">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-200 text-blue-800">14 Thành viên</span>
-            <h4 class="font-bold text-blue-900 mt-2">2. Chuyển đổi số</h4>
-            <p class="text-xs text-slate-600 mt-1">01 Trưởng + 01 Phó + 12 TV. Phụ trách QLDV, hòm thư Outlook, email chỉ đạo khẩn.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-200 text-emerald-800">14 Thành viên</span>
-            <h4 class="font-bold text-emerald-900 mt-2">3. Mảng Đoàn vụ</h4>
-            <p class="text-xs text-slate-600 mt-1">01 Trưởng + 01 Phó + 12 TV. Phụ trách Quyết định chi đoàn, chuẩn y nhân sự, con dấu, công văn.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/50">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-200 text-amber-800">12 Thành viên</span>
-            <h4 class="font-bold text-amber-900 mt-2">4. Điểm rèn luyện</h4>
-            <p class="text-xs text-slate-600 mt-1">01 Trưởng + 01 Phó + 10 TV. Duyệt hoạt động quanh năm theo 3 khối, giải quyết khiếu nại.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-purple-200 bg-purple-50/50">
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-purple-200 text-purple-800">10 Thành viên</span>
-            <h4 class="font-bold text-purple-900 mt-2">5. Truyền thông</h4>
-            <p class="text-xs text-slate-600 mt-1">01 Trưởng + 01 Phó + 8 TV. Quản lý Fanpage Ban, sản xuất Infographic nghiệp vụ, design.</p>
+          <div class="bg-white/90 p-5 rounded-2xl border border-slate-200 shadow-sm text-center hover:shadow-md transition">
+            <div class="text-4xl font-black text-indigo-600 stat-number" data-target="12">00</div>
+            <div class="text-xs font-bold text-slate-700 uppercase tracking-wide mt-1.5">Đơn vị Cơ sở / 3 Cụm</div>
+            <div class="text-xs text-slate-500 mt-0.5">Buddy System 2:2 bọc lót</div>
           </div>
         </div>
       </div>
 
-      <!-- SƠ ĐỒ 2: NHÓM TÁC NGHIỆP CƠ SỞ -->
-      <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+      <!-- ===================================================================== -->
+      <!-- SƠ ĐỒ 1 VẼ TRỰC TIẾP BẰNG HTML/CSS: CƠ CẤU TỔ CHỨC BAN TCKT -->
+      <!-- ===================================================================== -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10 space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Sơ đồ Số 02 • Khổ giấy Nằm ngang</span>
-            <h3 class="text-xl sm:text-2xl font-bold text-slate-900">Nhóm Tác nghiệp Cơ sở & Cơ chế Cặp Bài Trùng</h3>
-            <p class="text-sm text-slate-500 mt-1">03 Nhóm trưởng điều phối 12 đơn vị • 1 Đơn vị = 1 Kênh Zalo duy nhất • Không yêu cầu mảng ĐRL</p>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i> SƠ ĐỒ SỐ 01 • THIẾT KẾ TRỰC TIẾP TRÊN WEB
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">Sơ đồ Cơ cấu Tổ chức Ban TCKT (Org Chart)</h3>
+            <p class="text-slate-600 text-sm mt-1">Core Ban 08 người (2 Phó ban đồng trách nhiệm, linh hoạt chia đổi quản lý) & 05 Mảng chuyên môn</p>
           </div>
-          <button class="lightbox-trigger inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 px-4 py-2 rounded-lg font-semibold text-sm transition" data-title="Sơ đồ 2: Nhóm Tác nghiệp Cơ sở & Cơ chế Buddy System">
-            <i data-lucide="maximize-2" class="w-4 h-4"></i> Phóng to Toàn màn hình
-          </button>
+          <span class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-xl text-xs font-bold self-start sm:self-auto">
+            100% Responsive • Chữ To Rõ Ràng
+          </span>
         </div>
 
-        <div class="mt-6 rounded-xl overflow-hidden border border-slate-200 diagram-container cursor-pointer group">
-          <img src="assets/so_do_2_nhom_tac_nghiep.png" alt="Sơ đồ 2: Nhóm Tác nghiệp Cơ sở" class="w-full h-auto lightbox-trigger" data-title="Sơ đồ 2: Nhóm Tác nghiệp Cơ sở & Cơ chế Buddy System">
-          <div class="bg-slate-50 text-center py-2 text-xs text-slate-500 group-hover:text-emerald-600 transition flex items-center justify-center gap-1.5">
-            <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> Nhấp vào ảnh để xem chi tiết cơ chế bọc lót khi bận học thi
+        <!-- HTML/CSS NATIVE ORG CHART -->
+        <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/40 border border-slate-200 space-y-8">
+          
+          <!-- TOP: CORE BAN CONTAINER -->
+          <div class="relative p-6 sm:p-8 rounded-2xl bg-blue-900/5 border-2 border-dashed border-blue-500/60 max-w-5xl mx-auto">
+            <div class="absolute -top-3.5 left-6 bg-blue-600 text-white text-xs font-extrabold uppercase px-3.5 py-1 rounded-full shadow">
+              CORE BAN (08 NGƯỜI: 01 TRƯỞNG BAN + 02 PHÓ BAN + 05 TRƯỞNG MẢNG)
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+              
+              <!-- PHÓ BAN 1 -->
+              <div class="p-5 rounded-2xl bg-gradient-to-br from-sky-600 to-blue-700 text-white shadow-lg text-center transform hover:-translate-y-1 transition duration-200">
+                <div class="w-10 h-10 mx-auto rounded-xl bg-white/20 flex items-center justify-center font-bold text-lg mb-2">01</div>
+                <div class="text-lg font-black tracking-wide">PHÓ BAN</div>
+                <p class="text-xs text-sky-100 mt-1 font-medium leading-relaxed">
+                  Đồng trách nhiệm điều hành toàn diện<br>Linh hoạt chia đổi quản lý các mảng
+                </p>
+              </div>
+
+              <!-- TRƯỞNG BAN (CENTER) -->
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 text-white shadow-2xl text-center border-2 border-amber-400 transform hover:-translate-y-1 transition duration-200">
+                <span class="px-3 py-0.5 rounded-full bg-amber-400 text-blue-950 font-black text-xs uppercase tracking-wider">LÃNH ĐẠO CAO NHẤT</span>
+                <div class="text-2xl font-black mt-2 tracking-tight">01 TRƯỞNG BAN</div>
+                <p class="text-xs text-slate-200 mt-1.5 font-medium leading-relaxed">
+                  Phụ trách chung, đối ngoại Ban Thường vụ & làm việc trực tiếp Văn phòng Đoàn
+                </p>
+              </div>
+
+              <!-- PHÓ BAN 2 -->
+              <div class="p-5 rounded-2xl bg-gradient-to-br from-sky-600 to-blue-700 text-white shadow-lg text-center transform hover:-translate-y-1 transition duration-200">
+                <div class="w-10 h-10 mx-auto rounded-xl bg-white/20 flex items-center justify-center font-bold text-lg mb-2">02</div>
+                <div class="text-lg font-black tracking-wide">PHÓ BAN</div>
+                <p class="text-xs text-sky-100 mt-1 font-medium leading-relaxed">
+                  Đồng trách nhiệm điều hành toàn diện<br>Linh hoạt chia đổi quản lý các mảng
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Phối hợp note -->
+            <div class="mt-4 pt-4 border-t border-blue-200/60 text-center">
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-900 bg-white/90 px-4 py-1 rounded-full shadow-sm">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-blue-600"></i>
+                Hai Phó ban hỗ trợ Trưởng ban, hoán đổi và chia việc điều hành các mảng theo từng kỳ
+              </span>
+            </div>
           </div>
+
+          <!-- CONNECTOR ARROW -->
+          <div class="flex flex-col items-center justify-center my-2 text-blue-600 font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="arrow-down" class="w-6 h-6 animate-bounce"></i>
+            <span>Chỉ đạo & Thẩm định chuyên môn</span>
+          </div>
+
+          <!-- BOTTOM: 05 MẢNG CHUYÊN MÔN (5 CARDS) -->
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            
+            <!-- MẢNG 1: ĐẢNG -->
+            <div class="org-dept-card rounded-2xl bg-white border-2 border-red-300 shadow-md p-5 flex flex-col justify-between hover:shadow-xl transition">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-red-100 text-red-800">14 Thành viên</span>
+                  <span class="text-red-600 font-bold text-xs">Mảng 1</span>
+                </div>
+                <h4 class="text-lg font-black text-red-950 mt-3 leading-snug">PHÁT TRIỂN ĐẢNG</h4>
+                <div class="text-xs text-red-600 font-bold uppercase mt-0.5">(Kèm Kết nạp Đoàn)</div>
+                <hr class="my-3 border-red-100">
+                <div class="space-y-1.5 text-xs text-slate-700">
+                  <div><b>Lãnh đạo:</b> 01 Trưởng + 01 Phó mảng</div>
+                  <div><b>Lực lượng:</b> 12 Thành viên</div>
+                  <div class="text-[11px] text-slate-500">Chia 6 Cặp phụ trách 12 đơn vị</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-red-50 text-[11px] text-red-900 bg-red-50/70 p-2.5 rounded-xl font-medium">
+                Nộp hồ sơ ĐVƯT và kết nạp Đoàn qua <b>Văn phòng Đoàn</b>.
+              </div>
+            </div>
+
+            <!-- MẢNG 2: CĐS -->
+            <div class="org-dept-card rounded-2xl bg-white border-2 border-blue-300 shadow-md p-5 flex flex-col justify-between hover:shadow-xl transition">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">14 Thành viên</span>
+                  <span class="text-blue-600 font-bold text-xs">Mảng 2</span>
+                </div>
+                <h4 class="text-lg font-black text-blue-950 mt-3 leading-snug">CHUYỂN ĐỔI SỐ</h4>
+                <div class="text-xs text-blue-600 font-bold uppercase mt-0.5">(QLDV & Outlook)</div>
+                <hr class="my-3 border-blue-100">
+                <div class="space-y-1.5 text-xs text-slate-700">
+                  <div><b>Lãnh đạo:</b> 01 Trưởng + 01 Phó mảng</div>
+                  <div><b>Lực lượng:</b> 12 Thành viên</div>
+                  <div class="text-[11px] text-slate-500">Chia 6 Cặp phụ trách 12 đơn vị</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-blue-50 text-[11px] text-blue-900 bg-blue-50/70 p-2.5 rounded-xl font-medium">
+                QLDV App, trực mail Outlook, gửi email chỉ đạo khẩn BTV.
+              </div>
+            </div>
+
+            <!-- MẢNG 3: ĐOÀN VỤ -->
+            <div class="org-dept-card rounded-2xl bg-white border-2 border-emerald-300 shadow-md p-5 flex flex-col justify-between hover:shadow-xl transition">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">14 Thành viên</span>
+                  <span class="text-emerald-600 font-bold text-xs">Mảng 3</span>
+                </div>
+                <h4 class="text-lg font-black text-emerald-950 mt-3 leading-snug">MẢNG ĐOÀN VỤ</h4>
+                <div class="text-xs text-emerald-600 font-bold uppercase mt-0.5">(Tổ chức & Con dấu)</div>
+                <hr class="my-3 border-emerald-100">
+                <div class="space-y-1.5 text-xs text-slate-700">
+                  <div><b>Lãnh đạo:</b> 01 Trưởng + 01 Phó mảng</div>
+                  <div><b>Lực lượng:</b> 12 Thành viên</div>
+                  <div class="text-[11px] text-slate-500">Chia 6 Cặp phụ trách 12 đơn vị</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-emerald-50 text-[11px] text-emerald-900 bg-emerald-50/70 p-2.5 rounded-xl font-medium">
+                Quyết định chi đoàn, chuẩn y nhân sự, sổ công văn, con dấu.
+              </div>
+            </div>
+
+            <!-- MẢNG 4: ĐRL -->
+            <div class="org-dept-card rounded-2xl bg-white border-2 border-amber-300 shadow-md p-5 flex flex-col justify-between hover:shadow-xl transition">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">12 Thành viên</span>
+                  <span class="text-amber-600 font-bold text-xs">Mảng 4</span>
+                </div>
+                <h4 class="text-lg font-black text-amber-950 mt-3 leading-snug">ĐIỂM RÈN LUYỆN</h4>
+                <div class="text-xs text-amber-600 font-bold uppercase mt-0.5">(Quản trị & Xét ĐRL)</div>
+                <hr class="my-3 border-amber-100">
+                <div class="space-y-1.5 text-xs text-slate-700">
+                  <div><b>Lãnh đạo:</b> 01 Trưởng + 01 Phó mảng</div>
+                  <div><b>Lực lượng:</b> 10 Thành viên</div>
+                  <div class="text-[11px] text-slate-500">Phụ trách theo dõi 3 Khối chuyên môn</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-amber-50 text-[11px] text-amber-900 bg-amber-50/70 p-2.5 rounded-xl font-medium">
+                Cấp mã hoạt động tuần, đối soát minh chứng, xử lý khiếu nại.
+              </div>
+            </div>
+
+            <!-- MẢNG 5: TRUYỀN THÔNG -->
+            <div class="org-dept-card rounded-2xl bg-white border-2 border-purple-300 shadow-md p-5 flex flex-col justify-between hover:shadow-xl transition">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-purple-100 text-purple-800">10 Thành viên</span>
+                  <span class="text-purple-600 font-bold text-xs">Mảng 5</span>
+                </div>
+                <h4 class="text-lg font-black text-purple-950 mt-3 leading-snug">TRUYỀN THÔNG</h4>
+                <div class="text-xs text-purple-600 font-bold uppercase mt-0.5">(Fanpage & Content)</div>
+                <hr class="my-3 border-purple-100">
+                <div class="space-y-1.5 text-xs text-slate-700">
+                  <div><b>Lãnh đạo:</b> 01 Trưởng + 01 Phó mảng</div>
+                  <div><b>Lực lượng:</b> 08 Thành viên</div>
+                  <div class="text-[11px] text-slate-500">Content, Graphic Design & Media</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-purple-50 text-[11px] text-purple-900 bg-purple-50/70 p-2.5 rounded-xl font-medium">
+                Infographic nghiệp vụ, cẩm nang thủ tục, truyền thông Ban.
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
-      <!-- SƠ ĐỒ 3: QUY TRÌNH 4 BƯỚC SOP -->
-      <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Sơ đồ Số 03 • Khổ giấy Nằm ngang</span>
-            <h3 class="text-xl sm:text-2xl font-bold text-slate-900">Quy trình 4 Bước Phối hợp Tác nghiệp (SOP)</h3>
-            <p class="text-sm text-slate-500 mt-1">Tiền kiểm tại Đơn vị (24h) $ightarrow$ Hậu kiểm tại Mảng $ightarrow$ Ký duyệt tại Văn phòng Đoàn</p>
-          </div>
-          <button class="lightbox-trigger inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-4 py-2 rounded-lg font-semibold text-sm transition" data-title="Sơ đồ 3: Quy trình 4 Bước Phối hợp SOP">
-            <i data-lucide="maximize-2" class="w-4 h-4"></i> Phóng to Toàn màn hình
-          </button>
+      <!-- ===================================================================== -->
+      <!-- SƠ ĐỒ 2 VẼ TRỰC TIẾP: NHÓM TÁC NGHIỆP CƠ SỞ & CƠ CHẾ BUDDY PAIR -->
+      <!-- ===================================================================== -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10 space-y-8">
+        <div class="pb-6 border-b border-slate-100">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+            <i data-lucide="network" class="w-3.5 h-3.5"></i> SƠ ĐỒ SỐ 02 • THIẾT KẾ TRỰC TIẾP TRÊN WEB
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">Nhóm Tác nghiệp Cơ sở & Cơ chế Cặp Bài Trùng (Buddy System)</h3>
+          <p class="text-slate-600 text-sm mt-1">Cơ chế 1 Đầu mối duy nhất | 03 Nhóm trưởng điều phối 12 Đơn vị | Không yêu cầu thành viên Mảng ĐRL</p>
         </div>
 
-        <div class="mt-6 rounded-xl overflow-hidden border border-slate-200 diagram-container cursor-pointer group">
-          <img src="assets/so_do_3_quy_trinh_sop.png" alt="Sơ đồ 3: Quy trình 4 bước SOP" class="w-full h-auto lightbox-trigger" data-title="Sơ đồ 3: Quy trình 4 Bước Phối hợp SOP">
-          <div class="bg-slate-50 text-center py-2 text-xs text-slate-500 group-hover:text-indigo-600 transition flex items-center justify-center gap-1.5">
-            <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> Nhấp vào ảnh để xem cam kết SLA và quy trình bàn giao
+        <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-50 to-emerald-50/40 border border-slate-200 space-y-8">
+          
+          <!-- TOP: BAN CHỦ NHIỆM GIÁM SÁT -->
+          <div class="max-w-xl mx-auto p-4 rounded-2xl bg-slate-900 text-white text-center shadow-md">
+            <span class="text-xs uppercase font-bold text-amber-400">CẤP QUẢN LÝ GIÁM SÁT CAO CẤP</span>
+            <div class="text-base font-black mt-1">BAN CHỦ NHIỆM (TRƯỞNG BAN & 02 PHÓ BAN)</div>
+            <p class="text-xs text-slate-300 mt-1 font-normal">
+              Có mặt trong 12 nhóm với tư cách quan sát viên cao cấp • Can thiệp khi cơ sở trễ hạn hoặc tranh chấp
+            </p>
           </div>
+
+          <!-- CONNECTOR LINE -->
+          <div class="flex justify-center text-slate-400">
+            <i data-lucide="arrow-down" class="w-6 h-6"></i>
+          </div>
+
+          <!-- 3-COLUMN INTERACTION FLOW -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            <!-- LEFT: 12 ĐƠN VỊ CƠ SỞ -->
+            <div class="lg:col-span-4 p-6 rounded-2xl bg-amber-50 border-2 border-amber-300 shadow-md space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-full bg-amber-200 text-amber-900">Bên Yêu Cầu</span>
+                <span class="text-amber-800 font-extrabold text-sm">12 ĐƠN VỊ</span>
+              </div>
+              <h4 class="text-xl font-black text-amber-950">12 ĐƠN VỊ CƠ SỞ</h4>
+              <p class="text-xs text-slate-600 font-medium">(Đoàn trường thành viên / Liên chi đoàn)</p>
+              
+              <div class="p-3 bg-white/90 rounded-xl border border-amber-200 text-xs text-slate-700 space-y-1.5 font-medium">
+                <div>• <b>Cụm 1:</b> Đơn vị 1, 2, 3, 4</div>
+                <div>• <b>Cụm 2:</b> Đơn vị 5, 6, 7, 8</div>
+                <div>• <b>Cụm 3:</b> Đơn vị 9, 10, 11, 12</div>
+              </div>
+              <div class="text-xs text-amber-800 italic">Đại diện: Bí thư, Phó Bí thư, UV BCH LCĐ</div>
+            </div>
+
+            <!-- MIDDLE: 1 KÊNH DUY NHẤT -->
+            <div class="lg:col-span-3 text-center p-6 rounded-2xl bg-blue-100 border-2 border-blue-400 shadow-md space-y-2">
+              <div class="w-12 h-12 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xl shadow">
+                <i data-lucide="message-square" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-base font-black text-blue-950 uppercase">1 KÊNH DUY NHẤT</h4>
+              <div class="text-xs font-bold text-blue-800">Nhóm Zalo / Teams Tác nghiệp</div>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Mọi công văn, hồ sơ, thắc mắc cơ sở gửi vào đây. Không cần liên hệ riêng từng mảng.
+              </p>
+            </div>
+
+            <!-- RIGHT: NHÓM TÁC NGHIỆP TCKT -->
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-emerald-50 border-2 border-emerald-300 shadow-md space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-full bg-emerald-200 text-emerald-900">Bên Xử Lý</span>
+                <span class="text-emerald-800 font-extrabold text-sm">BAN TCKT</span>
+              </div>
+              <h4 class="text-xl font-black text-emerald-950">NHÓM TÁC NGHIỆP TẠI ĐƠN VỊ</h4>
+
+              <!-- NHÓM TRƯỞNG -->
+              <div class="p-3 bg-emerald-700 text-white rounded-xl shadow-sm">
+                <div class="text-xs font-black uppercase text-emerald-200">CHỈ HUY NHÓM</div>
+                <div class="text-sm font-bold mt-0.5">01 NHÓM TRƯỞNG TÁC NGHIỆP (1 trong 3 người)</div>
+                <div class="text-[11px] text-emerald-100 mt-0.5">Điều phối 04 đơn vị • Bấm giờ SLA • Phát ngôn chung</div>
+              </div>
+
+              <!-- 3 CẶP CHUYÊN MÔN -->
+              <div class="space-y-2 text-xs">
+                <div class="p-2.5 rounded-lg bg-white border border-emerald-200 flex justify-between items-center">
+                  <div>
+                    <span class="font-bold text-emerald-900">📁 Cặp Mảng Đoàn vụ:</span>
+                    <span class="text-slate-600"> 1 Chính + 1 Backup</span>
+                  </div>
+                  <span class="text-[11px] text-slate-500">QĐ, Con dấu, Nhân sự</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-red-200 flex justify-between items-center">
+                  <div>
+                    <span class="font-bold text-red-900">🚩 Cặp Mảng Phát triển Đảng:</span>
+                    <span class="text-slate-600"> 1 Chính + 1 Backup</span>
+                  </div>
+                  <span class="text-[11px] text-slate-500">Kết nạp Đoàn, ĐVƯT</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-blue-200 flex justify-between items-center">
+                  <div>
+                    <span class="font-bold text-blue-900">💻 Cặp Mảng Chuyển đổi số:</span>
+                    <span class="text-slate-600"> 1 Chính + 1 Backup</span>
+                  </div>
+                  <span class="text-[11px] text-slate-500">QLDV App, Số liệu</span>
+                </div>
+              </div>
+
+              <div class="text-[11px] text-emerald-900 bg-emerald-100/70 p-2 rounded-lg font-medium">
+                ✓ <i>Không yêu cầu thành viên Mảng ĐRL trong nhóm tác nghiệp.</i>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BOTTOM: HIGHLIGHT CƠ CHẾ BUDDY SYSTEM 2:2 -->
+          <div class="p-6 rounded-2xl bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-950 text-white shadow-xl space-y-4">
+            <div class="text-center">
+              <span class="px-3.5 py-1 rounded-full bg-indigo-500/30 text-indigo-200 text-xs font-extrabold uppercase tracking-wider border border-indigo-400/30">
+                ĐỘT PHÁ QUẢN TRỊ NHÂN SỰ SINH VIÊN
+              </span>
+              <h4 class="text-xl sm:text-2xl font-black mt-2">Cơ chế Cặp Bài Trùng Bọc Lót (Buddy System 2:2)</h4>
+              <p class="text-xs text-blue-200 mt-1 max-w-2xl mx-auto">
+                Chống quá tải và dứt điểm tình trạng đứt gãy thông tin khi sinh viên vào mùa thi cử, đồ án tốt nghiệp
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto pt-2">
+              
+              <!-- THÀNH VIÊN A -->
+              <div class="p-5 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-amber-300">VAI TRÒ SONG HÀNH</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-emerald-500 text-white font-bold">1 Người / 1 ĐV Chính</span>
+                </div>
+                <div class="text-lg font-black text-white">THÀNH VIÊN A</div>
+                <ul class="text-xs space-y-1.5 text-slate-200">
+                  <li class="flex items-center gap-1.5 font-bold text-emerald-300">
+                    <i data-lucide="check" class="w-4 h-4"></i> Phụ trách CHÍNH: Đơn vị 1 (Trả lời & theo dõi chính)
+                  </li>
+                  <li class="flex items-center gap-1.5 text-slate-300">
+                    <i data-lucide="shield" class="w-4 h-4 text-blue-300"></i> Phụ trách PHỤ: Đơn vị 2 (Sẵn sàng bọc lót)
+                  </li>
+                </ul>
+              </div>
+
+              <!-- THÀNH VIÊN B -->
+              <div class="p-5 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-amber-300">VAI TRÒ SONG HÀNH</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-emerald-500 text-white font-bold">1 Người / 1 ĐV Chính</span>
+                </div>
+                <div class="text-lg font-black text-white">THÀNH VIÊN B</div>
+                <ul class="text-xs space-y-1.5 text-slate-200">
+                  <li class="flex items-center gap-1.5 font-bold text-emerald-300">
+                    <i data-lucide="check" class="w-4 h-4"></i> Phụ trách CHÍNH: Đơn vị 2 (Trả lời & theo dõi chính)
+                  </li>
+                  <li class="flex items-center gap-1.5 text-slate-300">
+                    <i data-lucide="shield" class="w-4 h-4 text-blue-300"></i> Phụ trách PHỤ: Đơn vị 1 (Sẵn sàng bọc lót)
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="text-center text-xs text-blue-200 pt-2 font-medium">
+              💡 <b>Nguyên tắc Handover:</b> Báo bạn trước 24h khi có lịch thi/đồ án; cập nhật tiến độ lên Live Sheet chung để bạn tiếp quản tức thì.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===================================================================== -->
+      <!-- SƠ ĐỒ 3 VẼ TRỰC TIẾP: QUY TRÌNH 4 BƯỚC SOP (KHÔNG BỊ ĐÈ CHỮ) -->
+      <!-- ===================================================================== -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10 space-y-8">
+        <div class="pb-6 border-b border-slate-100">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800">
+            <i data-lucide="git-commit" class="w-3.5 h-3.5"></i> SƠ ĐỒ SỐ 03 • THIẾT KẾ TRỰC TIẾP TRÊN WEB
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">Quy trình 4 Bước Phối hợp Xử lý Hồ sơ & Yêu cầu (SOP)</h3>
+          <p class="text-slate-600 text-sm mt-1">Tiền kiểm tại Đơn vị $ightarrow$ Hậu kiểm tại Mảng $ightarrow$ Ký duyệt tại Văn phòng Đoàn $ightarrow$ Bàn giao & Số hóa</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-50 to-indigo-50/40 border border-slate-200 space-y-8">
+          
+          <!-- 4 CARDS WITH CRISP TYPOGRAPHY - NO OVERLAPPING TEXT -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- BƯỚC 1 -->
+            <div class="rounded-2xl bg-white border-2 border-blue-500 shadow-md p-6 flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
+              <div>
+                <div class="inline-block px-3.5 py-1 rounded-lg bg-blue-600 text-white font-black text-xs uppercase tracking-wider">
+                  BƯỚC 1
+                </div>
+                <h4 class="text-lg font-black text-slate-900 mt-3">TIẾP NHẬN TẬP TRUNG</h4>
+                <div class="text-xs font-bold text-blue-600 mt-1">Chịu trách nhiệm: Cơ sở & Nhóm trưởng</div>
+                <hr class="my-3.5 border-slate-200">
+                <ul class="text-xs text-slate-700 space-y-2 leading-relaxed">
+                  <li>• Cơ sở nộp hồ sơ/công văn vào <b>Nhóm Zalo/Teams</b> tác nghiệp của đơn vị.</li>
+                  <li>• <b>Nhóm trưởng tác nghiệp</b> xác nhận tiếp nhận, bấm giờ SLA và tag cặp thành viên mảng chuyên môn vào xử lý.</li>
+                </ul>
+              </div>
+              <div class="mt-4 pt-3 border-t border-blue-50 text-[11px] font-bold text-blue-700 bg-blue-50 p-2.5 rounded-xl">
+                ⏱️ SLA: Phản hồi trong 02 giờ hành chính
+              </div>
+            </div>
+
+            <!-- BƯỚC 2 -->
+            <div class="rounded-2xl bg-white border-2 border-amber-500 shadow-md p-6 flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
+              <div>
+                <div class="inline-block px-3.5 py-1 rounded-lg bg-amber-500 text-white font-black text-xs uppercase tracking-wider">
+                  BƯỚC 2
+                </div>
+                <h4 class="text-lg font-black text-slate-900 mt-3">TIỀN KIỂM (SƠ LOẠI)</h4>
+                <div class="text-xs font-bold text-amber-600 mt-1">Chịu trách nhiệm: Cặp Bài Trùng</div>
+                <hr class="my-3.5 border-slate-200">
+                <ul class="text-xs text-slate-700 space-y-2 leading-relaxed">
+                  <li>• Kiểm tra sơ loại theo <b>Checklist chuẩn</b> của mảng trong vòng 24h.</li>
+                  <li>• <b>Nếu sai:</b> Hướng dẫn cơ sở bổ sung, sửa ngay tại nhóm.</li>
+                  <li>• <b>Nếu đạt:</b> Báo cáo chuyển hồ sơ lên Trưởng/Phó mảng chuyên môn.</li>
+                </ul>
+              </div>
+              <div class="mt-4 pt-3 border-t border-amber-50 text-[11px] font-bold text-amber-700 bg-amber-50 p-2.5 rounded-xl">
+                ⏱️ SLA: Tiền kiểm trong vòng 24 giờ
+              </div>
+            </div>
+
+            <!-- BƯỚC 3 -->
+            <div class="rounded-2xl bg-white border-2 border-red-500 shadow-md p-6 flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
+              <div>
+                <div class="inline-block px-3.5 py-1 rounded-lg bg-red-600 text-white font-black text-xs uppercase tracking-wider">
+                  BƯỚC 3
+                </div>
+                <h4 class="text-lg font-black text-slate-900 mt-3">HẬU KIỂM & THẨM ĐỊNH</h4>
+                <div class="text-xs font-bold text-red-600 mt-1">Chịu trách nhiệm: Trưởng mảng & BCN</div>
+                <hr class="my-3.5 border-slate-200">
+                <ul class="text-xs text-slate-700 space-y-2 leading-relaxed">
+                  <li>• Mảng thẩm định chuyên sâu, đối chiếu dữ liệu phần mềm.</li>
+                  <li>• Trình Ban Chủ nhiệm rà soát lần cuối.</li>
+                  <li>• Nộp sang <b>Văn phòng Đoàn trường</b> ký duyệt ban hành chính thức.</li>
+                </ul>
+              </div>
+              <div class="mt-4 pt-3 border-t border-red-50 text-[11px] font-bold text-red-700 bg-red-50 p-2.5 rounded-xl">
+                🎯 Tiêu chuẩn: Chuẩn xác 100%, 0 lỗi thủ tục
+              </div>
+            </div>
+
+            <!-- BƯỚC 4 -->
+            <div class="rounded-2xl bg-white border-2 border-emerald-500 shadow-md p-6 flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
+              <div>
+                <div class="inline-block px-3.5 py-1 rounded-lg bg-emerald-600 text-white font-black text-xs uppercase tracking-wider">
+                  BƯỚC 4
+                </div>
+                <h4 class="text-lg font-black text-slate-900 mt-3">TRẢ KẾT QUẢ & SỐ HÓA</h4>
+                <div class="text-xs font-bold text-emerald-600 mt-1">Chịu trách nhiệm: Cặp Bài Trùng & ĐV</div>
+                <hr class="my-3.5 border-slate-200">
+                <ul class="text-xs text-slate-700 space-y-2 leading-relaxed">
+                  <li>• Bàn giao văn bản kết quả đã ký cho cơ sở trong nhóm tác nghiệp.</li>
+                  <li>• Thành viên cập nhật ngay thông tin lên phần mềm QLDV / bảng theo dõi Ban.</li>
+                </ul>
+              </div>
+              <div class="mt-4 pt-3 border-t border-emerald-50 text-[11px] font-bold text-emerald-700 bg-emerald-50 p-2.5 rounded-xl">
+                📂 Kết quả: Lưu trữ số hóa & Bản cứng
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BOTTOM: CAM KẾT SLA & CƠ CHẾ XỬ LÝ SỰ CỐ -->
+          <div class="p-6 rounded-2xl bg-white border border-blue-200 shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-blue-900 font-extrabold text-sm uppercase tracking-wider">
+              <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+              <span>CAM KẾT THỜI GIAN PHỤC VỤ (SLA) & NGUYÊN TẮC XỬ LÝ SỰ CỐ</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-700 leading-relaxed pt-1">
+              <ul class="space-y-2">
+                <li>• <b>Thời gian phản hồi thông tin:</b> Tối đa <b>02 giờ</b> trong giờ hành chính kể từ khi cơ sở nhắn tin.</li>
+                <li>• <b>Thời gian tiền kiểm hồ sơ:</b> Tối đa <b>24 giờ</b> kể từ khi nhận đủ tài liệu từ cơ sở.</li>
+                <li>• <b>Khiếu nại Điểm rèn luyện:</b> Mảng CĐS chuyển tiếp mảng ĐRL thẩm định và viết email phản hồi chính thức trong vòng <b>48 giờ</b>.</li>
+              </ul>
+              <ul class="space-y-2">
+                <li>• <b>Cơ chế bận học:</b> Thành viên báo bạn Backup trước <b>24 giờ</b>; bàn giao toàn bộ qua Live Sheet chung.</li>
+                <li>• <b>Vượt thẩm quyền:</b> Tuyệt đối không tự ý hứa hẹn hay châm chước sai quy chế cho cơ sở; báo cáo Trưởng mảng hoặc Ban Chủ nhiệm để có ý kiến chỉ đạo chính thức.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -240,7 +620,7 @@
     <section id="tab-full-doc" class="tab-content-panel hidden">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         
-        <!-- STICKY TABLE OF CONTENTS -->
+        <!-- STICKY TOC -->
         <aside class="hidden lg:block lg:col-span-1">
           <div class="sticky top-28 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-sm">
             <div class="font-bold text-slate-900 uppercase text-xs tracking-wider pb-2 border-b border-slate-100 flex items-center gap-1.5">
@@ -260,17 +640,17 @@
         </aside>
 
         <!-- MAIN DOCUMENT TEXT -->
-        <article class="lg:col-span-3 space-y-12 bg-white p-6 sm:p-10 rounded-2xl shadow-md border border-slate-200 scalable-text">
+        <article class="lg:col-span-3 space-y-12 bg-white p-6 sm:p-10 rounded-2xl shadow-md border border-slate-200 scalable-text leading-relaxed">
           
           <!-- MỤC I -->
           <section id="sec-1" class="space-y-4 pt-2">
             <h2 class="text-2xl font-extrabold text-blue-900 border-b pb-2">I. THỰC TRẠNG VÀ LÝ DO CẦN TÁI CẤU TRÚC</h2>
             <h3 class="text-lg font-bold text-slate-900 mt-4">1. Thực trạng công tác</h3>
-            <p class="text-slate-700 leading-relaxed">
+            <p class="text-slate-700">
               Ban Tổ chức - Kiểm tra (TCKT) giữ vai trò then chốt trong công tác xây dựng Đoàn, quản lý tổ chức cơ sở Đoàn, đoàn viên, cán bộ Đoàn và công tác phát triển Đảng - Đoàn vụ. Hiện nay, Ban đang phụ trách theo dõi, hướng dẫn và kiểm tra 12 đơn vị cơ sở (Đoàn trường thành viên / Liên chi đoàn).
             </p>
-            <p class="text-slate-700 leading-relaxed font-semibold">Qua quá trình vận hành, thực tế công tác của Ban đặt ra các yêu cầu cụ thể:</p>
-            <ul class="list-disc pl-5 space-y-2 text-slate-700">
+            <p class="text-slate-700 font-semibold">Qua quá trình vận hành, thực tế công tác của Ban đặt ra các yêu cầu cụ thể:</p>
+            <ul class="list-disc pl-5 space-y-2 text-slate-700 text-sm">
               <li><b>Khối lượng công việc lớn và diễn ra liên tục quanh năm:</b></li>
               <li class="ml-4"><b>Mảng Điểm rèn luyện (ĐRL):</b> Hoạt động thường xuyên do các Câu lạc bộ, Liên chi đoàn và Đoàn trường tổ chức hoạt động phong trào mỗi tuần; việc tiếp nhận tờ trình, kiểm tra tính chất, tạo mã hoạt động trên hệ thống, duyệt minh chứng và xử lý khiếu nại diễn ra thường xuyên.</li>
               <li class="ml-4"><b>Mảng Đoàn vụ (trước đây là Giấy tờ - Tài liệu):</b> Xử lý công việc hành chính, tổ chức cơ sở Đoàn hàng ngày/tuần gồm: tiếp nhận giấy mời, phân loại và vào sổ công văn đi/đến, quản lý con dấu, đóng dấu chuyển sinh hoạt Đoàn, ghi biên bản các cuộc họp Ban và họp giao ban Thường trực Đoàn trường, thẩm định hồ sơ kiện toàn BCH cơ sở, soạn thảo các Quyết định thành lập/chia tách Chi đoàn và chuẩn y nhân sự.</li>
@@ -281,7 +661,7 @@
             </ul>
 
             <h3 class="text-lg font-bold text-slate-900 mt-6">2. Mục tiêu tái cấu trúc</h3>
-            <ul class="list-disc pl-5 space-y-2 text-slate-700">
+            <ul class="list-disc pl-5 space-y-2 text-slate-700 text-sm">
               <li><b>Chuyên môn hóa theo 5 Mảng:</b> Đảm bảo mỗi mảng đi sâu vào chuyên môn, chuẩn hóa quy trình, nâng cao chất lượng hồ sơ và nghiệp vụ.</li>
               <li><b>Cơ chế liên lạc và bọc lót theo cặp (Buddy System):</b> Phân công rõ trách nhiệm người phụ trách từng đơn vị, có người bọc lót tương trợ khi bận học thi, không để đứt gãy thông tin và không gây quá tải cho thành viên.</li>
               <li><b>Thống nhất trục điều hành:</b> Core Ban tập trung vào Thường trực Ban Chủ nhiệm và 5 Trưởng mảng; tôn trọng nguyên tắc và quy chế của Đoàn trường, làm việc thông suốt với <b>Văn phòng Đoàn</b>.</li>
@@ -291,14 +671,11 @@
           <!-- MỤC II -->
           <section id="sec-2" class="space-y-4 pt-4 border-t">
             <h2 class="text-2xl font-extrabold text-blue-900 border-b pb-2">II. SƠ ĐỒ CƠ CẤU TỔ CHỨC BAN TCKT (ORG CHART)</h2>
-            <p class="text-slate-700 leading-relaxed">
+            <p class="text-slate-700">
               Ban gồm <b>Thường trực Ban Chủ nhiệm (01 Trưởng ban, 02 Phó ban)</b> và <b>05 Mảng chuyên môn</b>. 
             </p>
             <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-sm">
               <b>Nguyên tắc điều hành Ban Chủ nhiệm:</b> 02 Phó ban có vị trí, trách nhiệm ngang nhau, không chia khối cố định mà phối hợp cùng Trưởng ban điều hành toàn diện và linh hoạt chia đổi quản lý các mảng công việc theo từng giai đoạn. <b>Core Ban gồm 08 người</b> (Trưởng ban, 02 Phó ban và 05 Trưởng mảng).
-            </div>
-            <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm mt-4">
-              <img src="assets/so_do_1_co_cau_to_chuc.png" alt="Sơ đồ cơ cấu tổ chức Ban TCKT" class="w-full h-auto lightbox-trigger" data-title="Sơ đồ 1: Cơ cấu Tổ chức Ban TCKT">
             </div>
           </section>
 
@@ -306,20 +683,17 @@
           <section id="sec-3" class="space-y-4 pt-4 border-t">
             <h2 class="text-2xl font-extrabold text-blue-900 border-b pb-2">III. SƠ ĐỒ NHÓM TÁC NGHIỆP CƠ SỞ & CƠ CHẾ ĐIỀU PHỐI</h2>
             <h3 class="text-lg font-bold text-slate-900">1. Cơ chế Điều phối Nhóm Tác nghiệp (03 Nhóm trưởng phụ trách 12 Đơn vị)</h3>
-            <p class="text-slate-700 leading-relaxed">
+            <p class="text-slate-700">
               12 đơn vị cơ sở được chia thành <b>3 Cụm địa bàn (mỗi Cụm gồm 4 đơn vị)</b>. Ban Chủ nhiệm chỉ định <b>03 Nhóm trưởng Tác nghiệp (kiêm nhiệm từ các thành viên cứng nghề)</b>, mỗi người chịu trách nhiệm điều phối tiến độ và liên lạc chung cho <b>4 đơn vị cơ sở thuộc Cụm</b>.
             </p>
-            <p class="text-slate-700 leading-relaxed bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900 text-sm">
+            <p class="text-slate-700 bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900 text-sm">
               <b>Lưu ý đặc biệt:</b> Nhóm tác nghiệp tại cơ sở <b>KHÔNG YÊU CẦU THÀNH VIÊN MẢNG ĐRL</b>. Mảng ĐRL hoạt động độc lập theo quy trình tập trung: cấp mã theo tờ trình hoạt động của các khối và tiếp nhận, xử lý đơn thư khiếu nại thông qua kênh hòm thư điện tử Outlook của Ban.
             </p>
 
             <h3 class="text-lg font-bold text-slate-900 mt-4">2. Cơ chế Cặp Bài Trùng Bọc Lót (Buddy Pair 2:2)</h3>
-            <p class="text-slate-700 leading-relaxed">
+            <p class="text-slate-700">
               Tại 3 mảng có phân công phụ trách đơn vị (Đảng, CĐS, Đoàn vụ), 12 thành viên của mỗi mảng được ghép thành <b>6 Cặp bài trùng (Thành viên A & Thành viên B)</b>: Bạn A phụ trách CHÍNH Đơn vị 1 và phụ trách PHỤ (Bọc lót) Đơn vị 2; Bạn B phụ trách CHÍNH Đơn vị 2 và phụ trách PHỤ (Bọc lót) Đơn vị 1. Mỗi thành viên chỉ chịu trách nhiệm chính đúng 1 đơn vị, bảo đảm cân bằng việc học. Khi một bạn bận thi cử, đồ án, bạn còn lại lập tức tiếp quản trả lời và xử lý cho đơn vị, thông tin không bao giờ bị gián đoạn.
             </p>
-            <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm mt-4">
-              <img src="assets/so_do_2_nhom_tac_nghiep.png" alt="Sơ đồ nhóm tác nghiệp cơ sở" class="w-full h-auto lightbox-trigger" data-title="Sơ đồ 2: Nhóm Tác nghiệp Cơ sở & Cơ chế Buddy System">
-            </div>
           </section>
 
           <!-- MỤC IV -->
@@ -389,7 +763,7 @@
               <!-- Mảng 1 -->
               <div class="border-l-4 border-red-600 pl-4 space-y-2">
                 <h3 class="text-lg font-bold text-red-900">1. Mảng Phát triển Đảng (14 người)</h3>
-                <p class="text-slate-700 text-sm leading-relaxed"><b>Chức năng:</b> Phụ trách công tác bồi dưỡng Đoàn viên ưu tú phát triển Đảng và công tác phát triển Đoàn viên mới (kết nạp Đoàn) trong toàn trường; thẩm định hồ sơ nộp về <b>Văn phòng Đoàn</b>.</p>
+                <p class="text-slate-700 text-sm"><b>Chức năng:</b> Phụ trách công tác bồi dưỡng Đoàn viên ưu tú phát triển Đảng và công tác phát triển Đoàn viên mới (kết nạp Đoàn) trong toàn trường; thẩm định hồ sơ nộp về <b>Văn phòng Đoàn</b>.</p>
                 <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
                   <li><b>Công tác Kết nạp Đoàn:</b> Theo dõi chỉ tiêu kết nạp Đoàn; hướng dẫn cơ sở mở lớp cảm tình Đoàn; kiểm tra hồ sơ kết nạp Đoàn viên mới (Nghị quyết kết nạp, Sổ đoàn viên, Thẻ đoàn) trước khi trình Văn phòng Đoàn ký duyệt và cấp phát.</li>
                   <li><b>Công tác Phát triển Đảng:</b> Quản lý danh sách Cảm tình Đảng, Đoàn viên ưu tú (ĐVƯT); thu thập, kiểm tra hồ sơ phát triển Đảng, thẩm tra lý lịch đoàn viên.</li>
@@ -403,7 +777,7 @@
               <!-- Mảng 2 -->
               <div class="border-l-4 border-blue-600 pl-4 space-y-2">
                 <h3 class="text-lg font-bold text-blue-900">2. Mảng Chuyển đổi số (14 người)</h3>
-                <p class="text-slate-700 text-sm leading-relaxed"><b>Chức năng:</b> Quản trị dữ liệu số hóa tổ chức Đoàn, quản lý phần mềm Quản lý Đoàn viên (QLDV) và đầu mối quản trị hòm thư điện tử chính thức của Ban.</p>
+                <p class="text-slate-700 text-sm"><b>Chức năng:</b> Quản trị dữ liệu số hóa tổ chức Đoàn, quản lý phần mềm Quản lý Đoàn viên (QLDV) và đầu mối quản trị hòm thư điện tử chính thức của Ban.</p>
                 <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
                   <li><b>Nhiệm vụ QLDV:</b> 12 thành viên chia 6 cặp phụ trách 12 đơn vị về hệ thống QLDV (App Thanh niên Việt Nam): kiểm soát, đôn đốc cơ sở hoàn thành chỉ tiêu dữ liệu, đánh giá đoàn viên, chuyển sinh hoạt Đoàn.</li>
                   <li><b>Quản trị hòm thư Outlook:</b> Trực thư, phân loại và chuyển tiếp nội dung cho mảng tương ứng; Tiếp nhận email khiếu nại ĐRL từ sinh viên/đơn vị chuyển ngay cho Mảng ĐRL thẩm định và viết email phản hồi chính thức; Phát hành email chính thức của Ban gửi đến Đoàn trường, các Liên chi đoàn để đôn đốc số liệu, gửi công văn, chỉ đạo khẩn của BTV.</li>
@@ -416,7 +790,7 @@
               <!-- Mảng 3 -->
               <div class="border-l-4 border-emerald-600 pl-4 space-y-2">
                 <h3 class="text-lg font-bold text-emerald-900">3. Mảng Đoàn vụ (14 người)</h3>
-                <p class="text-slate-700 text-sm leading-relaxed"><b>Chức năng:</b> Quản lý công tác hành chính, văn thư, lưu trữ, con dấu và công tác tổ chức cán bộ, xây dựng tổ chức cơ sở Đoàn.</p>
+                <p class="text-slate-700 text-sm"><b>Chức năng:</b> Quản lý công tác hành chính, văn thư, lưu trữ, con dấu và công tác tổ chức cán bộ, xây dựng tổ chức cơ sở Đoàn.</p>
                 <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
                   <li><b>Nhiệm vụ:</b> Soạn thảo Quyết định thành lập, chia tách, giải thể Chi đoàn; làm Quyết định chuẩn y kết quả bầu cử/kiện toàn nhân sự BCH các cơ sở Đoàn; Quản lý sổ công văn đi/đến, tiếp nhận giấy mời; Quản lý con dấu của Ban, thực hiện đóng dấu chuyển sinh hoạt Đoàn, sổ Đoàn đúng quy định; Ghi biên bản các cuộc họp định kỳ của Ban và họp giao ban Thường trực Đoàn trường; Lưu trữ hồ sơ bản cứng và bản mềm khoa học.</li>
                 </ul>
@@ -428,7 +802,7 @@
               <!-- Mảng 4 -->
               <div class="border-l-4 border-amber-600 pl-4 space-y-2">
                 <h3 class="text-lg font-bold text-amber-900">4. Mảng Điểm rèn luyện (12 người)</h3>
-                <p class="text-slate-700 text-sm leading-relaxed"><b>Chức năng:</b> Quản lý, giám sát và thực thi Quy chế Điểm rèn luyện (ĐRL) sinh viên thuộc thẩm quyền của Đoàn - Hội.</p>
+                <p class="text-slate-700 text-sm"><b>Chức năng:</b> Quản lý, giám sát và thực thi Quy chế Điểm rèn luyện (ĐRL) sinh viên thuộc thẩm quyền của Đoàn - Hội.</p>
                 <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
                   <li><b>Nhiệm vụ:</b> Tiếp nhận tờ trình xin cấp mã hoạt động phong trào từ các CLB, Đội, Nhóm, Khoa và Đoàn trường; thẩm định nội dung và khởi tạo sự kiện trên hệ thống ĐRL; Kiểm soát minh chứng tham gia, điểm danh hoạt động, rà soát xử lý trừ điểm rèn luyện đối với sinh viên vi phạm; Giải quyết khiếu nại ĐRL do Mảng CĐS chuyển sang từ email Ban; Cuối mỗi học kỳ mở cổng xét duyệt, đối soát số liệu ĐRL cấp Đoàn - Hội, hoàn thiện báo cáo ĐRL toàn trường.</li>
                 </ul>
@@ -440,7 +814,7 @@
               <!-- Mảng 5 -->
               <div class="border-l-4 border-purple-600 pl-4 space-y-2">
                 <h3 class="text-lg font-bold text-purple-900">5. Mảng Truyền thông (10 người)</h3>
-                <p class="text-slate-700 text-sm leading-relaxed"><b>Chức năng:</b> Tuyên truyền nghiệp vụ, xây dựng hình ảnh và quản trị kênh thông tin đối ngoại của Ban TCKT.</p>
+                <p class="text-slate-700 text-sm"><b>Chức năng:</b> Tuyên truyền nghiệp vụ, xây dựng hình ảnh và quản trị kênh thông tin đối ngoại của Ban TCKT.</p>
                 <ul class="list-disc pl-5 text-sm space-y-1 text-slate-700">
                   <li><b>Nhiệm vụ:</b> Quản trị Fanpage chính thức của Ban TCKT; Lên content và thiết kế ấn phẩm (Infographic) hướng dẫn nghiệp vụ: thủ tục kết nạp Đoàn, chuyển sinh hoạt Đoàn, quy trình làm hồ sơ Đảng, cách tính ĐRL, cẩm nang QLDV; Thiết kế ấn phẩm cho các đợt phát động, kỷ niệm, vinh danh của Ban.</li>
                 </ul>
@@ -493,18 +867,15 @@
           <!-- MỤC VII -->
           <section id="sec-7" class="space-y-4 pt-4 border-t">
             <h2 class="text-2xl font-extrabold text-blue-900 border-b pb-2">VII. QUY TRÌNH PHỐI HỢP TÁC NGHIỆP 4 BƯỚC (SOP)</h2>
-            <p class="text-slate-700 leading-relaxed">
+            <p class="text-slate-700">
               Quy trình xử lý hồ sơ và yêu cầu nghiệp vụ từ cơ sở gồm 4 bước chuẩn hóa: Tiếp nhận tập trung $ightarrow$ Tiền kiểm (sơ loại theo checklist trong 24h) $ightarrow$ Hậu kiểm (Mảng thẩm định chuyên sâu và trình Văn phòng Đoàn duyệt) $ightarrow$ Trả kết quả và số hóa dữ liệu.
             </p>
-            <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm mt-4">
-              <img src="assets/so_do_3_quy_trinh_sop.png" alt="Sơ đồ quy trình SOP 4 bước" class="w-full h-auto lightbox-trigger" data-title="Sơ đồ 3: Quy trình 4 Bước Phối hợp SOP">
-            </div>
           </section>
 
           <!-- MỤC VIII -->
           <section id="sec-8" class="space-y-4 pt-4 border-t">
             <h2 class="text-2xl font-extrabold text-blue-900 border-b pb-2">VIII. QUY CHUẨN TRỰC VÀ ĐIỀU HÀNH HÒM THƯ OUTLOOK BAN</h2>
-            <p class="text-slate-700 leading-relaxed font-semibold">Mảng CĐS phân công mỗi ngày 01 thành viên trực chính hòm thư Outlook:</p>
+            <p class="text-slate-700 font-semibold">Mảng CĐS phân công mỗi ngày 01 thành viên trực chính hòm thư Outlook:</p>
             <ul class="list-disc pl-5 space-y-2 text-slate-700 text-sm">
               <li><b>🔴 Thẻ Đỏ (Khẩn):</b> Công văn hỏa tốc, giấy mời họp gấp từ Đoàn cấp trên $ightarrow$ Báo ngay BCN trong 2h.</li>
               <li><b>🟡 Thẻ Vàng (Chờ xử lý):</b> Hồ sơ, tờ trình của các đơn vị gửi đến $ightarrow$ Chuyển tiếp mảng chuyên môn tương ứng.</li>
@@ -517,7 +888,7 @@
           <!-- MỤC IX -->
           <section id="sec-9" class="space-y-4 pt-4 border-t">
             <h2 class="text-2xl font-extrabold text-blue-900 border-b pb-2">IX. YÊU CẦU CHUYÊN MÔN CƠ BẢN TOÀN BAN (ALL-HANDS TRAINING)</h2>
-            <p class="text-slate-700 leading-relaxed">
+            <p class="text-slate-700">
               Toàn bộ 64 thành viên các mảng đều phải hoàn thành chương trình tập huấn cơ bản trong tháng đầu tiên sau tái cấu trúc:
             </p>
             <ol class="list-decimal pl-5 space-y-2 text-slate-700 text-sm">
@@ -598,10 +969,10 @@
     <!-- ========================================================================= -->
     <section id="tab-units" class="tab-content-panel hidden space-y-6">
       
-      <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200 p-6 sm:p-8">
         <div class="max-w-2xl">
           <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Công cụ Nội bộ Ban TCKT</span>
-          <h2 class="text-2xl font-bold text-slate-900 mt-1">Danh bạ Tra cứu Phân công 12 Đơn vị Cơ sở</h2>
+          <h2 class="text-2xl font-black text-slate-900 mt-1">Danh bạ Tra cứu Phân công 12 Đơn vị Cơ sở</h2>
           <p class="text-slate-600 text-sm mt-1">Xem chi tiết Cụm địa bàn, Nhóm trưởng điều phối, đơn vị song hành và các cặp chuyên môn bọc lót.</p>
         </div>
 
@@ -609,11 +980,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
           <div class="sm:col-span-2">
             <label class="block text-xs font-bold text-slate-600 mb-1">Tìm kiếm đơn vị:</label>
-            <input type="text" id="unit-search-input" placeholder="Nhập tên đơn vị, ví dụ: Đơn vị 1, Luật, Kinh tế..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm">
+            <input type="text" id="unit-search-input" placeholder="Nhập tên đơn vị, ví dụ: Đơn vị 1, Luật, Kinh tế..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm shadow-sm">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">Lọc theo Cụm:</label>
-            <select id="unit-cluster-filter" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-white">
+            <select id="unit-cluster-filter" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-white shadow-sm">
               <option value="all">Tất cả các Cụm (12 Đơn vị)</option>
               <option value="1">Cụm 1 (Đơn vị 1, 2, 3, 4)</option>
               <option value="2">Cụm 2 (Đơn vị 5, 6, 7, 8)</option>
@@ -636,71 +1007,71 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- Left: Sliders Form -->
-        <div class="lg:col-span-2 bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8 space-y-6">
+        <div class="lg:col-span-2 bg-white rounded-3xl shadow-md border border-slate-200 p-6 sm:p-8 space-y-6">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Mô phỏng Đánh giá Cá nhân</span>
-            <h2 class="text-2xl font-bold text-slate-900 mt-1">Bảng tính Thử nghiệm Điểm Đánh giá KPI</h2>
+            <h2 class="text-2xl font-black text-slate-900 mt-1">Bảng tính Thử nghiệm Điểm Đánh giá KPI</h2>
             <p class="text-slate-600 text-sm mt-1">Kéo thanh trượt từng tiêu chí để dự kiến kết quả xếp loại học kỳ.</p>
           </div>
 
           <!-- Slider 1 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex justify-between items-center">
               <label class="font-bold text-slate-800 text-sm">1. Chất lượng Chuyên môn Mảng (Tối đa 40đ):</label>
-              <span id="kpi-v1" class="font-extrabold text-blue-600">35/40đ</span>
+              <span id="kpi-v1" class="font-black text-blue-600">35/40đ</span>
             </div>
-            <input type="range" id="kpi-s1" min="0" max="40" value="35" class="w-full accent-blue-600">
+            <input type="range" id="kpi-s1" min="0" max="40" value="35" class="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
             <p class="text-xs text-slate-500">Khối lượng việc mảng giao (20đ) • Tính chuẩn xác hồ sơ (10đ) • Đúng hạn SLA (10đ)</p>
           </div>
 
           <!-- Slider 2 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex justify-between items-center">
               <label class="font-bold text-slate-800 text-sm">2. Tác nghiệp Địa bàn & Bọc lót (Tối đa 30đ):</label>
-              <span id="kpi-v2" class="font-extrabold text-emerald-600">28/30đ</span>
+              <span id="kpi-v2" class="font-black text-emerald-600">28/30đ</span>
             </div>
-            <input type="range" id="kpi-s2" min="0" max="30" value="28" class="w-full accent-emerald-600">
+            <input type="range" id="kpi-s2" min="0" max="30" value="28" class="w-full accent-emerald-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
             <p class="text-xs text-slate-500">Tốc độ phản hồi cơ sở &lt;2h (10đ) • Tinh thần bọc lót khi bạn bận (10đ) • Thái độ phục vụ (10đ)</p>
           </div>
 
           <!-- Slider 3 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex justify-between items-center">
               <label class="font-bold text-slate-800 text-sm">3. Kỷ luật & Văn hóa Ban (Tối đa 20đ):</label>
-              <span id="kpi-v3" class="font-extrabold text-amber-600">18/20đ</span>
+              <span id="kpi-v3" class="font-black text-amber-600">18/20đ</span>
             </div>
-            <input type="range" id="kpi-s3" min="0" max="20" value="18" class="w-full accent-amber-600">
+            <input type="range" id="kpi-s3" min="0" max="20" value="18" class="w-full accent-amber-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
             <p class="text-xs text-slate-500">Tham gia họp Ban đầy đủ, đúng giờ (10đ) • Trực mail Outlook / Trực dấu đúng ca (10đ)</p>
           </div>
 
           <!-- Slider 4 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex justify-between items-center">
               <label class="font-bold text-slate-800 text-sm">4. Điểm thưởng & Sáng tạo (Tối đa 10đ):</label>
-              <span id="kpi-v4" class="font-extrabold text-purple-600">5/10đ</span>
+              <span id="kpi-v4" class="font-black text-purple-600">5/10đ</span>
             </div>
-            <input type="range" id="kpi-s4" min="0" max="10" value="5" class="w-full accent-purple-600">
+            <input type="range" id="kpi-s4" min="0" max="10" value="5" class="w-full accent-purple-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
             <p class="text-xs text-slate-500">Có sáng kiến cải tiến biểu mẫu, công cụ (5đ) • Tích cực chi viện đột xuất cho mảng khác (5đ)</p>
           </div>
         </div>
 
         <!-- Right: Result Card -->
-        <div class="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col justify-between">
+        <div class="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col justify-between">
           <div>
-            <span class="text-xs uppercase tracking-wider text-blue-300 font-semibold">Kết quả Dự kiến</span>
+            <span class="text-xs uppercase tracking-wider text-blue-300 font-semibold">Kết quả Dự kiến Học kỳ</span>
             <div class="mt-4 flex items-baseline gap-2">
-              <span id="kpi-total" class="text-5xl font-extrabold text-white">86/100</span>
+              <span id="kpi-total" class="text-6xl font-black text-white">86/100</span>
               <span class="text-blue-300 font-medium text-sm">điểm</span>
             </div>
 
-            <div class="mt-4">
-              <span id="kpi-rank-badge" class="inline-block px-4 py-1.5 rounded-full font-bold text-sm bg-blue-100 text-blue-800">
+            <div class="mt-5">
+              <span id="kpi-rank-badge" class="inline-block px-4 py-1.5 rounded-full font-bold text-xs uppercase bg-blue-100 text-blue-800 shadow">
                 LOẠI B - HOÀN THÀNH TỐT
               </span>
-              <div id="kpi-rank" class="text-lg font-bold mt-2 text-white">LOẠI B - HOÀN THÀNH TỐT</div>
+              <div id="kpi-rank" class="text-xl font-black mt-2 text-white">LOẠI B - HOÀN THÀNH TỐT</div>
             </div>
 
-            <div id="kpi-rank-desc" class="mt-4 text-xs text-blue-200 leading-relaxed bg-white/10 p-4 rounded-xl border border-white/10">
+            <div id="kpi-rank-desc" class="mt-4 text-xs text-blue-100 leading-relaxed bg-white/10 p-4 rounded-2xl border border-white/10">
               🔵 <b>Đánh giá:</b> Hoàn thành tốt mọi nhiệm vụ, được cộng điểm rèn luyện theo quy chế cán bộ Đoàn.
             </div>
           </div>
@@ -715,31 +1086,23 @@
 
   </main>
 
-  <!-- LIGHTBOX MODAL FOR DIAGRAMS -->
-  <div id="diagram-lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col items-center justify-center p-4">
-    <div class="w-full max-w-7xl flex justify-between items-center text-white pb-3 border-b border-white/20">
-      <h3 id="lightbox-title" class="font-bold text-lg">Sơ đồ Phóng to</h3>
-      <button id="lightbox-close" class="p-2 rounded-lg bg-white/20 hover:bg-white/30 text-white transition">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-    </div>
-    <div class="flex-grow flex items-center justify-center overflow-auto p-2 w-full max-w-7xl">
-      <img id="lightbox-img" src="" alt="Zoomed Diagram" class="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl">
-    </div>
-  </div>
-
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-12 text-sm text-center">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="font-bold text-white text-base">BAN TỔ CHỨC - KIỂM TRA ĐOÀN TRƯỜNG</div>
-      <p class="text-xs text-slate-500 mt-1">Đề án Tái cấu trúc và Quy chuẩn hóa Vận hành Bộ máy • Triển khai Toàn diện</p>
-      <div class="mt-4 text-xs text-slate-600">
-        © 2026 Ban Tổ chức - Kiểm tra. Lưu hành nội bộ.
+  <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 mt-16 text-sm text-center">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex items-center justify-center gap-2 text-white font-bold text-base">
+        <div class="w-8 h-8 rounded-lg bg-white/10 p-1 flex items-center justify-center overflow-hidden">
+          <img src="assets/logo_ban.png" alt="Logo Ban" class="w-full h-full object-contain">
+        </div>
+        <span>BAN TỔ CHỨC - KIỂM TRA ĐOÀN TRƯỜNG</span>
+      </div>
+      <p class="text-xs text-slate-500">Đề án Tái cấu trúc và Quy chuẩn hóa Vận hành Bộ máy • Báo cáo Ban Thường vụ & Triển khai Toàn ban</p>
+      <div class="text-xs text-slate-600">
+        © 2026 Ban Tổ chức - Kiểm tra. Bản quyền thuộc Đoàn TNCS Hồ Chí Minh.
       </div>
     </div>
   </footer>
 
-  <!-- Lucide Icon Initializer & App Logic -->
+  <!-- Lucide & App Script -->
   <script src="app.js"></script>
   <script>
     lucide.createIcons();

@@ -1,4 +1,4 @@
-/* Custom Styles for Ban TCKT Presentation Web */
+/* Custom Styles & GSAP Animation Enhancements */
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
@@ -13,6 +13,7 @@ body {
   font-family: var(--font-base);
   color: #1e293b;
   background-color: #f8fafc;
+  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
@@ -34,32 +35,59 @@ body {
 /* Dynamic Font Scaler */
 .font-scale-sm {
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 .font-scale-md {
   font-size: 1.08rem;
+  line-height: 1.7;
 }
 .font-scale-lg {
   font-size: 1.25rem;
+  line-height: 1.75;
 }
 .font-scale-xl {
   font-size: 1.4rem;
+  line-height: 1.8;
 }
 
-/* Diagram Lightbox Zoom */
-.diagram-container {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.diagram-container:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+/* Glassmorphism & Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-/* Badge pulse */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+/* Animated gradient border */
+.border-gradient-blue {
+  border-image: linear-gradient(to right, #2563eb, #3b82f6) 1;
 }
-.pulse-badge {
-  animation: pulse-subtle 2s infinite ease-in-out;
+
+/* Interactive Card Hover with GSAP */
+.interactive-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Connecting Line Animation */
+@keyframes flow-pulse {
+  0%, 100% { stroke-dashoffset: 0; }
+  50% { stroke-dashoffset: 12; }
+}
+.flow-line {
+  stroke-dasharray: 6;
+  animation: flow-pulse 2.5s linear infinite;
+}
+
+/* Pulse badge */
+@keyframes soft-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+}
+.pulse-tag {
+  animation: soft-pulse 3s infinite ease-in-out;
 }
 
 /* Print Optimization */
@@ -70,6 +98,5 @@ body {
   body {
     background-color: white !important;
     color: black !important;
-    font-size: 12pt !important;
   }
 }
