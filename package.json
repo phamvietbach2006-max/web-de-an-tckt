@@ -1,0 +1,12 @@
+{
+  "name": "web-de-an-tckt",
+  "version": "1.0.0",
+  "description": "Website Trình bày Đề án Tái cấu trúc Ban TCKT Đoàn trường",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
