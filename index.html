@@ -48,7 +48,7 @@
 <body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
   <!-- ========================================================================= -->
-  <!-- TOP BANNER & NAVBAR (RESPONSIVE CHO CẢ ĐIỆN THOẠI VÀ MÁY TÍNH) -->
+  <!-- TOP BANNER & NAVBAR -->
   <!-- ========================================================================= -->
   <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -96,7 +96,7 @@
             <span>I. Thực trạng</span>
           </a>
           <a href="#sec-II" class="nav-section-link inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
-            <span>II. Cơ cấu Ban</span>
+            <span>II. Cơ cấu Ban (3 Mảng)</span>
           </a>
           <a href="#sec-III" class="nav-section-link inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
             <span>III. Tác nghiệp Cơ sở</span>
@@ -105,7 +105,7 @@
             <span>IV. Định biên (67 NS)</span>
           </a>
           <a href="#sec-V" class="nav-section-link inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
-            <span>V. Chức năng 5 Mảng</span>
+            <span>V. Chức năng 3 Mảng</span>
           </a>
           <a href="#sec-VI" class="nav-section-link inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800">
             <span>VI. Mô tả Công việc (JD)</span>
@@ -123,7 +123,6 @@
             <span>X. Đánh giá KPI 100đ</span>
           </a>
         </nav>
-        <!-- Fade hint for horizontal scroll on mobile -->
         <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-900 to-transparent lg:hidden"></div>
       </div>
 
@@ -131,16 +130,13 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MOBILE NAVIGATION DRAWER / SHEET (DÀNH CHO ĐIỆN THOẠI) -->
+  <!-- MOBILE NAVIGATION DRAWER -->
   <!-- ========================================================================= -->
   <div id="mobile-nav-drawer" class="fixed inset-0 z-50 hidden flex flex-col justify-end lg:hidden">
-    <!-- Backdrop -->
     <div class="drawer-backdrop fixed inset-0 bg-slate-950/75 backdrop-blur-sm opacity-0 transition-opacity"></div>
     
-    <!-- Drawer Panel -->
     <div class="drawer-panel relative z-10 w-full max-h-[88vh] bg-slate-900 border-t border-slate-700 rounded-t-3xl shadow-2xl p-5 flex flex-col translate-y-full transition-transform duration-300">
       
-      <!-- Drawer Header -->
       <div class="flex items-center justify-between pb-4 border-b border-slate-800">
         <div class="flex items-center gap-2">
           <div class="w-7 h-7 rounded-lg bg-blue-600/30 text-blue-400 flex items-center justify-center font-black text-xs">
@@ -153,7 +149,6 @@
         </button>
       </div>
 
-      <!-- Drawer Chapter Links List -->
       <div class="overflow-y-auto py-3 space-y-2 divide-y divide-slate-800/60 text-xs sm:text-sm">
         <a href="#sec-I" class="drawer-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-800 text-slate-200 transition">
           <span class="font-bold flex items-center gap-2.5">
@@ -165,7 +160,7 @@
         <a href="#sec-II" class="drawer-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-800 text-slate-200 transition">
           <span class="font-bold flex items-center gap-2.5">
             <span class="w-6 text-center text-blue-400 font-black">II.</span>
-            <span>Sơ đồ Cơ cấu Tổ chức Ban (Org Chart)</span>
+            <span>Sơ đồ Cơ cấu Tổ chức Ban (03 Mảng)</span>
           </span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
         </a>
@@ -186,7 +181,7 @@
         <a href="#sec-V" class="drawer-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-800 text-slate-200 transition">
           <span class="font-bold flex items-center gap-2.5">
             <span class="w-6 text-center text-emerald-400 font-black">V.</span>
-            <span>Chức năng, Nhiệm vụ &amp; Đầu ra 5 Mảng</span>
+            <span>Chức năng, Nhiệm vụ &amp; Đầu ra 3 Mảng</span>
           </span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
         </a>
@@ -227,7 +222,6 @@
         </a>
       </div>
 
-      <!-- Drawer Footer -->
       <div class="pt-3 border-t border-slate-800">
         <a href="De_An_Tai_Cau_Truc_Ban_TCKT_Doan_Vu.docx" download class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-center text-xs flex items-center justify-center gap-2 shadow-lg">
           <i data-lucide="file-down" class="w-4 h-4"></i>
@@ -239,22 +233,22 @@
   </div>
 
   <!-- ========================================================================= -->
-  <!-- MAIN WRAPPER (CHẠY LIỀN MẠCH THEO CÁC CHƯƠNG I ĐẾN X) -->
+  <!-- MAIN WRAPPER -->
   <!-- ========================================================================= -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 sm:space-y-12">
 
-    <!-- HERO BANNER (RESPONSIVE CHỮ & PADDING) -->
+    <!-- HERO BANNER -->
     <div id="hero-header" class="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 text-white p-5 sm:p-8 lg:p-12 shadow-2xl border border-blue-800/40">
       <div class="relative z-10 max-w-3xl space-y-3 sm:space-y-4">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-[10.5px] sm:text-xs font-bold uppercase tracking-wider">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 flex-shrink-0"></i>
-          <span>Đề án Tái cấu trúc Toàn diện</span>
+          <span>Mô hình Tinh gọn: 03 Mảng Chuyên môn Trụ cột</span>
         </div>
         <h2 class="text-2xl xs:text-3xl sm:text-5xl font-black tracking-tight leading-tight">
           MÔ HÌNH VẬN HÀNH <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-amber-300">TINH GỌN - CHUYÊN SÂU</span>
         </h2>
         <p class="text-slate-300 text-xs sm:text-base leading-relaxed font-normal">
-          Báo cáo toàn diện tái cấu trúc Ban Tổ chức - Kiểm tra Đoàn Đại học Bách khoa Hà Nội. Giải quyết dứt điểm tình trạng ma trận phân tán, quá tải mùa thi cử, tối ưu hóa đầu mối kết nối 12 Đoàn trường và Liên chi Đoàn.
+          Báo cáo toàn diện đề án cải tổ Ban Tổ chức - Kiểm tra Đoàn Đại học Bách khoa Hà Nội. Tinh gọn bộ máy còn 03 Mảng trụ cột (tích hợp toàn diện công tác Điểm rèn luyện vào Mảng Chuyển đổi số, công tác Truyền thông vào Mảng Đoàn vụ), tối ưu hóa nguồn lực 67 nhân sự và 12 đầu mối cơ sở.
         </p>
       </div>
 
@@ -266,14 +260,14 @@
           <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">03 BCN + 64 Thành viên</div>
         </div>
         <div class="stat-card bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 p-3.5 sm:p-5 rounded-2xl">
-          <div class="text-2xl sm:text-4xl font-black text-sky-400" id="counter-core">08</div>
+          <div class="text-2xl sm:text-4xl font-black text-sky-400" id="counter-core">06</div>
           <div class="text-xs sm:text-sm font-bold text-white mt-1">Lãnh đạo Core Ban</div>
-          <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">01 TB + 02 PB + 05 TM</div>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">01 TB + 02 PB + 03 TM</div>
         </div>
         <div class="stat-card bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 p-3.5 sm:p-5 rounded-2xl">
-          <div class="text-2xl sm:text-4xl font-black text-emerald-400" id="counter-depts">05</div>
-          <div class="text-xs sm:text-sm font-bold text-white mt-1">Mảng chuyên môn</div>
-          <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Chuẩn hóa phân công</div>
+          <div class="text-2xl sm:text-4xl font-black text-emerald-400" id="counter-depts">03</div>
+          <div class="text-xs sm:text-sm font-bold text-white mt-1">Mảng trụ cột</div>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Đảng • CĐS &amp; ĐRL • Đoàn vụ</div>
         </div>
         <div class="stat-card bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 p-3.5 sm:p-5 rounded-2xl">
           <div class="text-2xl sm:text-4xl font-black text-indigo-400" id="counter-units">12</div>
@@ -292,10 +286,9 @@
           MỤC I
         </span>
         <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">I. THỰC TRẠNG VÀ LÝ DO CẦN TÁI CẤU TRÚC</h3>
-        <p class="text-slate-600 text-xs sm:text-sm mt-1">Căn cứ thực tiễn tổ chức và xác định 3 mục tiêu cốt lõi của đề án tái cấu trúc</p>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">Căn cứ thực tiễn tổ chức và định hướng tinh gọn thành 03 Mảng Chuyên môn Trụ cột</p>
       </div>
 
-      <!-- 1. Thực trạng công tác -->
       <div class="space-y-3 sm:space-y-4">
         <h4 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
           <i data-lucide="clipboard-list" class="w-5 h-5 text-blue-600 flex-shrink-0"></i>
@@ -305,31 +298,29 @@
           Ban Tổ chức - Kiểm tra (TCKT) giữ vai trò then chốt trong công tác xây dựng Đoàn, quản lý tổ chức cơ sở Đoàn, đoàn viên, cán bộ Đoàn và công tác phát triển Đảng - Đoàn vụ. Hiện nay, Ban đang phụ trách theo dõi, hướng dẫn và kiểm tra <b>12 đơn vị cơ sở</b> (Đoàn trường thành viên / Liên chi đoàn).
         </p>
         
-        <!-- Hạn chế mô hình cũ -->
         <div class="p-4 sm:p-6 rounded-2xl bg-rose-50 border border-rose-200 space-y-2">
           <div class="font-black text-rose-950 text-sm sm:text-base flex items-center gap-2">
             <i data-lucide="alert-octagon" class="w-5 h-5 text-rose-600 flex-shrink-0"></i>
-            <span>Hạn chế của mô hình 3 Tổ địa bàn trước đây:</span>
+            <span>Hạn chế của mô hình phân tán trước đây:</span>
           </div>
           <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-            Trước đây Ban chia 3 Tổ, mỗi Tổ phụ trách 4 đơn vị và tự giải quyết tất cả các mảng việc. Mô hình này khiến thành viên bị quá tải vì phải nắm quá nhiều nghiệp vụ khác nhau; chất lượng kiểm tra hồ sơ giữa các Tổ không đồng đều, thiếu tính chuyên sâu và thống nhất.
+            Việc phân chia quá nhiều mảng nhỏ lẻ hoặc phân chia địa bàn cục bộ trước đây khiến bộ máy bị phân tán nguồn lực, khó điều phối cán bộ bọc lót; chất lượng kiểm tra hồ sơ giữa các tổ không đồng đều. Đồng thời, nguy cơ quá tải trong mùa thi cử làm đồ án dễ dẫn đến chậm trễ hồ sơ và sót lọt thông tin của cơ sở.
           </p>
         </div>
       </div>
 
-      <!-- 2. Mục tiêu tái cấu trúc -->
       <div class="space-y-3 sm:space-y-4 pt-4 border-t border-slate-100">
         <h4 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
           <i data-lucide="target" class="w-5 h-5 text-emerald-600 flex-shrink-0"></i>
-          <span>2. Mục tiêu cốt lõi sau Tái cấu trúc</span>
+          <span>2. Cải tổ Tinh gọn: Tập trung vào 03 Mảng Trụ cột</span>
         </h4>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="p-4 sm:p-5 rounded-2xl bg-blue-50 border border-blue-200 space-y-2">
             <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-600 text-white font-black text-xs flex items-center justify-center">1</div>
-            <div class="font-black text-blue-950 text-sm sm:text-base">Chuyên môn hóa 5 Mảng</div>
+            <div class="font-black text-blue-950 text-sm sm:text-base">Tinh gọn 03 Mảng Trụ cột</div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Đảm bảo mỗi mảng đi sâu vào nghiệp vụ chuyên môn, chuẩn hóa checklist và biểu mẫu, tăng tốc độ thẩm định hồ sơ.
+              Không xây dựng riêng Mảng Truyền thông và Mảng ĐRL. Chuyển giao toàn diện công tác và nhân sự ĐRL cho Mảng CĐS; công tác Truyền thông cho Mảng Đoàn vụ.
             </p>
           </div>
 
@@ -337,15 +328,15 @@
             <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-600 text-white font-black text-xs flex items-center justify-center">2</div>
             <div class="font-black text-amber-950 text-sm sm:text-base">Cơ chế Cặp bài trùng (2:2)</div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Phân định rõ trách nhiệm người phụ trách chính và người bọc lót, chống quá tải triệt để trong mùa thi cử, làm đồ án.
+              12 Thành viên mỗi mảng ghép 6 cặp phụ trách 12 đơn vị; bạn A phụ trách chính ĐV1, backup ĐV2; bạn B chính ĐV2, backup ĐV1. Chống quá tải mùa thi.
             </p>
           </div>
 
           <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
             <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-600 text-white font-black text-xs flex items-center justify-center">3</div>
-            <div class="font-black text-emerald-950 text-sm sm:text-base">Thống nhất trục điều hành</div>
+            <div class="font-black text-emerald-950 text-sm sm:text-base">Thống nhất Trục Core Ban (06 người)</div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Core Ban tập trung vào Thường trực Ban Chủ nhiệm và 5 Trưởng mảng; tôn trọng nguyên tắc và quy chế của Đoàn trường, làm việc thông suốt với Văn phòng Đoàn.
+              Core Ban tập trung gồm 01 Trưởng ban, 02 Phó ban và 03 Trưởng mảng; tôn trọng nguyên tắc và quy chế của Đoàn trường, làm việc thông suốt với Văn phòng Đoàn.
             </p>
           </div>
         </div>
@@ -362,7 +353,7 @@
             MỤC II
           </span>
           <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">II. SƠ ĐỒ CƠ CẤU TỔ CHỨC BAN TCKT (ORG CHART)</h3>
-          <p class="text-slate-600 text-xs sm:text-sm mt-1">Core Ban 08 người (2 Phó ban đồng trách nhiệm điều hành) &amp; 05 Mảng chuyên môn có mũi tên chỉ thẳng vào từng mảng</p>
+          <p class="text-slate-600 text-xs sm:text-sm mt-1">Core Ban 06 người (01 Trưởng ban, 02 Phó ban, 03 Trưởng mảng) &amp; 03 Mảng chuyên môn trụ cột</p>
         </div>
       </div>
 
@@ -377,7 +368,7 @@
             <i data-lucide="layers" id="toggle-icon-diag-1" class="w-3.5 h-3.5 text-blue-600"></i>
             <span id="toggle-text-diag-1">Xem Thẻ Mobile</span>
           </button>
-          <button type="button" onclick="openFullscreenModal('svg-diag-1', 'SƠ ĐỒ CƠ CẤU TỔ CHỨC BAN TCKT')" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition flex items-center gap-1.5 text-xs active:scale-95">
+          <button type="button" onclick="openFullscreenModal('svg-diag-1', 'SƠ ĐỒ CƠ CẤU TỔ CHỨC BAN TCKT (03 MẢNG)')" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition flex items-center gap-1.5 text-xs active:scale-95">
             <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
             <span>Phóng to</span>
           </button>
@@ -393,20 +384,11 @@
     <marker id="arrow-blue-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#1D4ED8" />
     </marker>
-    <marker id="arrow-sky-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7" />
-    </marker>
     <marker id="arrow-red-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626" />
     </marker>
     <marker id="arrow-green-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
-    </marker>
-    <marker id="arrow-amber-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#D97706" />
-    </marker>
-    <marker id="arrow-purple-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7C3AED" />
     </marker>
 
     <!-- Gradients -->
@@ -431,7 +413,7 @@
 
   <!-- Title & Subtitle -->
   <text x="800" y="42" text-anchor="middle" font-size="23" font-weight="900" fill="#0F172A">SƠ ĐỒ CƠ CẤU TỔ CHỨC BAN TỔ CHỨC - KIỂM TRA (TCKT)</text>
-  <text x="800" y="70" text-anchor="middle" font-size="13" font-style="italic" fill="#475569">Đoàn cấp trên: Đoàn Đại học • Đoàn cấp dưới: 12 Đoàn trường và Liên chi Đoàn • Quy mô: 67 nhân sự | Core Ban: 08 người</text>
+  <text x="800" y="70" text-anchor="middle" font-size="13" font-style="italic" fill="#475569">Mô hình Tinh gọn: 03 Mảng Chuyên môn Trụ cột • Quy mô: 67 nhân sự (03 BCN + 64 Thành viên) • Core Ban: 06 người</text>
 
   <!-- ================= TOP: CẤP TRÊN ================= -->
   <rect x="460" y="90" width="680" height="64" rx="12" fill="url(#grad-doan-dh)" stroke="#4338CA" stroke-width="2.5" filter="url(#svg-card-shadow)" />
@@ -444,8 +426,8 @@
   <!-- ================= CORE BAN CONTAINER ================= -->
   <rect x="70" y="210" width="1460" height="285" rx="16" fill="#EFF6FF" fill-opacity="0.65" stroke="#2563EB" stroke-width="2" stroke-dasharray="8 6" />
   
-  <rect x="95" y="197" width="640" height="27" rx="6" fill="#1D4ED8" />
-  <text x="415" y="215" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF">CORE BAN (08 NGƯỜI: TRƯỞNG BAN + 02 PHÓ BAN + 05 TRƯỞNG MẢNG)</text>
+  <rect x="95" y="197" width="600" height="27" rx="6" fill="#1D4ED8" />
+  <text x="395" y="215" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF">CORE BAN (06 NGƯỜI: TRƯỞNG BAN + 02 PHÓ BAN + 03 TRƯỞNG MẢNG)</text>
 
   <!-- 01 TRƯỞNG BAN (CENTER) -->
   <rect x="580" y="228" width="440" height="92" rx="14" fill="url(#grad-tb)" stroke="#F59E0B" stroke-width="2.5" filter="url(#svg-card-shadow)" />
@@ -475,167 +457,103 @@
   <rect x="620" y="373" width="360" height="26" rx="13" fill="#EFF6FF" stroke="#0284C7" stroke-width="1.5" />
   <text x="800" y="390" text-anchor="middle" font-size="11" font-weight="800" fill="#0369A1">PHỐI HỢP &amp; HOÁN ĐỔI QUẢN LÝ CÁC MẢNG</text>
 
-  <!-- ================= 5 MŨI TÊN TỪ CORE BAN CHỈ THẲNG VÀO 5 MẢNG ================= -->
+  <!-- ================= 3 MŨI TÊN TỪ CORE BAN CHỈ THẲNG VÀO 3 MẢNG ================= -->
   <!-- Mảng 1 -->
-  <line x1="210" y1="495" x2="210" y2="548" stroke="#DC2626" stroke-width="3.5" marker-end="url(#arrow-red-1)" />
+  <line x1="290" y1="495" x2="290" y2="548" stroke="#DC2626" stroke-width="3.5" marker-end="url(#arrow-red-1)" />
   <!-- Mảng 2 -->
-  <line x1="505" y1="495" x2="505" y2="548" stroke="#2563EB" stroke-width="3.5" marker-end="url(#arrow-blue-1)" />
+  <line x1="800" y1="495" x2="800" y2="548" stroke="#2563EB" stroke-width="3.5" marker-end="url(#arrow-blue-1)" />
   <!-- Mảng 3 -->
-  <line x1="800" y1="495" x2="800" y2="548" stroke="#059669" stroke-width="3.5" marker-end="url(#arrow-green-1)" />
-  <!-- Mảng 4 -->
-  <line x1="1095" y1="495" x2="1095" y2="548" stroke="#D97706" stroke-width="3.5" marker-end="url(#arrow-amber-1)" />
-  <!-- Mảng 5 -->
-  <line x1="1390" y1="495" x2="1390" y2="548" stroke="#7C3AED" stroke-width="3.5" marker-end="url(#arrow-purple-1)" />
+  <line x1="1310" y1="495" x2="1310" y2="548" stroke="#059669" stroke-width="3.5" marker-end="url(#arrow-green-1)" />
 
-  <!-- ================= 5 BOX MẢNG CHUYÊN MÔN (Y = 550) ================= -->
+  <!-- ================= 3 BOX MẢNG CHUYÊN MÔN TRỤ CỘT (Y = 550) ================= -->
   <!-- MẢNG 1: PHÁT TRIỂN ĐẢNG -->
-  <g transform="translate(75, 550)">
-    <rect width="270" height="395" rx="14" fill="#FEF2F2" stroke="#B91C1C" stroke-width="2" filter="url(#svg-card-shadow)" />
-    <rect width="270" height="85" rx="14" fill="#DC2626" />
-    <rect y="70" width="270" height="15" fill="#DC2626" />
-    <text x="135" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">1. PHÁT TRIỂN ĐẢNG</text>
-    <text x="135" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#FEE2E2">(KÈM KẾT NẠP ĐOÀN)</text>
-    <text x="135" y="72" text-anchor="middle" font-size="11.5" font-weight="800" fill="#FEF08A">Quân số: 14 Nhân sự</text>
-    
-    <text x="135" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#991B1B">LÃNH ĐẠO MẢNG:</text>
-    <text x="135" y="135" text-anchor="middle" font-size="12" font-weight="800" fill="#0F172A">01 Trưởng + 01 Phó mảng</text>
-    
-    <line x1="25" y1="150" x2="245" y2="150" stroke="#FCA5A5" stroke-dasharray="4 3" />
-    
-    <text x="135" y="175" text-anchor="middle" font-size="11" font-weight="800" fill="#991B1B">LỰC LƯỢNG THÀNH VIÊN:</text>
-    <text x="135" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">12 Thành viên</text>
-    <text x="135" y="213" text-anchor="middle" font-size="11" fill="#64748B">(6 Cặp / 12 đơn vị cơ sở)</text>
-    
-    <line x1="25" y1="230" x2="245" y2="230" stroke="#FCA5A5" stroke-dasharray="4 3" />
-    
-    <text x="135" y="255" text-anchor="middle" font-size="11" font-weight="800" fill="#991B1B">CHỨC NĂNG NHIỆM VỤ:</text>
-    <text x="25" y="280" font-size="11" fill="#1E293B">
-      <tspan x="25" dy="0">• Hồ sơ Đoàn viên ưu tú (ĐVƯT)</tspan>
-      <tspan x="25" dy="21">• Lớp bồi dưỡng nhận thức Đảng</tspan>
-      <tspan x="25" dy="21">• Thẩm tra lý lịch kết nạp Đảng</tspan>
-      <tspan x="25" dy="21">• Hồ sơ kết nạp Đoàn mới</tspan>
-      <tspan x="25" dy="21">• Nộp duyệt qua VP Đoàn Đại học</tspan>
-    </text>
+  <g transform="translate(60, 550)">
+    <rect width="460" height="390" rx="16" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5" filter="url(#svg-card-shadow)" />
+    <rect width="460" height="68" rx="16" fill="#DC2626" />
+    <rect y="50" width="460" height="18" fill="#DC2626" />
+    <text x="230" y="32" text-anchor="middle" font-size="14.5" font-weight="900" fill="#FFFFFF">1. MẢNG PHÁT TRIỂN ĐẢNG</text>
+    <text x="230" y="52" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FEF08A">ĐỊNH BIÊN: 21 NHÂN SỰ (KÈM KẾT NẠP ĐOÀN)</text>
+
+    <!-- Leaders -->
+    <rect x="25" y="80" width="410" height="64" rx="10" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5" />
+    <text x="230" y="102" text-anchor="middle" font-size="11" font-weight="900" fill="#991B1B">LÃNH ĐẠO MẢNG</text>
+    <text x="230" y="125" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0F172A">01 Trưởng mảng + 01 Phó mảng</text>
+
+    <!-- Staff -->
+    <rect x="25" y="155" width="410" height="135" rx="10" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1.5" />
+    <text x="40" y="178" font-size="11.5" font-weight="900" fill="#991B1B">LỰC LƯỢNG THÀNH VIÊN (19 THÀNH VIÊN):</text>
+    <text x="40" y="202" font-size="11.5" font-weight="700" fill="#1E293B">• 12 Thành viên:</text>
+    <text x="155" y="202" font-size="11" fill="#334155">Chia 6 Cặp bài trùng phụ trách 12 ĐV</text>
+    <text x="40" y="226" font-size="11.5" font-weight="700" fill="#1E293B">• 07 Thành viên:</text>
+    <text x="155" y="226" font-size="11" fill="#334155">Chuyên trách thẩm tra lý lịch &amp; Đảng</text>
+    <text x="40" y="250" font-size="11" fill="#475569">• Bồi dưỡng Cảm tình Đảng, hồ sơ ĐVƯT</text>
+    <text x="40" y="272" font-size="11" fill="#475569">• Đối chiếu Hệ thống Hồ sơ Đảng &amp; nộp VP Đoàn</text>
+
+    <!-- Deliverable -->
+    <rect x="25" y="302" width="410" height="70" rx="10" fill="#FEE2E2" stroke="#EF4444" stroke-width="1" />
+    <text x="40" y="324" font-size="11" font-weight="900" fill="#991B1B">📦 SẢN PHẨM ĐẦU RA:</text>
+    <text x="40" y="344" font-size="10.5" fill="#7F1D1D">• Danh sách kết nạp Đoàn viên mới chuẩn hóa</text>
+    <text x="40" y="362" font-size="10.5" fill="#7F1D1D">• Hồ sơ ĐVƯT nộp VP Đoàn chuẩn xác 100%</text>
   </g>
 
-  <!-- MẢNG 2: CHUYỂN ĐỔI SỐ -->
-  <g transform="translate(370, 550)">
-    <rect width="270" height="395" rx="14" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="2" filter="url(#svg-card-shadow)" />
-    <rect width="270" height="85" rx="14" fill="#2563EB" />
-    <rect y="70" width="270" height="15" fill="#2563EB" />
-    <text x="135" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">2. CHUYỂN ĐỔI SỐ</text>
-    <text x="135" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#DBEAFE">(QLDV &amp; OUTLOOK)</text>
-    <text x="135" y="72" text-anchor="middle" font-size="11.5" font-weight="800" fill="#FEF08A">Quân số: 14 Nhân sự</text>
-    
-    <text x="135" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#1E40AF">LÃNH ĐẠO MẢNG:</text>
-    <text x="135" y="135" text-anchor="middle" font-size="12" font-weight="800" fill="#0F172A">01 Trưởng + 01 Phó mảng</text>
-    
-    <line x1="25" y1="150" x2="245" y2="150" stroke="#93C5FD" stroke-dasharray="4 3" />
-    
-    <text x="135" y="175" text-anchor="middle" font-size="11" font-weight="800" fill="#1E40AF">LỰC LƯỢNG THÀNH VIÊN:</text>
-    <text x="135" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">12 Thành viên</text>
-    <text x="135" y="213" text-anchor="middle" font-size="11" fill="#64748B">(6 Cặp / 12 đơn vị cơ sở)</text>
-    
-    <line x1="25" y1="230" x2="245" y2="230" stroke="#93C5FD" stroke-dasharray="4 3" />
-    
-    <text x="135" y="255" text-anchor="middle" font-size="11" font-weight="800" fill="#1E40AF">CHỨC NĂNG NHIỆM VỤ:</text>
-    <text x="25" y="280" font-size="11" fill="#1E293B">
-      <tspan x="25" dy="0">• Quản trị dữ liệu App QLDV TNVN</tspan>
-      <tspan x="25" dy="21">• Trực hòm thư Outlook chính thức</tspan>
-      <tspan x="25" dy="21">• Gửi email chỉ đạo khẩn BTV Đoàn ĐH</tspan>
-      <tspan x="25" dy="21">• Gửi phản hồi khiếu nại ĐRL (48h)</tspan>
-      <tspan x="25" dy="21">• Đôn đốc số hóa dữ liệu đoàn viên</tspan>
-    </text>
+  <!-- MẢNG 2: CHUYỂN ĐỔI SỐ & ĐIỂM RÈN LUYỆN -->
+  <g transform="translate(570, 550)">
+    <rect width="460" height="390" rx="16" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5" filter="url(#svg-card-shadow)" />
+    <rect width="460" height="68" rx="16" fill="#2563EB" />
+    <rect y="50" width="460" height="18" fill="#2563EB" />
+    <text x="230" y="32" text-anchor="middle" font-size="14.5" font-weight="900" fill="#FFFFFF">2. MẢNG CHUYỂN ĐỔI SỐ &amp; ĐRL</text>
+    <text x="230" y="52" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FEF08A">ĐỊNH BIÊN: 22 NHÂN SỰ (QLDV, OUTLOOK &amp; ĐRL)</text>
+
+    <!-- Leaders -->
+    <rect x="25" y="80" width="410" height="64" rx="10" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5" />
+    <text x="230" y="102" text-anchor="middle" font-size="11" font-weight="900" fill="#1E40AF">LÃNH ĐẠO MẢNG</text>
+    <text x="230" y="125" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0F172A">01 Trưởng mảng + 02 Phó mảng (CĐS &amp; ĐRL)</text>
+
+    <!-- Staff -->
+    <rect x="25" y="155" width="410" height="135" rx="10" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5" />
+    <text x="40" y="178" font-size="11.5" font-weight="900" fill="#1E40AF">LỰC LƯỢNG THÀNH VIÊN (19 THÀNH VIÊN):</text>
+    <text x="40" y="202" font-size="11.5" font-weight="700" fill="#1E293B">• 12 Thành viên:</text>
+    <text x="155" y="202" font-size="11" fill="#334155">6 Cặp phụ trách 12 ĐV (QLDV &amp; Mail)</text>
+    <text x="40" y="226" font-size="11.5" font-weight="700" fill="#1E293B">• 07 Thành viên:</text>
+    <text x="155" y="226" font-size="11" fill="#334155">Chuyên trách Điểm rèn luyện sinh viên</text>
+    <text x="40" y="250" font-size="11" fill="#475569">• Cấp mã hoạt động tuần, đối soát minh chứng</text>
+    <text x="40" y="272" font-size="11" fill="#475569">• Xử lý dứt điểm khiếu nại ĐRL qua Outlook (48h)</text>
+
+    <!-- Deliverable -->
+    <rect x="25" y="302" width="410" height="70" rx="10" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1" />
+    <text x="40" y="324" font-size="11" font-weight="900" fill="#1E40AF">📦 SẢN PHẨM ĐẦU RA:</text>
+    <text x="40" y="344" font-size="10.5" fill="#1E3A8A">• Báo cáo số liệu QLDV 12 đơn vị hàng tuần</text>
+    <text x="40" y="362" font-size="10.5" fill="#1E3A8A">• 100% mã hoạt động &amp; khiếu nại ĐRL xử lý đúng hạn</text>
   </g>
 
-  <!-- MẢNG 3: MẢNG ĐOÀN VỤ -->
-  <g transform="translate(665, 550)">
-    <rect width="270" height="395" rx="14" fill="#ECFDF5" stroke="#047857" stroke-width="2" filter="url(#svg-card-shadow)" />
-    <rect width="270" height="85" rx="14" fill="#059669" />
-    <rect y="70" width="270" height="15" fill="#059669" />
-    <text x="135" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">3. MẢNG ĐOÀN VỤ</text>
-    <text x="135" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#D1FAE5">(TỔ CHỨC &amp; VĂN THƯ)</text>
-    <text x="135" y="72" text-anchor="middle" font-size="11.5" font-weight="800" fill="#FEF08A">Quân số: 14 Nhân sự</text>
-    
-    <text x="135" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#065F46">LÃNH ĐẠO MẢNG:</text>
-    <text x="135" y="135" text-anchor="middle" font-size="12" font-weight="800" fill="#0F172A">01 Trưởng + 01 Phó mảng</text>
-    
-    <line x1="25" y1="150" x2="245" y2="150" stroke="#6EE7B7" stroke-dasharray="4 3" />
-    
-    <text x="135" y="175" text-anchor="middle" font-size="11" font-weight="800" fill="#065F46">LỰC LƯỢNG THÀNH VIÊN:</text>
-    <text x="135" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">12 Thành viên</text>
-    <text x="135" y="213" text-anchor="middle" font-size="11" fill="#64748B">(6 Cặp / 12 đơn vị cơ sở)</text>
-    
-    <line x1="25" y1="230" x2="245" y2="230" stroke="#6EE7B7" stroke-dasharray="4 3" />
-    
-    <text x="135" y="255" text-anchor="middle" font-size="11" font-weight="800" fill="#065F46">CHỨC NĂNG NHIỆM VỤ:</text>
-    <text x="25" y="280" font-size="11" fill="#1E293B">
-      <tspan x="25" dy="0">• Quyết định thành lập / kiện toàn</tspan>
-      <tspan x="25" dy="21">• Chuẩn y nhân sự BCH LCĐ</tspan>
-      <tspan x="25" dy="21">• Quản lý con dấu &amp; sổ công văn</tspan>
-      <tspan x="25" dy="21">• Chuẩn hóa thể thức văn bản Đoàn</tspan>
-      <tspan x="25" dy="21">• Nộp trình ký VP Đoàn Đại học</tspan>
-    </text>
-  </g>
+  <!-- MẢNG 3: ĐOÀN VỤ & TRUYỀN THÔNG -->
+  <g transform="translate(1080, 550)">
+    <rect width="460" height="390" rx="16" fill="#ECFDF5" stroke="#059669" stroke-width="2.5" filter="url(#svg-card-shadow)" />
+    <rect width="460" height="68" rx="16" fill="#059669" />
+    <rect y="50" width="460" height="18" fill="#059669" />
+    <text x="230" y="32" text-anchor="middle" font-size="14.5" font-weight="900" fill="#FFFFFF">3. MẢNG ĐOÀN VỤ &amp; TRUYỀN THÔNG</text>
+    <text x="230" y="52" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FEF08A">ĐỊNH BIÊN: 21 NHÂN SỰ (VĂN THƯ, DẤU &amp; MEDIA)</text>
 
-  <!-- MẢNG 4: ĐIỂM RÈN LUYỆN -->
-  <g transform="translate(960, 550)">
-    <rect width="270" height="395" rx="14" fill="#FFFBEB" stroke="#B45309" stroke-width="2" filter="url(#svg-card-shadow)" />
-    <rect width="270" height="85" rx="14" fill="#D97706" />
-    <rect y="70" width="270" height="15" fill="#D97706" />
-    <text x="135" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">4. ĐIỂM RÈN LUYỆN</text>
-    <text x="135" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#FEF3C7">(QUẢN TRỊ &amp; XÉT ĐRL)</text>
-    <text x="135" y="72" text-anchor="middle" font-size="11.5" font-weight="800" fill="#FEF08A">Quân số: 12 Nhân sự</text>
-    
-    <text x="135" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#92400E">LÃNH ĐẠO MẢNG:</text>
-    <text x="135" y="135" text-anchor="middle" font-size="12" font-weight="800" fill="#0F172A">01 Trưởng + 01 Phó mảng</text>
-    
-    <line x1="25" y1="150" x2="245" y2="150" stroke="#FCD34D" stroke-dasharray="4 3" />
-    
-    <text x="135" y="175" text-anchor="middle" font-size="11" font-weight="800" fill="#92400E">LỰC LƯỢNG THÀNH VIÊN:</text>
-    <text x="135" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">10 Thành viên</text>
-    <text x="135" y="213" text-anchor="middle" font-size="11" fill="#64748B">(Duyệt tập trung theo 3 Khối)</text>
-    
-    <line x1="25" y1="230" x2="245" y2="230" stroke="#FCD34D" stroke-dasharray="4 3" />
-    
-    <text x="135" y="255" text-anchor="middle" font-size="11" font-weight="800" fill="#92400E">CHỨC NĂNG NHIỆM VỤ:</text>
-    <text x="25" y="280" font-size="11" fill="#1E293B">
-      <tspan x="25" dy="0">• Cấp mã hoạt động tuần phong trào</tspan>
-      <tspan x="25" dy="21">• Rà soát &amp; đối soát minh chứng</tspan>
-      <tspan x="25" dy="21">• Chấm thẩm định ĐRL học kỳ</tspan>
-      <tspan x="25" dy="21">• Xử lý khiếu nại ĐRL tập trung</tspan>
-      <tspan x="25" dy="21" font-weight="bold" fill="#B45309">⚠️ Không tham gia nhóm cơ sở</tspan>
-    </text>
-  </g>
+    <!-- Leaders -->
+    <rect x="25" y="80" width="410" height="64" rx="10" fill="#FFFFFF" stroke="#6EE7B7" stroke-width="1.5" />
+    <text x="230" y="102" text-anchor="middle" font-size="11" font-weight="900" fill="#065F46">LÃNH ĐẠO MẢNG</text>
+    <text x="230" y="125" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0F172A">01 Trưởng mảng + 02 Phó mảng (Đoàn vụ &amp; Media)</text>
 
-  <!-- MẢNG 5: TRUYỀN THÔNG -->
-  <g transform="translate(1255, 550)">
-    <rect width="270" height="395" rx="14" fill="#F5F3FF" stroke="#6D28D9" stroke-width="2" filter="url(#svg-card-shadow)" />
-    <rect width="270" height="85" rx="14" fill="#7C3AED" />
-    <rect y="70" width="270" height="15" fill="#7C3AED" />
-    <text x="135" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">5. TRUYỀN THÔNG</text>
-    <text x="135" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#EDE9FE">(PAGE BAN &amp; CONTENT)</text>
-    <text x="135" y="72" text-anchor="middle" font-size="11.5" font-weight="800" fill="#FEF08A">Quân số: 10 Nhân sự</text>
-    
-    <text x="135" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#5B21B6">LÃNH ĐẠO MẢNG:</text>
-    <text x="135" y="135" text-anchor="middle" font-size="12" font-weight="800" fill="#0F172A">01 Trưởng + 01 Phó mảng</text>
-    
-    <line x1="25" y1="150" x2="245" y2="150" stroke="#C4B5FD" stroke-dasharray="4 3" />
-    
-    <text x="135" y="175" text-anchor="middle" font-size="11" font-weight="800" fill="#5B21B6">LỰC LƯỢNG THÀNH VIÊN:</text>
-    <text x="135" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">08 Thành viên</text>
-    <text x="135" y="213" text-anchor="middle" font-size="11" fill="#64748B">(Content, Design, Media)</text>
-    
-    <line x1="25" y1="230" x2="245" y2="230" stroke="#C4B5FD" stroke-dasharray="4 3" />
-    
-    <text x="135" y="255" text-anchor="middle" font-size="11" font-weight="800" fill="#5B21B6">CHỨC NĂNG NHIỆM VỤ:</text>
-    <text x="25" y="280" font-size="11" fill="#1E293B">
-      <tspan x="25" dy="0">• Quản trị Fanpage chính thức Ban</tspan>
-      <tspan x="25" dy="21">• Biên tập tin bài nghiệp vụ Đoàn</tspan>
-      <tspan x="25" dy="21">• Thiết kế Infographic hướng dẫn</tspan>
-      <tspan x="25" dy="21">• Truyền thông đợt kết nạp &amp; ĐRL</tspan>
-      <tspan x="25" dy="21">• Chụp ảnh, media sự kiện của Ban</tspan>
-    </text>
+    <!-- Staff -->
+    <rect x="25" y="155" width="410" height="135" rx="10" fill="#FFFFFF" stroke="#6EE7B7" stroke-width="1.5" />
+    <text x="40" y="178" font-size="11.5" font-weight="900" fill="#065F46">LỰC LƯỢNG THÀNH VIÊN (18 THÀNH VIÊN):</text>
+    <text x="40" y="202" font-size="11.5" font-weight="700" fill="#1E293B">• 12 Thành viên:</text>
+    <text x="155" y="202" font-size="11" fill="#334155">6 Cặp phụ trách 12 ĐV (Dấu &amp; Sổ sách)</text>
+    <text x="40" y="226" font-size="11.5" font-weight="700" fill="#1E293B">• 06 Thành viên:</text>
+    <text x="155" y="226" font-size="11" fill="#334155">Chuyên trách Truyền thông &amp; Kỹ thuật</text>
+    <text x="40" y="250" font-size="11" fill="#475569">• Soạn Quyết định chuẩn y, thành lập/chia tách Chi đoàn</text>
+    <text x="40" y="272" font-size="11" fill="#475569">• Quản trị Fanpage Ban, thiết kế Infographic nghiệp vụ</text>
+
+    <!-- Deliverable -->
+    <rect x="25" y="302" width="410" height="70" rx="10" fill="#D1FAE5" stroke="#10B981" stroke-width="1" />
+    <text x="40" y="324" font-size="11" font-weight="900" fill="#065F46">📦 SẢN PHẨM ĐẦU RA:</text>
+    <text x="40" y="344" font-size="10.5" fill="#064E3B">• 100% Quyết định chuẩn y ban hành trong 3 - 5 ngày</text>
+    <text x="40" y="362" font-size="10.5" fill="#064E3B">• Sổ công văn, con dấu chặt chẽ &amp; Bộ Infographic trực quan</text>
   </g>
 </svg>
         </div>
@@ -652,7 +570,7 @@
         <div class="p-4 rounded-2xl bg-gradient-to-br from-blue-900 to-slate-900 text-white space-y-2 border-2 border-amber-400/80 shadow-lg">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-400 text-slate-950">Lãnh đạo cao nhất</span>
-            <span class="text-xs text-amber-300 font-bold">Core Ban</span>
+            <span class="text-xs text-amber-300 font-bold">Core Ban (06 người)</span>
           </div>
           <div class="font-black text-base text-white">👑 01 TRƯỞNG BAN</div>
           <p class="text-xs text-slate-200 leading-relaxed">
@@ -679,48 +597,32 @@
           </div>
         </div>
 
-        <!-- 5 Mảng chuyên môn danh sách mobile -->
+        <!-- 3 Mảng chuyên môn danh sách mobile -->
         <div class="space-y-2.5 pt-2">
-          <div class="text-xs font-black text-slate-900 uppercase tracking-wider">05 Mảng Chuyên Môn (64 Thành viên):</div>
+          <div class="text-xs font-black text-slate-900 uppercase tracking-wider">03 Mảng Chuyên Môn Trụ Cột (64 Thành viên):</div>
           
           <div class="p-3.5 rounded-xl bg-red-50 border border-red-200 flex items-center justify-between">
             <div>
               <div class="font-black text-red-950 text-xs sm:text-sm">1. Mảng Phát triển Đảng</div>
-              <div class="text-[11px] text-red-700">01 Trưởng + 01 Phó + 12 TV (Chia 6 cặp / 12 đơn vị)</div>
+              <div class="text-[11px] text-red-700">01 Trưởng + 01 Phó + 12 TV (6 cặp ĐV) + 07 TV Hồ sơ Đảng</div>
             </div>
-            <span class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-black text-xs">14 NS</span>
+            <span class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-black text-xs">21 NS</span>
           </div>
 
           <div class="p-3.5 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-between">
             <div>
-              <div class="font-black text-blue-950 text-xs sm:text-sm">2. Mảng Chuyển đổi số</div>
-              <div class="text-[11px] text-blue-700">01 Trưởng + 01 Phó + 12 TV (6 cặp / 12 ĐV &amp; Trực Mail)</div>
+              <div class="font-black text-blue-950 text-xs sm:text-sm">2. Mảng Chuyển đổi số &amp; Điểm rèn luyện</div>
+              <div class="text-[11px] text-blue-700">01 Trưởng + 02 Phó (CĐS &amp; ĐRL) + 12 TV ĐV + 07 TV ĐRL</div>
             </div>
-            <span class="px-2.5 py-1 rounded-lg bg-blue-600 text-white font-black text-xs">14 NS</span>
+            <span class="px-2.5 py-1 rounded-lg bg-blue-600 text-white font-black text-xs">22 NS</span>
           </div>
 
           <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
             <div>
-              <div class="font-black text-emerald-950 text-xs sm:text-sm">3. Mảng Đoàn vụ</div>
-              <div class="text-[11px] text-emerald-700">01 Trưởng + 01 Phó + 12 TV (6 cặp / 12 ĐV, Dấu &amp; Sổ sách)</div>
+              <div class="font-black text-emerald-950 text-xs sm:text-sm">3. Mảng Đoàn vụ &amp; Truyền thông</div>
+              <div class="text-[11px] text-emerald-700">01 Trưởng + 02 Phó (Đoàn vụ &amp; Media) + 12 TV ĐV + 06 TV Media</div>
             </div>
-            <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-black text-xs">14 NS</span>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-between">
-            <div>
-              <div class="font-black text-amber-950 text-xs sm:text-sm">4. Mảng Điểm rèn luyện</div>
-              <div class="text-[11px] text-amber-700">01 Trưởng + 01 Phó + 10 TV (Duyệt hoạt động 3 Khối độc lập)</div>
-            </div>
-            <span class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-black text-xs">12 NS</span>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-between">
-            <div>
-              <div class="font-black text-purple-950 text-xs sm:text-sm">5. Mảng Truyền thông</div>
-              <div class="text-[11px] text-purple-700">01 Trưởng + 01 Phó + 08 TV (Content, Design Infographic)</div>
-            </div>
-            <span class="px-2.5 py-1 rounded-lg bg-purple-600 text-white font-black text-xs">10 NS</span>
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-black text-xs">21 NS</span>
           </div>
         </div>
       </div>
@@ -728,7 +630,7 @@
       <!-- Ghi chú nguyên tắc BCN -->
       <div class="p-4 sm:p-5 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs sm:text-sm text-slate-700 leading-relaxed space-y-1.5">
         <p>• <b>Nguyên tắc điều hành Ban Chủ nhiệm:</b> 02 Phó ban có vị trí, trách nhiệm ngang nhau, không chia khối cố định mà phối hợp cùng Trưởng ban điều hành toàn diện và linh hoạt chia đổi quản lý các mảng công việc theo từng giai đoạn.</p>
-        <p>• <b>Core Ban (08 người):</b> Gồm 01 Trưởng ban, 02 Phó ban và 05 Trưởng mảng chuyên môn.</p>
+        <p>• <b>Core Ban (06 người):</b> Gồm 01 Trưởng ban, 02 Phó ban và 03 Trưởng mảng chuyên môn trụ cột.</p>
       </div>
     </section>
 
@@ -742,7 +644,7 @@
             MỤC III
           </span>
           <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">III. SƠ ĐỒ NHÓM TÁC NGHIỆP CƠ SỞ &amp; CƠ CHẾ ĐIỀU PHỐI</h3>
-          <p class="text-slate-600 text-xs sm:text-sm mt-1">Cơ chế 1 Đầu mối duy nhất | 03 Nhóm trưởng điều phối 12 Đoàn trường và Liên chi Đoàn | Không yêu cầu thành viên Mảng ĐRL</p>
+          <p class="text-slate-600 text-xs sm:text-sm mt-1">Cơ chế 1 Đầu mối duy nhất | 03 Nhóm trưởng điều phối 12 Đoàn trường và Liên chi Đoàn | Phối hợp tinh gọn 03 Mảng</p>
         </div>
       </div>
 
@@ -769,7 +671,6 @@
         <div class="min-w-[950px] max-w-[1600px] mx-auto">
           <svg id="svg-diag-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 970" class="w-full h-auto drop-shadow-md select-none" style="background-color: #F8FAFC; border-radius: 16px; font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;">
   <defs>
-    <!-- Arrowhead markers -->
     <marker id="arrow-bi-left" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="8" markerHeight="8" orient="auto">
       <path d="M 10 1 L 0 5 L 10 9 z" fill="#1E40AF" />
     </marker>
@@ -786,27 +687,23 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#4338CA" />
     </marker>
 
-    <!-- Box Shadow Filter -->
     <filter id="svg-card-shadow-2" x="-5%" y="-5%" width="110%" height="110%">
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.08" />
     </filter>
   </defs>
 
-  <!-- Title & Subtitle -->
   <text x="800" y="42" text-anchor="middle" font-size="23" font-weight="900" fill="#0F172A">SƠ ĐỒ NHÓM TÁC NGHIỆP CƠ SỞ VÀ CƠ CHẾ CẶP BÀI TRÙNG (BUDDY SYSTEM)</text>
-  <text x="800" y="70" text-anchor="middle" font-size="13" font-style="italic" fill="#475569">Cơ chế 1 Đầu mối duy nhất | 03 Nhóm trưởng điều phối 12 Đoàn trường &amp; Liên chi Đoàn | Không yêu cầu thành viên Mảng ĐRL</text>
+  <text x="800" y="70" text-anchor="middle" font-size="13" font-style="italic" fill="#475569">Cơ chế 1 Đầu mối duy nhất | 03 Nhóm trưởng điều phối 12 Đoàn trường &amp; Liên chi Đoàn | Phối hợp tinh gọn 03 Mảng</text>
 
-  <!-- ================= TOP: BAN CHỦ NHIỆM ================= -->
+  <!-- BAN CHỦ NHIỆM -->
   <rect x="420" y="95" width="760" height="85" rx="14" fill="#1E293B" stroke="#475569" stroke-width="2" filter="url(#svg-card-shadow-2)" />
   <text x="800" y="130" text-anchor="middle" font-size="16" font-weight="900" fill="#FFFFFF">BAN CHỦ NHIỆM (TRƯỞNG BAN &amp; 02 PHÓ BAN)</text>
   <text x="800" y="155" text-anchor="middle" font-size="12" fill="#CBD5E1">Quan sát viên cao cấp trong 12 nhóm tác nghiệp • Giám sát tiến độ &amp; trực tiếp xử lý khi có tranh chấp / trễ hạn</text>
 
-  <!-- Mũi tên nét đứt từ Ban Chủ Nhiệm xuống Kênh Zalo và Nhóm Tác Nghiệp -->
   <path d="M 640 180 L 640 295" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-down-gray)" />
   <path d="M 960 180 L 960 215" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-down-gray)" />
 
-  <!-- ================= MIDDLE SECTION ================= -->
-  <!-- CỘT 1 (TRÁI): 12 ĐOÀN TRƯỜNG VÀ LIÊN CHI ĐOÀN -->
+  <!-- CỘT 1: 12 ĐƠN VỊ CƠ SỞ -->
   <g transform="translate(60, 220)">
     <rect width="420" height="390" rx="16" fill="#FEF3C7" stroke="#D97706" stroke-width="2.5" filter="url(#svg-card-shadow-2)" />
     <rect width="420" height="60" rx="16" fill="#D97706" />
@@ -814,7 +711,6 @@
     <text x="210" y="38" text-anchor="middle" font-size="14.5" font-weight="900" fill="#FFFFFF">12 ĐOÀN TRƯỜNG &amp; LIÊN CHI ĐOÀN</text>
     <text x="210" y="54" text-anchor="middle" font-size="11" font-weight="600" fill="#FEF3C7">(ĐOÀN CẤP DƯỚI TRỰC THUỘC)</text>
 
-    <!-- Nội dung 3 Cụm -->
     <text x="30" y="95" font-size="13" font-weight="900" fill="#92400E">• CỤM 1 (04 Đơn vị):</text>
     <text x="45" y="118" font-size="12" font-weight="600" fill="#78350F">Đoàn trường / LCĐ: Đơn vị 1, 2, 3, 4</text>
     
@@ -832,10 +728,10 @@
     <text x="210" y="355" text-anchor="middle" font-size="11" font-style="italic" fill="#92400E">(Trao đổi, nộp văn bản &amp; nhận kết quả trực tiếp)</text>
   </g>
 
-  <!-- MŨI TÊN 2 CHIỀU GIỮA 12 ĐƠN VỊ VÀ 1 KÊNH DUY NHẤT -->
+  <!-- MŨI TÊN 2 CHIỀU -->
   <line x1="480" y1="415" x2="540" y2="415" stroke="#1E40AF" stroke-width="4" marker-start="url(#arrow-bi-left)" marker-end="url(#arrow-bi-right)" />
 
-  <!-- CỘT 2 (GIỮA): 1 KÊNH DUY NHẤT -->
+  <!-- CỘT 2: 1 KÊNH DUY NHẤT -->
   <g transform="translate(540, 305)">
     <rect width="220" height="220" rx="16" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5" filter="url(#svg-card-shadow-2)" />
     <rect width="220" height="42" rx="16" fill="#2563EB" />
@@ -854,42 +750,42 @@
     <text x="110" y="208" text-anchor="middle" font-size="10" font-weight="700" fill="#047857">Chấm dứt tán loạn kênh</text>
   </g>
 
-  <!-- MŨI TÊN 2 CHIỀU GIỮA 1 KÊNH DUY NHẤT VÀ NHÓM TÁC NGHIỆP -->
+  <!-- MŨI TÊN 2 CHIỀU -->
   <line x1="760" y1="415" x2="820" y2="415" stroke="#1E40AF" stroke-width="4" marker-start="url(#arrow-bi-left)" marker-end="url(#arrow-bi-right)" />
 
-  <!-- CỘT 3 (PHẢI): NHÓM TÁC NGHIỆP BAN TCKT TẠI ĐƠN VỊ -->
+  <!-- CỘT 3: NHÓM TÁC NGHIỆP BAN TCKT -->
   <g transform="translate(820, 215)">
     <rect width="720" height="400" rx="16" fill="#DCFCE7" stroke="#15803D" stroke-width="2.5" filter="url(#svg-card-shadow-2)" />
     <rect width="720" height="52" rx="16" fill="#15803D" />
     <rect y="38" width="720" height="14" fill="#15803D" />
     <text x="360" y="33" text-anchor="middle" font-size="15" font-weight="900" fill="#FFFFFF">NHÓM TÁC NGHIỆP BAN TCKT TẠI ĐƠN VỊ</text>
 
-    <!-- BOX 1: 01 NHÓM TRƯỞNG TÁC NGHIỆP -->
+    <!-- BOX 1: NHÓM TRƯỞNG -->
     <rect x="25" y="65" width="670" height="68" rx="10" fill="#059669" stroke="#047857" stroke-width="1.5" />
     <text x="360" y="90" text-anchor="middle" font-size="13" font-weight="900" fill="#FFFFFF">01 NHÓM TRƯỞNG TÁC NGHIỆP (1 TRONG 3 NHÓM TRƯỞNG ĐIỀU PHỐI CỤM)</text>
-    <text x="360" y="112" text-anchor="middle" font-size="11.5" fill="#ECFDF5">Điều phối chung 04 đơn vị • Bấm giờ SLA • Đôn đốc việc nội bộ • Phát ngôn chính thức của Ban</text>
+    <text x="360" y="112" text-anchor="middle" font-size="11.5" fill="#ECFDF5">Điều phối chung 04 đơn vị • Bấm giờ SLA 2h • Đôn đốc việc nội bộ • Phát ngôn chính thức của Ban</text>
 
-    <!-- BOX 2: CẶP MẢNG ĐOÀN VỤ -->
+    <!-- BOX 2: CẶP MẢNG ĐOÀN VỤ & TRUYỀN THÔNG -->
     <rect x="25" y="145" width="670" height="58" rx="10" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
-    <text x="40" y="168" font-size="12" font-weight="900" fill="#059669">📂 CẶP MẢNG ĐOÀN VỤ (1 Chính + 1 Backup):</text>
-    <text x="40" y="188" font-size="11.5" fill="#334155">Tiếp nhận &amp; xử lý: Quyết định chi đoàn, chuẩn y nhân sự BCH LCĐ, công văn, quản lý con dấu.</text>
+    <text x="40" y="168" font-size="12" font-weight="900" fill="#059669">📂 CẶP MẢNG ĐOÀN VỤ &amp; TRUYỀN THÔNG (1 Chính + 1 Backup):</text>
+    <text x="40" y="188" font-size="11.5" fill="#334155">Tiếp nhận &amp; xử lý: Quyết định chi đoàn, chuẩn y nhân sự BCH, con dấu, công văn &amp; truyền thông cơ sở.</text>
 
     <!-- BOX 3: CẶP MẢNG PHÁT TRIỂN ĐẢNG -->
     <rect x="25" y="215" width="670" height="58" rx="10" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5" />
     <text x="40" y="238" font-size="12" font-weight="900" fill="#DC2626">🚩 CẶP MẢNG PHÁT TRIỂN ĐẢNG (1 Chính + 1 Backup):</text>
     <text x="40" y="258" font-size="11.5" fill="#334155">Tiếp nhận &amp; xử lý: Hồ sơ kết nạp Đoàn, bồi dưỡng nhận thức Đảng, thẩm tra lý lịch Đoàn viên ưu tú.</text>
 
-    <!-- BOX 4: CẶP MẢNG CHUYỂN ĐỔI SỐ -->
+    <!-- BOX 4: CẶP MẢNG CHUYỂN ĐỔI SỐ & ĐRL -->
     <rect x="25" y="285" width="670" height="58" rx="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5" />
-    <text x="40" y="308" font-size="12" font-weight="900" fill="#2563EB">💻 CẶP MẢNG CHUYỂN ĐỔI SỐ (1 Chính + 1 Backup):</text>
-    <text x="40" y="328" font-size="11.5" fill="#334155">Tiếp nhận &amp; xử lý: Dữ liệu phần mềm QLDV (App TNVN), đôn đốc số hóa, hướng dẫn nghiệp vụ số.</text>
+    <text x="40" y="308" font-size="12" font-weight="900" fill="#2563EB">💻 CẶP MẢNG CHUYỂN ĐỔI SỐ &amp; ĐRL (1 Chính + 1 Backup):</text>
+    <text x="40" y="328" font-size="11.5" fill="#334155">Tiếp nhận &amp; xử lý: Dữ liệu phần mềm QLDV (App TNVN), đôn đốc số hóa; công tác ĐRL tiếp nhận qua Outlook.</text>
 
     <!-- GHI CHÚ CHÂN BOX -->
     <rect x="25" y="355" width="670" height="32" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1" />
-    <text x="360" y="375" text-anchor="middle" font-size="11" font-weight="800" fill="#92400E">⚠️ Rút thành viên Mảng Điểm rèn luyện khỏi nhóm tác nghiệp (Mảng ĐRL xử lý tập trung, không can thiệp cục bộ)</text>
+    <text x="360" y="375" text-anchor="middle" font-size="11" font-weight="800" fill="#92400E">⚠️ Công tác Điểm rèn luyện được giải quyết tập trung qua kênh số và email Outlook của Ban để đảm bảo khách quan</text>
   </g>
 
-  <!-- ================= BOTTOM: CƠ CHẾ BỌC LÓT CẶP BÀI TRÙNG ================= -->
+  <!-- BOTTOM: CƠ CHẾ BỌC LÓT CẶP BÀI TRÙNG -->
   <g transform="translate(60, 645)">
     <rect width="1480" height="295" rx="16" fill="#EEF2FF" stroke="#4F46E5" stroke-width="2.5" filter="url(#svg-card-shadow-2)" />
     <text x="740" y="35" text-anchor="middle" font-size="15" font-weight="900" fill="#3730A3">CƠ CHẾ BỌC LÓT CẶP BÀI TRÙNG (BUDDY SYSTEM 2:2) - GIẢI PHÁP CHỐNG QUÁ TẢI KHI BẬN HỌC THI</text>
@@ -941,7 +837,7 @@
         </div>
       </div>
 
-      <!-- MOBILE CARDS VIEW CHO SƠ ĐỒ 2 (HIỂN THỊ KHI BẤM TOGGLE) -->
+      <!-- MOBILE CARDS VIEW CHO SƠ ĐỒ 2 -->
       <div id="diag-2-mobile-wrap" class="hidden space-y-3 pt-2">
         <div class="p-4 rounded-2xl bg-amber-50 border-2 border-amber-300 space-y-2">
           <div class="font-black text-amber-950 text-sm flex items-center gap-2">
@@ -951,7 +847,7 @@
             <p>• <b>Cụm 1:</b> 04 Đơn vị cơ sở (Nhóm trưởng 1 điều phối)</p>
             <p>• <b>Cụm 2:</b> 04 Đơn vị cơ sở (Nhóm trưởng 2 điều phối)</p>
             <p>• <b>Cụm 3:</b> 04 Đơn vị cơ sở (Nhóm trưởng 3 điều phối)</p>
-            <p class="text-amber-800 font-medium">Đại diện cơ sở trong nhóm: Bí thư, Phó Bí thư, Ủy viên BCH phụ trách chuyên môn.</p>
+            <p class="text-amber-800 font-medium">Đại diện cơ sở: Bí thư, Phó Bí thư, Ủy viên BCH phụ trách chuyên môn.</p>
           </div>
         </div>
 
@@ -960,7 +856,7 @@
             TRỤC KẾT NỐI: 01 KÊNH DUY NHẤT
           </div>
           <p class="text-xs text-slate-700 leading-relaxed">
-            Mỗi đơn vị cơ sở chỉ có đúng <b>01 nhóm làm việc (Zalo/Teams)</b>. Mọi trao đổi văn bản, gửi hồ sơ, trả kết quả chỉ diễn ra tại nhóm này. <b>Chấm dứt hoàn toàn tình trạng tán loạn kênh</b>.
+            Mỗi đơn vị cơ sở chỉ có đúng <b>01 nhóm làm việc (Zalo/Teams)</b>. Mọi trao đổi văn bản, gửi hồ sơ, trả kết quả chỉ diễn ra tại nhóm này. Chấm dứt tán loạn kênh.
           </p>
         </div>
 
@@ -970,10 +866,9 @@
           </div>
           <div class="text-xs text-slate-700 space-y-1.5">
             <p>• <b>01 Nhóm trưởng tác nghiệp Cụm:</b> Điều phối tiến độ chung 4 đơn vị, bấm giờ SLA 2h, phát ngôn chính thức.</p>
-            <p>• <b>Cặp Mảng Đoàn vụ (1 Chính + 1 Backup):</b> Quyết định chi đoàn, chuẩn y nhân sự, con dấu, công văn.</p>
-            <p>• <b>Cặp Mảng Phát triển Đảng (1 Chính + 1 Backup):</b> Hồ sơ kết nạp Đoàn, lý lịch ĐVƯT, cảm tình Đảng.</p>
-            <p>• <b>Cặp Mảng Chuyển đổi số (1 Chính + 1 Backup):</b> Số hóa phần mềm QLDV (App TNVN), đôn đốc dữ liệu.</p>
-            <p class="text-amber-800 font-bold bg-amber-100 p-2 rounded-lg">⚠️ RÚT MẢNG ĐIỂM RÈN LUYỆN: Không tham gia nhóm tác nghiệp; chấm thẩm định tập trung độc lập để đảm bảo khách quan.</p>
+            <p>• <b>Cặp Mảng Đoàn vụ &amp; Truyền thông (1 Chính + 1 Backup):</b> Quyết định chi đoàn, chuẩn y nhân sự, con dấu, công văn &amp; truyền thông cơ sở.</p>
+            <p>• <b>Cặp Mảng Phát triển Đảng (1 Chính + 1 Backup):</b> Hồ sơ kết nạp Đoàn, bồi dưỡng nhận thức Đảng, thẩm tra lý lịch Đoàn viên ưu tú.</p>
+            <p>• <b>Cặp Mảng Chuyển đổi số &amp; ĐRL (1 Chính + 1 Backup):</b> Dữ liệu phần mềm QLDV (App TNVN), đôn đốc số hóa; tiếp nhận khiếu nại ĐRL qua hòm thư Outlook Ban.</p>
           </div>
         </div>
 
@@ -999,33 +894,6 @@
           </p>
         </div>
       </div>
-
-      <!-- 3 NGUYÊN TẮC VẬN HÀNH ĐỊA BÀN -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-        <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-slate-200 space-y-1.5">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs sm:text-sm">1</div>
-          <h4 class="text-sm sm:text-base font-black text-slate-900">01 Kênh duy nhất</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Mỗi đơn vị cơ sở chỉ có đúng 01 nhóm làm việc (Zalo/Teams). Cơ sở không phải tiếp 3-4 bạn riêng lẻ từ các mảng, xóa bỏ hoàn toàn tình trạng đùn đẩy trách nhiệm.
-          </p>
-        </div>
-
-        <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-slate-200 space-y-1.5">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs sm:text-sm">2</div>
-          <h4 class="text-sm sm:text-base font-black text-slate-900">Cặp Bài Trùng (2:2)</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Mỗi mảng cử 2 thành viên bọc lót chéo giữa 2 đơn vị. Khi người phụ trách chính bận thi, bạn backup lập tức trả lời và xử lý theo Live Sheet trong vòng 2h.
-          </p>
-        </div>
-
-        <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-slate-200 space-y-1.5">
-          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs sm:text-sm">3</div>
-          <h4 class="text-sm sm:text-base font-black text-slate-900">Rút Mảng ĐRL</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Rút thành viên Mảng Điểm rèn luyện khỏi nhóm tác nghiệp cơ sở để đảm bảo tính khách quan tuyệt đối, chấm thẩm định tập trung theo khối và không bị tác động.
-          </p>
-        </div>
-      </div>
     </section>
 
     <!-- ===================================================================== -->
@@ -1037,7 +905,7 @@
           MỤC IV
         </span>
         <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">IV. BẢNG PHÂN BỔ ĐỊNH BIÊN NHÂN SỰ TOÀN BAN (67 NGƯỜI)</h3>
-        <p class="text-slate-600 text-xs sm:text-sm mt-1">Cơ cấu bố trí nhân lực tinh gọn, chuyên sâu theo từng chức năng nghiệp vụ</p>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">Bố trí tinh gọn vào 03 Mảng chuyên môn trụ cột, bảo toàn 100% quân số 67 nhân sự</p>
       </div>
 
       <!-- DESKTOP TABLE -->
@@ -1054,142 +922,108 @@
           <tbody class="divide-y divide-slate-200 text-slate-700">
             <tr class="hover:bg-blue-50/50 transition">
               <td class="p-3.5 font-bold text-slate-900">0</td>
-              <td class="p-3.5 font-bold text-blue-900">Ban Chủ nhiệm (Core)</td>
+              <td class="p-3.5 font-bold text-blue-900">Ban Chủ nhiệm (Core Ban)</td>
               <td class="p-3.5 text-center font-bold text-blue-700 bg-blue-50/60">03 người</td>
               <td class="p-3.5">• 01 Trưởng ban (Điều hành chung, làm việc Thường trực &amp; VP Đoàn)<br>• 02 Phó ban (Đồng trách nhiệm, linh hoạt chia đổi quản lý các mảng)</td>
             </tr>
             <tr class="hover:bg-red-50/50 transition">
               <td class="p-3.5 font-bold text-slate-900">1</td>
-              <td class="p-3.5 font-bold text-red-900">Phát triển Đảng (kèm kết nạp Đoàn)</td>
-              <td class="p-3.5 text-center font-bold text-red-700 bg-red-50/60">14 người</td>
-              <td class="p-3.5">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (Chia 6 Cặp bài trùng phụ trách 12 đơn vị cơ sở)</td>
+              <td class="p-3.5 font-bold text-red-900">Mảng Phát triển Đảng (kèm kết nạp Đoàn)</td>
+              <td class="p-3.5 text-center font-bold text-red-700 bg-red-50/60">21 người</td>
+              <td class="p-3.5">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (Chia 6 Cặp bài trùng phụ trách 12 đơn vị cơ sở)<br>• 07 Thành viên chuyên trách thẩm tra lý lịch, hồ sơ Đảng &amp; lớp cảm tình Đoàn</td>
             </tr>
             <tr class="hover:bg-blue-50/50 transition">
               <td class="p-3.5 font-bold text-slate-900">2</td>
-              <td class="p-3.5 font-bold text-blue-900">Chuyển đổi số (QLDV &amp; Outlook)</td>
-              <td class="p-3.5 text-center font-bold text-blue-700 bg-blue-50/60">14 người</td>
-              <td class="p-3.5">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (Chia 6 Cặp phụ trách 12 đơn vị, luân phiên trực hòm thư Outlook)</td>
+              <td class="p-3.5 font-bold text-blue-900">Mảng Chuyển đổi số &amp; Điểm rèn luyện</td>
+              <td class="p-3.5 text-center font-bold text-blue-700 bg-blue-50/60">22 người</td>
+              <td class="p-3.5">• 01 Trưởng mảng &amp; 02 Phó mảng (01 CĐS, 01 Điểm rèn luyện)<br>• 12 Thành viên (Chia 6 Cặp phụ trách 12 đơn vị cơ sở, QLDV &amp; trực hòm thư)<br>• 07 Thành viên chuyên trách Khối Điểm rèn luyện (cấp mã &amp; giải quyết khiếu nại)</td>
             </tr>
             <tr class="hover:bg-emerald-50/50 transition">
               <td class="p-3.5 font-bold text-slate-900">3</td>
-              <td class="p-3.5 font-bold text-emerald-900">Mảng Đoàn vụ (Tổ chức &amp; Văn thư)</td>
-              <td class="p-3.5 text-center font-bold text-emerald-700 bg-emerald-50/60">14 người</td>
-              <td class="p-3.5">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (Chia 6 Cặp phụ trách 12 đơn vị, quản lý con dấu &amp; sổ công văn)</td>
-            </tr>
-            <tr class="hover:bg-amber-50/50 transition">
-              <td class="p-3.5 font-bold text-slate-900">4</td>
-              <td class="p-3.5 font-bold text-amber-900">Điểm rèn luyện (ĐRL)</td>
-              <td class="p-3.5 text-center font-bold text-amber-700 bg-amber-50/60">12 người</td>
-              <td class="p-3.5">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 10 Thành viên (Phụ trách duyệt hoạt động 3 Khối chuyên môn, độc lập nhóm tác nghiệp)</td>
-            </tr>
-            <tr class="hover:bg-purple-50/50 transition">
-              <td class="p-3.5 font-bold text-slate-900">5</td>
-              <td class="p-3.5 font-bold text-purple-900">Truyền thông (Page &amp; Content)</td>
-              <td class="p-3.5 text-center font-bold text-purple-700 bg-purple-50/60">10 người</td>
-              <td class="p-3.5">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 08 Thành viên (Content, Design Infographic nghiệp vụ &amp; Kỹ thuật media)</td>
+              <td class="p-3.5 font-bold text-emerald-900">Mảng Đoàn vụ &amp; Truyền thông nghiệp vụ</td>
+              <td class="p-3.5 text-center font-bold text-emerald-700 bg-emerald-50/60">21 người</td>
+              <td class="p-3.5">• 01 Trưởng mảng &amp; 02 Phó mảng (01 Đoàn vụ, 01 Truyền thông)<br>• 12 Thành viên (Chia 6 Cặp phụ trách 12 đơn vị, Dấu &amp; Sổ sách)<br>• 06 Thành viên chuyên trách Truyền thông nghiệp vụ, Content &amp; Infographic</td>
             </tr>
             <tr class="bg-slate-100 font-black text-slate-900 text-sm">
               <td class="p-3.5 text-center" colspan="2">TỔNG QUÂN SỐ TOÀN BAN</td>
               <td class="p-3.5 text-center text-blue-900 text-base">67 người</td>
-              <td class="p-3.5">(03 Ban Chủ nhiệm + 64 Thành viên 05 Mảng chuyên môn)</td>
+              <td class="p-3.5">(03 Ban Chủ nhiệm + 64 Thành viên 03 Mảng chuyên môn trụ cột)</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- MOBILE STACKED CARDS VIEW (CHO MÀN HÌNH NHỎ ĐIỆN THOẠI) -->
+      <!-- MOBILE STACKED CARDS VIEW -->
       <div class="block sm:hidden space-y-3">
         <div class="p-3.5 rounded-2xl bg-blue-950 text-white flex items-center justify-between shadow-md">
           <div>
             <div class="text-[10px] text-blue-300 font-bold uppercase">Tổng Quân Số Toàn Ban</div>
             <div class="text-lg font-black text-amber-400">67 NHÂN SỰ</div>
           </div>
-          <div class="text-[11px] text-blue-200 text-right">03 BCN + 64 TV<br>05 Mảng nghiệp vụ</div>
+          <div class="text-[11px] text-blue-200 text-right">03 BCN + 64 TV<br>03 Mảng Trụ Cột</div>
         </div>
 
-        <!-- 0. BCN -->
         <div class="p-3.5 rounded-xl bg-white border-2 border-blue-200 shadow-sm space-y-1.5">
           <div class="flex items-center justify-between">
             <span class="font-black text-blue-950 text-xs">0. Ban Chủ nhiệm (Core Ban)</span>
             <span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 font-black text-xs">03 người</span>
           </div>
-          <p class="text-[11.5px] text-slate-600">• 01 Trưởng ban (Điều hành chung, làm việc TT &amp; VP Đoàn)<br>• 02 Phó ban (Đồng trách nhiệm, chia đổi quản lý các mảng)</p>
+          <p class="text-[11.5px] text-slate-600">• 01 Trưởng ban (Điều hành chung toàn diện, đối ngoại)<br>• 02 Phó ban (Đồng trách nhiệm, chia đổi quản lý các mảng)</p>
         </div>
 
-        <!-- 1. Đảng -->
         <div class="p-3.5 rounded-xl bg-white border-2 border-red-200 shadow-sm space-y-1.5">
           <div class="flex items-center justify-between">
             <span class="font-black text-red-950 text-xs">1. Mảng Phát triển Đảng</span>
-            <span class="px-2 py-0.5 rounded-md bg-red-100 text-red-800 font-black text-xs">14 người</span>
+            <span class="px-2 py-0.5 rounded-md bg-red-100 text-red-800 font-black text-xs">21 người</span>
           </div>
-          <p class="text-[11.5px] text-slate-600">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (6 Cặp bài trùng / 12 đơn vị cơ sở)</p>
+          <p class="text-[11.5px] text-slate-600">• 01 Trưởng &amp; 01 Phó<br>• 12 Thành viên (6 Cặp ĐV) + 07 Chuyên trách thẩm tra lý lịch &amp; Đảng</p>
         </div>
 
-        <!-- 2. CĐS -->
         <div class="p-3.5 rounded-xl bg-white border-2 border-blue-200 shadow-sm space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="font-black text-blue-950 text-xs">2. Mảng Chuyển đổi số</span>
-            <span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 font-black text-xs">14 người</span>
+            <span class="font-black text-blue-950 text-xs">2. Mảng Chuyển đổi số &amp; ĐRL</span>
+            <span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 font-black text-xs">22 người</span>
           </div>
-          <p class="text-[11.5px] text-slate-600">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (6 Cặp / 12 ĐV, luân phiên trực hòm thư Outlook)</p>
+          <p class="text-[11.5px] text-slate-600">• 01 Trưởng &amp; 02 Phó (CĐS &amp; ĐRL)<br>• 12 Thành viên (6 Cặp ĐV) + 07 Chuyên trách Điểm rèn luyện sinh viên</p>
         </div>
 
-        <!-- 3. Đoàn vụ -->
         <div class="p-3.5 rounded-xl bg-white border-2 border-emerald-200 shadow-sm space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="font-black text-emerald-950 text-xs">3. Mảng Đoàn vụ</span>
-            <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-black text-xs">14 người</span>
+            <span class="font-black text-emerald-950 text-xs">3. Mảng Đoàn vụ &amp; Truyền thông</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-black text-xs">21 người</span>
           </div>
-          <p class="text-[11.5px] text-slate-600">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 12 Thành viên (6 Cặp / 12 ĐV, quản lý con dấu &amp; sổ công văn)</p>
-        </div>
-
-        <!-- 4. ĐRL -->
-        <div class="p-3.5 rounded-xl bg-white border-2 border-amber-200 shadow-sm space-y-1.5">
-          <div class="flex items-center justify-between">
-            <span class="font-black text-amber-950 text-xs">4. Mảng Điểm rèn luyện</span>
-            <span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 font-black text-xs">12 người</span>
-          </div>
-          <p class="text-[11.5px] text-slate-600">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 10 Thành viên (Duyệt hoạt động 3 Khối độc lập)</p>
-        </div>
-
-        <!-- 5. Truyền thông -->
-        <div class="p-3.5 rounded-xl bg-white border-2 border-purple-200 shadow-sm space-y-1.5">
-          <div class="flex items-center justify-between">
-            <span class="font-black text-purple-950 text-xs">5. Mảng Truyền thông</span>
-            <span class="px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 font-black text-xs">10 người</span>
-          </div>
-          <p class="text-[11.5px] text-slate-600">• 01 Trưởng mảng &amp; 01 Phó mảng<br>• 08 Thành viên (Content, Design Infographic &amp; Media)</p>
+          <p class="text-[11.5px] text-slate-600">• 01 Trưởng &amp; 02 Phó (Đoàn vụ &amp; Media)<br>• 12 Thành viên (6 Cặp ĐV) + 06 Chuyên trách Truyền thông &amp; Content</p>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- V. CHỨC NĂNG, NHIỆM VỤ VÀ ĐẦU RA CỦA 5 MẢNG CHUYÊN MÔN -->
+    <!-- V. CHỨC NĂNG, NHIỆM VỤ VÀ ĐẦU RA CỦA 03 MẢNG CHUYÊN MÔN -->
     <!-- ===================================================================== -->
     <section id="sec-V" class="doc-section scroll-mt-28 bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-200 p-4 sm:p-8 lg:p-10 space-y-4 sm:space-y-6">
       <div class="border-b border-slate-100 pb-4 sm:pb-5">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800">
           MỤC V
         </span>
-        <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">V. CHỨC NĂNG, NHIỆM VỤ VÀ ĐẦU RA (DELIVERABLES) CỦA 5 MẢNG</h3>
+        <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">V. CHỨC NĂNG, NHIỆM VỤ VÀ ĐẦU RA (DELIVERABLES) CỦA 03 MẢNG</h3>
         <p class="text-slate-600 text-xs sm:text-sm mt-1">Chuẩn hóa sản phẩm đầu ra đảm bảo chất lượng, đúng thẩm quyền và đúng tiến độ</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         
         <!-- MẢNG 1: ĐẢNG -->
         <div class="rounded-2xl border-2 border-red-200 bg-white p-4 sm:p-6 shadow-md flex flex-col justify-between space-y-3 sm:space-y-4 hover:shadow-xl transition">
           <div class="space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-red-100 text-red-800">Mảng 1 • 14 NS</span>
-              <span class="text-xs font-bold text-red-600">6 Cặp / 12 Đơn vị</span>
+              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-red-100 text-red-800">Mảng 1 • 21 NS</span>
+              <span class="text-xs font-bold text-red-600">6 Cặp &amp; Hồ sơ Đảng</span>
             </div>
             <h4 class="text-base sm:text-lg font-black text-red-950">PHÁT TRIỂN ĐẢNG &amp; ĐOÀN</h4>
             <p class="text-xs text-slate-600 leading-relaxed">
               <b>Chức năng:</b> Bồi dưỡng Đoàn viên ưu tú (ĐVƯT) phát triển Đảng và công tác phát triển Đoàn viên mới toàn trường; thẩm định hồ sơ nộp về <b>Văn phòng Đoàn</b>.
             </p>
             <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl">
-              <div><b>Nhiệm vụ:</b> Theo dõi chỉ tiêu, lớp cảm tình Đoàn; kiểm tra NQ, Sổ, Thẻ đoàn; quản lý danh sách ĐVƯT, thẩm tra lý lịch; đối chiếu Hệ thống Hồ sơ Đảng.</div>
+              <div><b>Nhiệm vụ:</b> Theo dõi chỉ tiêu, lớp cảm tình Đoàn; kiểm tra NQ, Sổ, Thẻ đoàn; quản lý danh sách ĐVƯT, thẩm tra lý lịch; đối chiếu Hệ thống Hồ sơ Đảng trước khi nộp Văn phòng Đoàn.</div>
             </div>
           </div>
           <div class="p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-900 space-y-1">
@@ -1201,19 +1035,19 @@
           </div>
         </div>
 
-        <!-- MẢNG 2: CĐS -->
+        <!-- MẢNG 2: CĐS & ĐRL -->
         <div class="rounded-2xl border-2 border-blue-200 bg-white p-4 sm:p-6 shadow-md flex flex-col justify-between space-y-3 sm:space-y-4 hover:shadow-xl transition">
           <div class="space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">Mảng 2 • 14 NS</span>
-              <span class="text-xs font-bold text-blue-600">6 Cặp &amp; Trực Mail</span>
+              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">Mảng 2 • 22 NS</span>
+              <span class="text-xs font-bold text-blue-600">CĐS &amp; Điểm rèn luyện</span>
             </div>
-            <h4 class="text-base sm:text-lg font-black text-blue-950">CHUYỂN ĐỔI SỐ (QLDV &amp; MAIL)</h4>
+            <h4 class="text-base sm:text-lg font-black text-blue-950">CHUYỂN ĐỔI SỐ &amp; ĐRL</h4>
             <p class="text-xs text-slate-600 leading-relaxed">
-              <b>Chức năng:</b> Quản trị dữ liệu số hóa tổ chức Đoàn, quản trị App QLDV Thanh niên Việt Nam và đầu mối hòm thư điện tử Outlook chính thức của Ban.
+              <b>Chức năng:</b> Quản trị dữ liệu số hóa tổ chức Đoàn (QLDV), quản trị hòm thư Outlook chính thức của Ban và <b>quản lý, thực thi Quy chế Điểm rèn luyện (ĐRL) sinh viên</b>.
             </p>
             <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl">
-              <div><b>Nhiệm vụ:</b> Đôn đốc chỉ tiêu số hóa, đánh giá đoàn viên, chuyển sinh hoạt Đoàn; trực hòm thư Outlook, gắn tag nhãn, tiếp nhận khiếu nại ĐRL và gửi email chỉ đạo khẩn.</div>
+              <div><b>Nhiệm vụ:</b> Đôn đốc dữ liệu QLDV; trực mail Outlook; cấp mã hoạt động phong trào hàng tuần; đối soát minh chứng, giải quyết dứt điểm khiếu nại ĐRL (48h); tổng kết ĐRL học kỳ toàn trường.</div>
             </div>
           </div>
           <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 space-y-1">
@@ -1221,23 +1055,23 @@
               <i data-lucide="package-check" class="w-3.5 h-3.5 text-blue-600 flex-shrink-0"></i> <span>Sản phẩm đầu ra:</span>
             </div>
             <div>• Báo cáo số liệu QLDV 12 đơn vị hàng tuần</div>
-            <div>• 100% email Outlook được xử lý đúng hạn; chỉ đạo khẩn chuyển tiếp kịp thời.</div>
+            <div>• 100% mã hoạt động &amp; khiếu nại ĐRL xử lý đúng hạn; Báo cáo ĐRL toàn trường.</div>
           </div>
         </div>
 
-        <!-- MẢNG 3: ĐOÀN VỤ -->
+        <!-- MẢNG 3: ĐOÀN VỤ & TRUYỀN THÔNG -->
         <div class="rounded-2xl border-2 border-emerald-200 bg-white p-4 sm:p-6 shadow-md flex flex-col justify-between space-y-3 sm:space-y-4 hover:shadow-xl transition">
           <div class="space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">Mảng 3 • 14 NS</span>
-              <span class="text-xs font-bold text-emerald-600">6 Cặp, Dấu &amp; Sổ</span>
+              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">Mảng 3 • 21 NS</span>
+              <span class="text-xs font-bold text-emerald-600">Đoàn vụ &amp; Truyền thông</span>
             </div>
-            <h4 class="text-base sm:text-lg font-black text-emerald-950">MẢNG ĐOÀN VỤ</h4>
+            <h4 class="text-base sm:text-lg font-black text-emerald-950">ĐOÀN VỤ &amp; TRUYỀN THÔNG</h4>
             <p class="text-xs text-slate-600 leading-relaxed">
-              <b>Chức năng:</b> Quản lý công tác hành chính, văn thư, lưu trữ, con dấu và công tác tổ chức cán bộ, xây dựng tổ chức cơ sở Đoàn.
+              <b>Chức năng:</b> Quản lý công tác hành chính, văn thư, con dấu, tổ chức cán bộ và <b>tuyên truyền nghiệp vụ, quản trị Fanpage đối ngoại chính thức của Ban TCKT</b>.
             </p>
             <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl">
-              <div><b>Nhiệm vụ:</b> Soạn thảo Quyết định thành lập/chia tách Chi đoàn, chuẩn y nhân sự BCH cơ sở; quản lý sổ công văn đi/đến, quản lý con dấu Ban, ghi biên bản họp Ban &amp; Thường trực.</div>
+              <div><b>Nhiệm vụ:</b> Soạn thảo Quyết định chuẩn y, thành lập/chia tách Chi đoàn; quản lý con dấu &amp; sổ công văn; quản trị Fanpage Ban; biên tập Content và thiết kế Infographic nghiệp vụ.</div>
             </div>
           </div>
           <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 space-y-1">
@@ -1245,55 +1079,7 @@
               <i data-lucide="package-check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Sản phẩm đầu ra:</span>
             </div>
             <div>• 100% Quyết định chuẩn y ban hành trong 3 - 5 ngày</div>
-            <div>• Sổ công văn, biên bản họp và con dấu quản lý chặt chẽ.</div>
-          </div>
-        </div>
-
-        <!-- MẢNG 4: ĐRL -->
-        <div class="rounded-2xl border-2 border-amber-200 bg-white p-4 sm:p-6 shadow-md flex flex-col justify-between space-y-3 sm:space-y-4 hover:shadow-xl transition">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">Mảng 4 • 12 NS</span>
-              <span class="text-xs font-bold text-amber-600">Duyệt 3 Khối tập trung</span>
-            </div>
-            <h4 class="text-base sm:text-lg font-black text-amber-950">ĐIỂM RÈN LUYỆN (ĐRL)</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              <b>Chức năng:</b> Quản lý, giám sát và thực thi Quy chế Điểm rèn luyện sinh viên thuộc thẩm quyền của Đoàn - Hội Đại học.
-            </p>
-            <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl">
-              <div><b>Nhiệm vụ:</b> Tiếp nhận tờ trình cấp mã tuần; kiểm soát minh chứng, điểm danh; thẩm định khiếu nại ĐRL; mở cổng xét duyệt và tổng kết ĐRL học kỳ.</div>
-            </div>
-          </div>
-          <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
-            <div class="font-bold text-amber-950 flex items-center gap-1">
-              <i data-lucide="package-check" class="w-3.5 h-3.5 text-amber-600 flex-shrink-0"></i> <span>Sản phẩm đầu ra:</span>
-            </div>
-            <div>• 100% hoạt động phong trào được cấp mã kịp thời</div>
-            <div>• Kết luận khiếu nại chuẩn xác; báo cáo ĐRL toàn trường đúng hạn.</div>
-          </div>
-        </div>
-
-        <!-- MẢNG 5: TRUYỀN THÔNG -->
-        <div class="rounded-2xl border-2 border-purple-200 bg-white p-4 sm:p-6 shadow-md flex flex-col justify-between space-y-3 sm:space-y-4 hover:shadow-xl transition md:col-span-2 lg:col-span-2">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[11px] font-black uppercase px-2.5 py-1 rounded-full bg-purple-100 text-purple-800">Mảng 5 • 10 NS</span>
-              <span class="text-xs font-bold text-purple-600">Content, Design &amp; Media</span>
-            </div>
-            <h4 class="text-base sm:text-lg font-black text-purple-950">TRUYỀN THÔNG NGHIỆP VỤ</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              <b>Chức năng:</b> Tuyên truyền nghiệp vụ, xây dựng hình ảnh và quản trị kênh thông tin đối ngoại chính thức của Ban TCKT.
-            </p>
-            <div class="text-xs text-slate-700 space-y-1 bg-slate-50 p-3 rounded-xl">
-              <div><b>Nhiệm vụ:</b> Quản trị Fanpage Ban, duy trì lịch đăng bài; biên tập nội dung và thiết kế ấn phẩm Infographic hướng dẫn nghiệp vụ (kết nạp Đoàn, chuyển sinh hoạt, hồ sơ Đảng, tính ĐRL, cẩm nang QLDV).</div>
-            </div>
-          </div>
-          <div class="p-3 rounded-xl bg-purple-50 border border-purple-200 text-xs text-purple-900 space-y-1">
-            <div class="font-bold text-purple-950 flex items-center gap-1">
-              <i data-lucide="package-check" class="w-3.5 h-3.5 text-purple-600 flex-shrink-0"></i> <span>Sản phẩm đầu ra:</span>
-            </div>
-            <div>• Lịch bài viết định kỳ; Bộ Infographic nghiệp vụ trực quan</div>
-            <div>• Tương tác Fanpage tăng trưởng; tư liệu media các sự kiện đầy đủ.</div>
+            <div>• Sổ công văn, con dấu chặt chẽ &amp; Bộ Infographic nghiệp vụ trực quan.</div>
           </div>
         </div>
 
@@ -1327,7 +1113,7 @@
             <p>• Phụ trách chung, chịu trách nhiệm cao nhất về toàn bộ hoạt động của Ban TCKT trước Thường trực Đoàn trường / Đoàn Đại học.</p>
             <p>• Trực tiếp làm việc với Thường trực Đoàn và <b>Văn phòng Đoàn Đại học</b> về các chủ trương, kế hoạch lớn.</p>
             <p>• Ký duyệt các tờ trình, kế hoạch, kết luận kiểm tra giám sát và phân công công việc cho 2 Phó ban.</p>
-            <p>• Chủ trì các cuộc họp Core Ban (08 người) và họp toàn thể Ban.</p>
+            <p>• Chủ trì các cuộc họp Core Ban (06 người) và họp toàn thể Ban.</p>
           </div>
         </div>
 
@@ -1342,7 +1128,7 @@
           </button>
           <div id="jd-pb" class="p-4 sm:p-5 text-xs sm:text-sm text-slate-700 space-y-2 border-t border-slate-200 bg-white">
             <p>• Có vị trí, quyền hạn và trách nhiệm ngang nhau; hỗ trợ Trưởng ban điều hành toàn diện công việc của Ban.</p>
-            <p>• Không chia khối cứng mà linh hoạt chia đổi quản lý các mảng công việc theo sự phân công của Trưởng ban (ví dụ: một Phó ban phụ trách Mảng Đảng &amp; Đoàn vụ; một Phó ban phụ trách Mảng CĐS, ĐRL &amp; Truyền thông; có thể luân chuyển theo học kỳ/năm học).</p>
+            <p>• Không chia khối cứng mà linh hoạt chia đổi quản lý các mảng công việc theo sự phân công của Trưởng ban (ví dụ: một Phó ban phụ trách Mảng Đảng &amp; Đoàn vụ - Truyền thông; một Phó ban phụ trách Mảng CĐS &amp; ĐRL; có thể luân chuyển theo kỳ).</p>
             <p>• Trực tiếp theo dõi, hỗ trợ các nhóm tác nghiệp đơn vị cơ sở; xử lý các vướng mắc phát sinh hoặc các ca chậm trễ số liệu.</p>
             <p>• Rà soát hồ sơ, văn bản trước khi trình Trưởng ban hoặc Văn phòng Đoàn ký duyệt.</p>
           </div>
@@ -1353,13 +1139,16 @@
           <button type="button" class="accordion-trigger w-full flex items-center justify-between p-3.5 sm:p-4 bg-slate-50 hover:bg-slate-100 transition text-left font-black text-slate-900 text-xs sm:text-sm" data-target="jd-tm">
             <span class="flex items-center gap-2.5">
               <span class="px-2 py-0.5 rounded-lg bg-emerald-700 text-white text-xs">03</span>
-              <span>05 Trưởng Mảng &amp; 05 Phó Mảng Chuyên Môn</span>
+              <span>03 Trưởng Mảng &amp; 05 Phó Mảng Chuyên Môn</span>
             </span>
             <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 sm:w-5 sm:h-5 text-slate-500 transition transform flex-shrink-0"></i>
           </button>
           <div id="jd-tm" class="p-4 sm:p-5 text-xs sm:text-sm text-slate-700 space-y-2 border-t border-slate-200 bg-white">
-            <p>• <b>Trưởng mảng:</b> Chịu trách nhiệm trực tiếp trước BCN về chất lượng nghiệp vụ và tiến độ hoàn thành nhiệm vụ của mảng mình; biên soạn checklist thẩm định; thực hiện công tác <b>Hậu kiểm (Thẩm định chuyên sâu)</b> trước khi trình BCN ký chuyển Văn phòng Đoàn; tham gia họp Core Ban 08 người.</p>
-            <p>• <b>Phó mảng:</b> Cánh tay phải hỗ trợ Trưởng mảng điều hành nội bộ mảng; đôn đốc thành viên, trực tiếp xử lý ca khó; thay mặt khi Trưởng mảng vắng mặt; bồi dưỡng chuyên môn cho thành viên mới.</p>
+            <p>• <b>03 Trưởng mảng:</b> Chịu trách nhiệm trực tiếp trước BCN về chất lượng nghiệp vụ và tiến độ hoàn thành nhiệm vụ của mảng mình; biên soạn checklist thẩm định; thực hiện công tác <b>Hậu kiểm (Thẩm định chuyên sâu)</b> trước khi trình BCN ký chuyển Văn phòng Đoàn; tham gia họp Core Ban 06 người.</p>
+            <p>• <b>05 Phó mảng:</b> Cánh tay phải hỗ trợ Trưởng mảng điều hành nội bộ mảng:</p>
+            <p class="pl-4">• <i>Mảng Đảng:</i> 01 Phó mảng hỗ trợ hồ sơ Đảng &amp; lớp cảm tình Đoàn.</p>
+            <p class="pl-4">• <i>Mảng CĐS &amp; ĐRL:</i> 02 Phó mảng (01 phụ trách CĐS &amp; Mail, 01 phụ trách Khối Điểm rèn luyện).</p>
+            <p class="pl-4">• <i>Mảng Đoàn vụ &amp; Truyền thông:</i> 02 Phó mảng (01 phụ trách Văn thư - Dấu - Quyết định, 01 phụ trách Truyền thông nghiệp vụ).</p>
           </div>
         </div>
 
@@ -1374,9 +1163,9 @@
           </button>
           <div id="jd-nt" class="p-4 sm:p-5 text-xs sm:text-sm text-slate-700 space-y-2 border-t border-slate-200 bg-white">
             <p>• Là thành viên cứng nghề do BCN chỉ định, mỗi người phụ trách điều phối chung tại <b>01 Cụm gồm 04 đơn vị cơ sở</b>.</p>
-            <p>• <b>Điều phối tiến độ:</b> Giám sát thời gian phản hồi (SLA) của các cặp thành viên trong nhóm Zalo/Teams của 4 đơn vị mình phụ trách.</p>
+            <p>• <b>Điều phối tiến độ:</b> Giám sát thời gian phản hồi (SLA $\le$ 02h) của các cặp thành viên trong nhóm Zalo/Teams của 4 đơn vị mình phụ trách.</p>
             <p>• <b>Người phát ngôn chính:</b> Gửi các thông báo, kế hoạch chung của Ban tới cơ sở; tiếp nhận câu hỏi ban đầu và gán việc cho thành viên mảng tương ứng; nếu thành viên chính bận mà chưa trả lời sau 2 tiếng, tag ngay thành viên backup vào xử lý.</p>
-            <p>• Báo cáo tình hình tiến độ của 4 đơn vị tại buổi họp Ban định kỳ hàng tuần. <i>(Lưu ý: Không tự ý can thiệp vào chuyên môn hay châm chước sai quy chế cho cơ sở).</i></p>
+            <p>• Báo cáo tình hình tiến độ của 4 đơn vị tại buổi họp Ban định kỳ hàng tuần.</p>
           </div>
         </div>
 
@@ -1385,14 +1174,16 @@
           <button type="button" class="accordion-trigger w-full flex items-center justify-between p-3.5 sm:p-4 bg-slate-50 hover:bg-slate-100 transition text-left font-black text-slate-900 text-xs sm:text-sm" data-target="jd-tv">
             <span class="flex items-center gap-2.5">
               <span class="px-2 py-0.5 rounded-lg bg-indigo-600 text-white text-xs">05</span>
-              <span>Lực Lượng Thành Viên Các Mảng</span>
+              <span>Lực Lượng Thành Viên 03 Mảng Chuyên Môn</span>
             </span>
             <i data-lucide="chevron-down" class="accordion-icon w-4 h-4 sm:w-5 sm:h-5 text-slate-500 transition transform flex-shrink-0"></i>
           </button>
           <div id="jd-tv" class="p-4 sm:p-5 text-xs sm:text-sm text-slate-700 space-y-2 border-t border-slate-200 bg-white">
-            <p>• <b>Thành viên Mảng Đảng, CĐS, Đoàn vụ:</b> Ghép thành Cặp bài trùng phụ trách 2 đơn vị (1 vai trò Chính, 1 vai trò Backup); thực hiện <b>Tiền kiểm (sơ loại)</b> hồ sơ cơ sở trong vòng 24h từ khi nhận; bọc lót khi bạn bận thi cử/đồ án; luân phiên làm nhiệm vụ văn thư / trực mail Outlook.</p>
-            <p>• <b>Thành viên Mảng Điểm rèn luyện:</b> Phụ trách kiểm tra hồ sơ, tờ trình xin cấp mã và duyệt hoạt động ĐRL theo 3 khối chuyên môn; đối soát minh chứng, giải quyết dứt điểm các ca khiếu nại ĐRL tập trung.</p>
-            <p>• <b>Thành viên Mảng Truyền thông:</b> Lên nội dung bài viết, thiết kế ấn phẩm Infographic nghiệp vụ và sản xuất tư liệu truyền thông theo kế hoạch.</p>
+            <p>• <b>Thành viên tác nghiệp địa bàn (12 người/mảng - Ghép 6 Cặp bài trùng):</b> Phụ trách 2 đơn vị cơ sở (1 vai trò Chính, 1 vai trò Backup); thực hiện Tiền kiểm (sơ loại) hồ sơ trong vòng 24h; bọc lót tức thì khi bạn bận thi cử/đồ án.</p>
+            <p>• <b>Lực lượng chuyên trách mảng:</b></p>
+            <p class="pl-4">• <i>Mảng Đảng (07 TV):</i> Thẩm tra lý lịch ĐVƯT, đối soát hệ thống hồ sơ Đảng, bồi dưỡng kết nạp Đoàn viên mới.</p>
+            <p class="pl-4">• <i>Mảng CĐS &amp; ĐRL (07 TV):</i> Cấp mã tuần, kiểm soát minh chứng, xử lý dứt điểm khiếu nại ĐRL qua Outlook và trực mail theo ca.</p>
+            <p class="pl-4">• <i>Mảng Đoàn vụ &amp; Truyền thông (06 TV):</i> Quản trị Fanpage Ban, sản xuất Content, thiết kế Infographic nghiệp vụ, trực con dấu và sổ sách.</p>
           </div>
         </div>
 
@@ -1436,23 +1227,17 @@
         <div class="min-w-[950px] max-w-[1600px] mx-auto">
           <svg id="svg-diag-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 970" class="w-full h-auto drop-shadow-md select-none" style="background-color: #F8FAFC; border-radius: 16px; font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;">
   <defs>
-    <!-- Arrow Marker for SOP steps -->
     <marker id="arrow-sop-step" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="9" markerHeight="9" orient="auto">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#0F172A" />
     </marker>
-
-    <!-- Box Shadow Filter -->
     <filter id="svg-card-shadow-3" x="-5%" y="-5%" width="110%" height="110%">
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.08" />
     </filter>
   </defs>
 
-  <!-- Title & Subtitle -->
   <text x="800" y="42" text-anchor="middle" font-size="23" font-weight="900" fill="#0F172A">QUY TRÌNH 4 BƯỚC PHỐI HỢP XỬ LÝ HỒ SƠ &amp; YÊU CẦU NGHIỆP VỤ (SOP)</text>
   <text x="800" y="70" text-anchor="middle" font-size="13" font-style="italic" fill="#475569">Quy chuẩn Tiền kiểm tại Đơn vị -&gt; Hậu kiểm tại Mảng -&gt; Nộp phê duyệt Ban Thường vụ / Văn phòng Đoàn Đại học</text>
 
-  <!-- ================= 4 BƯỚC NẰM NGANG VỚI MŨI TÊN CHỈ THẲNG ================= -->
-  
   <!-- BƯỚC 1: TIẾP NHẬN TẬP TRUNG -->
   <g transform="translate(60, 105)">
     <rect width="320" height="535" rx="16" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5" filter="url(#svg-card-shadow-3)" />
@@ -1482,7 +1267,6 @@
     <text x="160" y="493" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1E3A8A">Xác nhận trong tối đa 02 giờ</text>
   </g>
 
-  <!-- MŨI TÊN TỪ BƯỚC 1 CHỈ THẲNG SANG BƯỚC 2 -->
   <line x1="380" y1="375" x2="440" y2="375" stroke="#0F172A" stroke-width="5" marker-end="url(#arrow-sop-step)" />
 
   <!-- BƯỚC 2: TIỀN KIỂM (SƠ LOẠI) -->
@@ -1514,7 +1298,6 @@
     <text x="160" y="493" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78350F">Tiền kiểm xong trong 24 giờ</text>
   </g>
 
-  <!-- MŨI TÊN TỪ BƯỚC 2 CHỈ THẲNG SANG BƯỚC 3 -->
   <line x1="760" y1="375" x2="820" y2="375" stroke="#0F172A" stroke-width="5" marker-end="url(#arrow-sop-step)" />
 
   <!-- BƯỚC 3: HẬU KIỂM & THẨM ĐỊNH -->
@@ -1546,7 +1329,6 @@
     <text x="160" y="493" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7F1D1D">Ban Thường vụ Đoàn Đại học</text>
   </g>
 
-  <!-- MŨI TÊN TỪ BƯỚC 3 CHỈ THẲNG SANG BƯỚC 4 -->
   <line x1="1140" y1="375" x2="1200" y2="375" stroke="#0F172A" stroke-width="5" marker-end="url(#arrow-sop-step)" />
 
   <!-- BƯỚC 4: TRẢ KẾT QUẢ & SỐ HÓA -->
@@ -1578,12 +1360,12 @@
     <text x="160" y="493" text-anchor="middle" font-size="11.5" font-weight="700" fill="#064E3B">Bàn giao &amp; Số hóa 100% dữ liệu</text>
   </g>
 
-  <!-- ================= BOTTOM: CAM KẾT SLA & CƠ CHẾ XỬ LÝ SỰ CỐ ================= -->
+  <!-- BOTTOM: CAM KẾT SLA & CƠ CHẾ XỬ LÝ SỰ CỐ -->
   <g transform="translate(60, 665)">
     <rect width="1480" height="280" rx="16" fill="#F0F9FF" stroke="#0284C7" stroke-width="2.5" filter="url(#svg-card-shadow-3)" />
     <text x="740" y="32" text-anchor="middle" font-size="15" font-weight="900" fill="#0369A1">CAM KẾT THỜI GIAN PHỤC VỤ (SLA) &amp; CƠ CHẾ XỬ LÝ SỰ CỐ / KHIẾU NẠI</text>
 
-    <!-- CỘT TRÁI: SLA CHUẨN & KHIẾU NẠI ĐRL -->
+    <!-- CỘT TRÁI -->
     <g transform="translate(35, 45)">
       <text x="10" y="20" font-size="13" font-weight="900" fill="#0369A1">⏱️ TIÊU CHUẨN THỜI GIAN PHỤC VỤ (SLA):</text>
       
@@ -1604,29 +1386,26 @@
       <text x="25" y="118" font-size="12.5" font-weight="900" fill="#1D4ED8">📧 QUY TRÌNH TIẾP NHẬN &amp; XỬ LÝ KHIẾU NẠI ĐIỂM RÈN LUYỆN:</text>
       
       <text x="25" y="145" font-size="11.5" fill="#1E293B">
-        <tspan x="25">• Khi có email khiếu nại ĐRL: Chuyển ngay cho </tspan>
-        <tspan font-weight="bold" fill="#B45309">Mảng ĐRL</tspan>
-        <tspan> để đối soát minh chứng.</tspan>
+        <tspan x="25">• Khi có email khiếu nại ĐRL: Bộ phận ĐRL thuộc </tspan>
+        <tspan font-weight="bold" fill="#1D4ED8">Mảng Chuyển đổi số</tspan>
+        <tspan> trực tiếp thụ lý &amp; đối soát minh chứng.</tspan>
       </text>
       
       <text x="25" y="170" font-size="11.5" fill="#1E293B">
-        <tspan x="25">• </tspan>
-        <tspan font-weight="bold" fill="#1D4ED8">Mảng Chuyển đổi số</tspan>
-        <tspan> soạn thảo và gửi email phản hồi chính thức trong vòng </tspan>
+        <tspan x="25">• Phản hồi chính thức cho người khiếu nại qua email trong vòng </tspan>
         <tspan font-weight="bold" fill="#1D4ED8">48 giờ</tspan>
         <tspan>.</tspan>
       </text>
 
       <text x="25" y="195" font-size="11" font-style="italic" fill="#64748B">
-        <tspan x="25">(Đảm bảo tính độc lập, khách quan, không can thiệp hay xử lý cục bộ qua nhóm chat)</tspan>
+        <tspan x="25">(Đảm bảo tính độc lập, khách quan, giải quyết tập trung qua hòm thư Outlook, không xử lý cục bộ qua nhóm chat)</tspan>
       </text>
     </g>
 
-    <!-- CỘT PHẢI: EMAIL CHỈ ĐẠO & BỌC LÓT -->
+    <!-- CỘT PHẢI -->
     <g transform="translate(765, 45)">
       <text x="10" y="20" font-size="13" font-weight="900" fill="#0369A1">📢 THÔNG TIN LIÊN LẠC &amp; XỬ LÝ SỰ CỐ:</text>
       
-      <!-- Box Chỉ đạo khẩn -->
       <rect x="10" y="32" width="675" height="85" rx="12" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5" />
       <text x="25" y="56" font-size="12.5" font-weight="900" fill="#15803D">📬 ĐÔN ĐỐC &amp; CHỈ ĐẠO KHẨN TỪ BAN THƯỜNG VỤ ĐOÀN ĐẠI HỌC:</text>
       
@@ -1635,7 +1414,6 @@
         <tspan x="25" dy="20">  để đôn đốc tiến độ, chuyển tiếp công văn và triển khai chỉ đạo khẩn của BTV.</tspan>
       </text>
 
-      <!-- Bullet Bận học -->
       <text x="10" y="145" font-size="12" fill="#0F172A">
         <tspan x="10" font-weight="bold" fill="#4338CA">• Cơ chế bận học / thi cử: </tspan>
         <tspan>Báo bạn Backup trước ít nhất </tspan>
@@ -1643,7 +1421,6 @@
         <tspan>, bàn giao qua Live Sheet.</tspan>
       </text>
       
-      <!-- Bullet Vượt thẩm quyền -->
       <text x="10" y="172" font-size="12" fill="#0F172A">
         <tspan x="10" font-weight="bold" fill="#DC2626">• Xử lý vượt thẩm quyền: </tspan>
         <tspan>Tuyệt đối không tự ý xử lý sai quy chế Đoàn;</tspan>
@@ -1655,7 +1432,7 @@
         </div>
       </div>
 
-      <!-- MOBILE TIMELINE VIEW CHO SƠ ĐỒ 3 (HIỂN THỊ KHI BẤM TOGGLE) -->
+      <!-- MOBILE TIMELINE VIEW CHO SƠ ĐỒ 3 -->
       <div id="diag-3-mobile-wrap" class="hidden space-y-3 pt-2">
         <div class="p-4 rounded-2xl bg-blue-50 border-2 border-blue-300 space-y-2">
           <div class="flex items-center justify-between">
@@ -1700,7 +1477,7 @@
           MỤC VIII
         </span>
         <h3 class="text-xl sm:text-3xl font-black text-slate-900 mt-2">VIII. QUY CHUẨN TRỰC &amp; ĐIỀU HÀNH HÒM THƯ OUTLOOK BAN</h3>
-        <p class="text-slate-600 text-xs sm:text-sm mt-1">Mảng CĐS phân công mỗi ngày 01 thành viên trực chính hòm thư Outlook với quy chuẩn gắn thẻ 4 màu</p>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">Mảng CĐS &amp; ĐRL phân công mỗi ngày 01 thành viên trực chính hòm thư Outlook với quy chuẩn gắn thẻ 4 màu</p>
       </div>
 
       <!-- 4 THẺ MÀU TAGGING -->
@@ -1721,7 +1498,7 @@
             <span>THẺ VÀNG (CHỜ XỬ LÝ)</span>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed">
-            Hồ sơ, tờ trình của các đơn vị gửi đến $ightarrow$ Chuyển tiếp ngay mảng chuyên môn tương ứng để thẩm định.
+            Hồ sơ, tờ trình của các đơn vị gửi đến $ightarrow$ Chuyển tiếp ngay bộ phận chuyên môn tương ứng để thẩm định.
           </p>
         </div>
 
@@ -1731,7 +1508,7 @@
             <span>THẺ XANH DƯƠNG (ĐRL)</span>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed">
-            Chuyển ngay cho <b>Mảng ĐRL</b> thẩm định; sau khi có kết luận, Mảng CĐS soạn thảo và gửi email phản hồi trong <b>48h</b>.
+            Bộ phận ĐRL trong mảng trực tiếp đối soát minh chứng và soạn thảo email phản hồi dứt điểm trong <b>48h</b> (không cần chuyển qua mảng khác).
           </p>
         </div>
 
@@ -1752,7 +1529,7 @@
           <i data-lucide="send" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
           <span>Quy trình Phát hành Email Đi của Ban:</span>
         </div>
-        <p>• Soạn thảo và gửi email chính thức của Ban TCKT đến Đoàn trường, các Liên chi đoàn để đôn đốc tiến độ số liệu QLDV, nộp hồ sơ Đảng, kiện toàn nhân sự.</p>
+        <p>• Soạn thảo và gửi email chính thức của Ban TCKT đến Đoàn trường, các Liên chi đoàn để đôn đốc tiến độ nộp hồ sơ Đảng, số liệu QLDV, hoàn thiện ĐRL.</p>
         <p>• Chuyển tiếp nhanh chóng các công văn, thông tri và chỉ đạo khẩn của Ban Thường vụ Đoàn trường / Đoàn Đại học đến các cơ sở Đoàn trực thuộc.</p>
       </div>
     </section>
@@ -1848,7 +1625,7 @@
         </table>
       </div>
 
-      <!-- MOBILE CRITERIA CARDS (CHO ĐIỆN THOẠI) -->
+      <!-- MOBILE CRITERIA CARDS -->
       <div class="block sm:hidden space-y-3">
         <div class="p-3.5 rounded-xl bg-blue-50 border border-blue-200 space-y-1.5">
           <div class="flex items-center justify-between">
@@ -1891,7 +1668,7 @@
         </div>
       </div>
 
-      <!-- CÔNG CỤ TÍNH ĐIỂM KPI TƯƠNG TÁC (TỐI ƯU GIAO DIỆN CẢM ỨNG ĐIỆN THOẠI) -->
+      <!-- CÔNG CỤ TÍNH ĐIỂM KPI TƯƠNG TÁC -->
       <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-slate-50 to-blue-50 border-2 border-blue-200 space-y-5">
         <div class="flex flex-col xs:flex-row xs:items-center justify-between gap-2 border-b border-blue-200/60 pb-3">
           <div>
@@ -1959,7 +1736,7 @@
         </div>
       </div>
 
-      <!-- QUY TRÌNH ĐÁNH GIÁ 3 CẤP & CƠ CHẾ PHẢN ÁNH THƯỜNG XUYÊN -->
+      <!-- QUY TRÌNH ĐÁNH GIÁ 3 CẤP -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-4 border-t border-slate-100">
         
         <div class="p-4 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
@@ -1990,10 +1767,9 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- FULLSCREEN DIAGRAM MODAL (XEM TOÀN MÀN HÌNH TRÊN ĐIỆN THOẠI & MÁY TÍNH) -->
+  <!-- FULLSCREEN DIAGRAM MODAL -->
   <!-- ========================================================================= -->
   <div id="diagram-fullscreen-modal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex flex-col">
-    <!-- Modal Top Bar -->
     <div class="flex items-center justify-between p-3 sm:p-4 border-b border-slate-800 text-white bg-slate-900">
       <div class="flex items-center gap-2">
         <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping"></span>
@@ -2008,25 +1784,21 @@
       </div>
     </div>
     
-    <!-- Modal Body (Pinch & Scrollable Container) -->
     <div class="flex-1 touch-scroll-x overflow-y-auto p-2 sm:p-6 flex items-center justify-center">
       <div id="modal-diagram-content" class="min-w-[950px] max-w-[1600px] w-full mx-auto flex justify-center">
-        <!-- Cloned SVG will be inserted here dynamically -->
       </div>
     </div>
   </div>
 
   <!-- ========================================================================= -->
-  <!-- FLOATING ACTION BUTTONS (DÀNH CHO ĐIỆN THOẠI KHI CUỘN TRANG) -->
+  <!-- FLOATING ACTION BUTTONS -->
   <!-- ========================================================================= -->
   <div id="mobile-fab-container" class="fixed bottom-5 right-3.5 sm:right-6 z-30 flex flex-col items-end gap-2.5 opacity-0 pointer-events-none translate-y-6 transition-all duration-300">
-    <!-- Quick Menu Button -->
     <button id="btn-quick-menu" type="button" aria-label="Mục lục" class="lg:hidden px-3.5 py-2.5 rounded-full bg-slate-900 text-white border border-slate-700 shadow-2xl flex items-center gap-2 text-xs font-bold hover:bg-slate-800 active:scale-95 transition">
       <i data-lucide="list" class="w-4 h-4 text-blue-400"></i>
       <span>Mục lục</span>
     </button>
     
-    <!-- Back to Top Button -->
     <button id="btn-back-to-top" type="button" aria-label="Lên đầu trang" class="w-10 h-10 rounded-full bg-blue-600 text-white shadow-2xl flex items-center justify-center hover:bg-blue-700 active:scale-95 transition border border-blue-400/40">
       <i data-lucide="arrow-up" class="w-5 h-5"></i>
     </button>
@@ -2047,12 +1819,10 @@
     </div>
   </footer>
 
-  <!-- Lucide icons render trigger -->
   <script>
     lucide.createIcons();
   </script>
   
-  <!-- Main App Script -->
   <script src="app.js"></script>
 </body>
 </html>

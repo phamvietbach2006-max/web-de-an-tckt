@@ -2,7 +2,10 @@
  * DE AN TAI CAU TRUC BAN TO CHUC - KIEM TRA
  * Doan TNCS Ho Chi Minh Dai hoc Bach khoa Ha Noi
  * Interactive scripts with GSAP 3.12, ScrollSpy & Mobile Optimizations
+ * (FIXED: Absolutely no scroll-to-top bug)
  */
+
+let isProgrammaticScrolling = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   initGsapAnimations();
@@ -19,8 +22,8 @@ function initGsapAnimations() {
 
   const counters = [
     { id: 'counter-total', target: 67 },
-    { id: 'counter-core', target: 8 },
-    { id: 'counter-depts', target: 5 },
+    { id: 'counter-core', target: 6 },
+    { id: 'counter-depts', target: 3 },
     { id: 'counter-units', target: 12 }
   ];
 
@@ -55,13 +58,14 @@ function initGsapAnimations() {
   });
 }
 
-// 2. SCROLLSPY & SMOOTH NAVIGATION
+// 2. SCROLLSPY & SMOOTH NAVIGATION (CLEAN & FIXED)
 function initScrollSpy() {
   const navLinks = document.querySelectorAll('.nav-section-link');
   const sections = document.querySelectorAll('.doc-section');
+  const navContainer = document.getElementById('main-nav-tabs');
 
   function getOffset() {
-    return window.innerWidth < 640 ? 115 : 95;
+    return window.innerWidth < 640 ? 110 : 90;
   }
 
   // Smooth scroll on click
@@ -71,6 +75,7 @@ function initScrollSpy() {
       const targetId = link.getAttribute('href');
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
+        isProgrammaticScrolling = true;
         const headerOffset = getOffset();
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -89,12 +94,19 @@ function initScrollSpy() {
 
         // Close mobile drawer if open
         closeMobileDrawer();
+
+        // Release lock after scroll completes
+        setTimeout(() => {
+          isProgrammaticScrolling = false;
+        }, 750);
       }
     });
   });
 
-  // Scroll listener for active link highlight
+  // Scroll listener for active link highlight (NO l.scrollIntoView to prevent page jump!)
   window.addEventListener('scroll', () => {
+    if (isProgrammaticScrolling) return;
+
     let currentId = '';
     const scrollPos = window.pageYOffset + 140;
 
@@ -111,8 +123,13 @@ function initScrollSpy() {
         if (l.getAttribute('href') === currentId) {
           l.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-md');
           l.classList.remove('text-slate-300');
-          // Auto scroll horizontal nav bar to keep active item in view
-          l.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          // Smoothly scroll only the horizontal nav container (never window.scroll!)
+          if (navContainer) {
+            const navRect = navContainer.getBoundingClientRect();
+            const linkRect = l.getBoundingClientRect();
+            const diff = linkRect.left - navRect.left - (navContainer.clientWidth / 2) + (linkRect.width / 2);
+            navContainer.scrollLeft += diff;
+          }
         } else {
           l.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-md');
           l.classList.add('text-slate-300');
@@ -277,9 +294,11 @@ function initMobileDrawer() {
       setTimeout(() => {
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
-          const offset = window.innerWidth < 640 ? 115 : 95;
+          isProgrammaticScrolling = true;
+          const offset = window.innerWidth < 640 ? 110 : 90;
           const pos = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
           window.scrollTo({ top: pos, behavior: 'smooth' });
+          setTimeout(() => { isProgrammaticScrolling = false; }, 750);
         }
       }, 320);
     });
@@ -294,7 +313,9 @@ function initFloatingActionButtons() {
 
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', () => {
+      isProgrammaticScrolling = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => { isProgrammaticScrolling = false; }, 600);
     });
   }
 
@@ -326,13 +347,11 @@ window.toggleDiagramView = function(diagId) {
   const isMobileVisible = !mobileWrap.classList.contains('hidden');
 
   if (isMobileVisible) {
-    // Switch to SVG graphic
     mobileWrap.classList.add('hidden');
     svgWrapper.classList.remove('hidden');
     if (btnText) btnText.innerText = "Xem Thẻ Mobile";
     if (btnIcon) btnIcon.setAttribute('data-lucide', 'layers');
   } else {
-    // Switch to Mobile Cards
     mobileWrap.classList.remove('hidden');
     svgWrapper.classList.add('hidden');
     if (btnText) btnText.innerText = "Xem Sơ Đồ Đồ Họa";
@@ -353,7 +372,6 @@ window.openFullscreenModal = function(svgId, titleText) {
   if (modalTitle) modalTitle.innerText = titleText || "Sơ đồ chi tiết";
   modalContent.innerHTML = originalSvg.outerHTML;
 
-  // Make the cloned SVG fill the viewport cleanly
   const clonedSvg = modalContent.querySelector('svg');
   if (clonedSvg) {
     clonedSvg.removeAttribute('id');
