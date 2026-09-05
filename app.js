@@ -1,7 +1,7 @@
 /**
  * DE AN TAI CAU TRUC BAN TO CHUC - KIEM TRA
  * Doan TNCS Ho Chi Minh Dai hoc Bach khoa Ha Noi
- * Interactive scripts with GSAP 3.12 & ScrollSpy
+ * Interactive scripts with GSAP 3.12, ScrollSpy & Mobile Optimizations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initKpiCalculator();
   initAccordions();
+  initMobileDrawer();
+  initFloatingActionButtons();
 });
 
 // 1. GSAP ENTRANCE & COUNTERS
@@ -38,16 +40,16 @@ function initGsapAnimations() {
 
   gsap.from('#hero-header', {
     opacity: 0,
-    y: 30,
-    duration: 1.0,
+    y: 25,
+    duration: 0.9,
     ease: 'power3.out'
   });
 
   gsap.from('.stat-card', {
     opacity: 0,
-    y: 20,
-    duration: 0.8,
-    stagger: 0.12,
+    y: 15,
+    duration: 0.7,
+    stagger: 0.1,
     delay: 0.2,
     ease: 'back.out(1.4)'
   });
@@ -58,6 +60,10 @@ function initScrollSpy() {
   const navLinks = document.querySelectorAll('.nav-section-link');
   const sections = document.querySelectorAll('.doc-section');
 
+  function getOffset() {
+    return window.innerWidth < 640 ? 115 : 95;
+  }
+
   // Smooth scroll on click
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -65,7 +71,7 @@ function initScrollSpy() {
       const targetId = link.getAttribute('href');
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
-        const headerOffset = 100;
+        const headerOffset = getOffset();
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -80,6 +86,9 @@ function initScrollSpy() {
         });
         link.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-md');
         link.classList.remove('text-slate-300');
+
+        // Close mobile drawer if open
+        closeMobileDrawer();
       }
     });
   });
@@ -102,7 +111,7 @@ function initScrollSpy() {
         if (l.getAttribute('href') === currentId) {
           l.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-md');
           l.classList.remove('text-slate-300');
-          // auto scroll nav bar horizontally if needed
+          // Auto scroll horizontal nav bar to keep active item in view
           l.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
           l.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-md');
@@ -148,10 +157,10 @@ function initKpiCalculator() {
     if (total >= 90) {
       if (rankEl) {
         rankEl.innerText = "LOẠI A - HOÀN THÀNH XUẤT SẮC";
-        rankEl.className = "text-xl font-black text-emerald-700";
+        rankEl.className = "text-lg sm:text-xl font-black text-emerald-700";
       }
       if (rankBadge) {
-        rankBadge.className = "inline-block px-5 py-2 rounded-full font-black text-sm bg-emerald-100 text-emerald-800 border-2 border-emerald-300 shadow-sm";
+        rankBadge.className = "inline-block px-4 sm:px-5 py-2 rounded-full font-black text-xs sm:text-sm bg-emerald-100 text-emerald-800 border-2 border-emerald-300 shadow-sm";
         rankBadge.innerText = "XẾP LOẠI: A - XUẤT SẮC";
       }
       if (rankDesc) {
@@ -160,10 +169,10 @@ function initKpiCalculator() {
     } else if (total >= 75) {
       if (rankEl) {
         rankEl.innerText = "LOẠI B - HOÀN THÀNH TỐT";
-        rankEl.className = "text-xl font-black text-blue-700";
+        rankEl.className = "text-lg sm:text-xl font-black text-blue-700";
       }
       if (rankBadge) {
-        rankBadge.className = "inline-block px-5 py-2 rounded-full font-black text-sm bg-blue-100 text-blue-800 border-2 border-blue-300 shadow-sm";
+        rankBadge.className = "inline-block px-4 sm:px-5 py-2 rounded-full font-black text-xs sm:text-sm bg-blue-100 text-blue-800 border-2 border-blue-300 shadow-sm";
         rankBadge.innerText = "XẾP LOẠI: B - HOÀN THÀNH TỐT";
       }
       if (rankDesc) {
@@ -172,10 +181,10 @@ function initKpiCalculator() {
     } else if (total >= 60) {
       if (rankEl) {
         rankEl.innerText = "LOẠI C - HOÀN THÀNH";
-        rankEl.className = "text-xl font-black text-amber-700";
+        rankEl.className = "text-lg sm:text-xl font-black text-amber-700";
       }
       if (rankBadge) {
-        rankBadge.className = "inline-block px-5 py-2 rounded-full font-black text-sm bg-amber-100 text-amber-800 border-2 border-amber-300 shadow-sm";
+        rankBadge.className = "inline-block px-4 sm:px-5 py-2 rounded-full font-black text-xs sm:text-sm bg-amber-100 text-amber-800 border-2 border-amber-300 shadow-sm";
         rankBadge.innerText = "XẾP LOẠI: C - HOÀN THÀNH";
       }
       if (rankDesc) {
@@ -184,10 +193,10 @@ function initKpiCalculator() {
     } else {
       if (rankEl) {
         rankEl.innerText = "LOẠI D - KHÔNG HOÀN THÀNH";
-        rankEl.className = "text-xl font-black text-red-700";
+        rankEl.className = "text-lg sm:text-xl font-black text-red-700";
       }
       if (rankBadge) {
-        rankBadge.className = "inline-block px-5 py-2 rounded-full font-black text-sm bg-red-100 text-red-800 border-2 border-red-300 shadow-sm";
+        rankBadge.className = "inline-block px-4 sm:px-5 py-2 rounded-full font-black text-xs sm:text-sm bg-red-100 text-red-800 border-2 border-red-300 shadow-sm";
         rankBadge.innerText = "XẾP LOẠI: D - KHÔNG HOÀN THÀNH";
       }
       if (rankDesc) {
@@ -222,3 +231,145 @@ function initAccordions() {
     });
   });
 }
+
+// 5. MOBILE NAVIGATION DRAWER
+function initMobileDrawer() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const openBtn = document.getElementById('btn-open-mobile-menu');
+  const closeBtn = document.getElementById('btn-close-mobile-menu');
+  const drawerLinks = document.querySelectorAll('.drawer-nav-link');
+
+  if (!drawer) return;
+
+  function openDrawer() {
+    drawer.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      const panel = drawer.querySelector('.drawer-panel');
+      const backdrop = drawer.querySelector('.drawer-backdrop');
+      if (panel) panel.classList.remove('translate-y-full');
+      if (backdrop) backdrop.classList.remove('opacity-0');
+    }, 10);
+  }
+
+  window.closeMobileDrawer = function() {
+    const panel = drawer.querySelector('.drawer-panel');
+    const backdrop = drawer.querySelector('.drawer-backdrop');
+    if (panel) panel.classList.add('translate-y-full');
+    if (backdrop) backdrop.classList.add('opacity-0');
+    setTimeout(() => {
+      drawer.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  };
+
+  if (openBtn) openBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeMobileDrawer);
+
+  const backdrop = drawer.querySelector('.drawer-backdrop');
+  if (backdrop) backdrop.addEventListener('click', closeMobileDrawer);
+
+  drawerLinks.forEach(l => {
+    l.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = l.getAttribute('href');
+      closeMobileDrawer();
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          const offset = window.innerWidth < 640 ? 115 : 95;
+          const pos = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: pos, behavior: 'smooth' });
+        }
+      }, 320);
+    });
+  });
+}
+
+// 6. FLOATING ACTION BUTTONS (Back to top & Quick menu)
+function initFloatingActionButtons() {
+  const fabContainer = document.getElementById('mobile-fab-container');
+  const backToTopBtn = document.getElementById('btn-back-to-top');
+  const quickMenuBtn = document.getElementById('btn-quick-menu');
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  if (quickMenuBtn) {
+    quickMenuBtn.addEventListener('click', () => {
+      const openBtn = document.getElementById('btn-open-mobile-menu');
+      if (openBtn) openBtn.click();
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      if (fabContainer) fabContainer.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+    } else {
+      if (fabContainer) fabContainer.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+    }
+  });
+}
+
+// 7. DIAGRAM VIEW TOGGLE (Mobile Cards vs Full SVG)
+window.toggleDiagramView = function(diagId) {
+  const svgWrapper = document.getElementById(`${diagId}-svg-wrap`);
+  const mobileWrap = document.getElementById(`${diagId}-mobile-wrap`);
+  const btnText = document.getElementById(`toggle-text-${diagId}`);
+  const btnIcon = document.getElementById(`toggle-icon-${diagId}`);
+
+  if (!svgWrapper || !mobileWrap) return;
+
+  const isMobileVisible = !mobileWrap.classList.contains('hidden');
+
+  if (isMobileVisible) {
+    // Switch to SVG graphic
+    mobileWrap.classList.add('hidden');
+    svgWrapper.classList.remove('hidden');
+    if (btnText) btnText.innerText = "Xem Thẻ Mobile";
+    if (btnIcon) btnIcon.setAttribute('data-lucide', 'layers');
+  } else {
+    // Switch to Mobile Cards
+    mobileWrap.classList.remove('hidden');
+    svgWrapper.classList.add('hidden');
+    if (btnText) btnText.innerText = "Xem Sơ Đồ Đồ Họa";
+    if (btnIcon) btnIcon.setAttribute('data-lucide', 'git-fork');
+  }
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+};
+
+// 8. FULLSCREEN DIAGRAM MODAL
+window.openFullscreenModal = function(svgId, titleText) {
+  const modal = document.getElementById('diagram-fullscreen-modal');
+  const modalTitle = document.getElementById('modal-diagram-title');
+  const modalContent = document.getElementById('modal-diagram-content');
+  const originalSvg = document.getElementById(svgId);
+
+  if (!modal || !modalContent || !originalSvg) return;
+
+  if (modalTitle) modalTitle.innerText = titleText || "Sơ đồ chi tiết";
+  modalContent.innerHTML = originalSvg.outerHTML;
+
+  // Make the cloned SVG fill the viewport cleanly
+  const clonedSvg = modalContent.querySelector('svg');
+  if (clonedSvg) {
+    clonedSvg.removeAttribute('id');
+    clonedSvg.classList.remove('w-full');
+    clonedSvg.style.minWidth = '950px';
+    clonedSvg.style.maxWidth = '1600px';
+    clonedSvg.style.height = 'auto';
+  }
+
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeFullscreenModal = function() {
+  const modal = document.getElementById('diagram-fullscreen-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  document.body.style.overflow = '';
+};

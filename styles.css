@@ -1,25 +1,34 @@
-/* Custom Styles & GSAP Animation Enhancements */
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+/* ========================================================================= */
+/* BAN TCKT - MOBILE-FIRST RESPONSIVE & INTERACTIVE STYLES                   */
+/* ========================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
 
 :root {
-  --font-base: 'Be Vietnam Pro', sans-serif;
-  --primary: #1e3a8a;
-  --primary-dark: #0f172a;
-  --accent-red: #dc2626;
-  --accent-green: #059669;
+  --font-base: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --header-height-mobile: 64px;
+  --header-height-desktop: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-base);
   color: #1e293b;
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
   overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Custom Scrollbar */
+/* Custom Smooth Touch Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
@@ -32,62 +41,73 @@ body {
   background: #94a3b8;
 }
 
-/* Dynamic Font Scaler */
-.font-scale-sm {
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-.font-scale-md {
-  font-size: 1.08rem;
-  line-height: 1.7;
-}
-.font-scale-lg {
-  font-size: 1.25rem;
-  line-height: 1.75;
-}
-.font-scale-xl {
-  font-size: 1.4rem;
-  line-height: 1.8;
+/* Touch-optimized horizontal scrolling */
+.touch-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
-/* Glassmorphism & Cards */
-.glass-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Animated gradient border */
-.border-gradient-blue {
-  border-image: linear-gradient(to right, #2563eb, #3b82f6) 1;
+/* Range input styling for mobile touch */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  outline: none;
+  touch-action: pan-y;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.4);
+  border: 3px solid #ffffff;
+  transition: transform 0.15s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover,
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+}
+input[type=range]::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.4);
+  border: 3px solid #ffffff;
 }
 
-/* Interactive Card Hover with GSAP */
-.interactive-card {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+/* Pulsing Badge Animation */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
 }
-.interactive-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-}
-
-/* Connecting Line Animation */
-@keyframes flow-pulse {
-  0%, 100% { stroke-dashoffset: 0; }
-  50% { stroke-dashoffset: 12; }
-}
-.flow-line {
-  stroke-dasharray: 6;
-  animation: flow-pulse 2.5s linear infinite;
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s infinite ease-in-out;
 }
 
-/* Pulse badge */
-@keyframes soft-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.9; }
+/* Mobile Drawer Slide Animation */
+.drawer-backdrop {
+  transition: opacity 0.3s ease;
 }
-.pulse-tag {
-  animation: soft-pulse 3s infinite ease-in-out;
+.drawer-panel {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Print Optimization */
@@ -96,7 +116,12 @@ body {
     display: none !important;
   }
   body {
-    background-color: white !important;
+    background: white !important;
     color: black !important;
+  }
+  .doc-section {
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
   }
 }
