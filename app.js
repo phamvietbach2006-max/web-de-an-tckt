@@ -21,25 +21,48 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// 1. GSAP COUNTER & HERO ENTRANCE
+// 1. GSAP COUNTER & HERO ENTRANCE (FAIL-SAFE & ROBUST)
 function initGsapAnimations() {
   if (typeof gsap === 'undefined') return;
 
-  gsap.from('#hero-title', {
-    duration: 0.9,
-    y: 25,
-    opacity: 0,
-    ease: 'power3.out'
-  });
+  try {
+    gsap.fromTo('#hero-title', 
+      { y: 15, opacity: 0.5 },
+      {
+        duration: 0.7,
+        y: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        clearProps: 'all'
+      }
+    );
 
-  gsap.from('.stat-card', {
-    duration: 0.7,
-    y: 20,
-    opacity: 0,
-    stagger: 0.1,
-    ease: 'power2.out',
-    delay: 0.15
-  });
+    gsap.fromTo('.stat-card',
+      { y: 15, opacity: 0.6 },
+      {
+        duration: 0.6,
+        y: 0,
+        opacity: 1,
+        stagger: 0.08,
+        ease: 'power2.out',
+        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.stat-card').forEach(el => el.removeAttribute('style'));
+        }
+      }
+    );
+  } catch (e) {
+    console.warn('GSAP entrance animation skipped:', e);
+    document.querySelectorAll('.stat-card, #hero-title').forEach(el => el.removeAttribute('style'));
+  }
+
+  // Failsafe timeout: always strip any inline opacity or transform after 800ms
+  setTimeout(() => {
+    document.querySelectorAll('.stat-card, #hero-title').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }, 800);
 
   const counters = [
     { id: 'counter-total', target: 67 },
