@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Đề án Tái cấu trúc Ban TCKT - Đoàn Đại học Bách khoa Hà Nội</title>
   
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -56,8 +62,8 @@
         
         <!-- LOGO & TIÊU ĐỀ BAN -->
         <a href="#sec-hero" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group">
-          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-md group-hover:scale-105 transition">
-            <i data-lucide="shield" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white p-1 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform flex-shrink-0 border border-slate-700">
+            <img src="assets/logo_ban.png" alt="Logo Ban Tổ chức - Kiểm tra" class="w-full h-full object-contain">
           </div>
           <div class="flex flex-col">
             <span class="text-xs sm:text-sm font-black tracking-wide text-white leading-tight uppercase group-hover:text-blue-400 transition">
@@ -213,16 +219,21 @@
       </div>
 
       <!-- TIÊU ĐỀ ĐỀ ÁN CHÍNH THỨC -->
-      <div class="space-y-2 sm:space-y-3" id="hero-title">
-        <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400">
-          ĐOÀN TNCS HỒ CHÍ MINH ĐẠI HỌC BÁCH KHOA HÀ NỘI • BAN TỔ CHỨC - KIỂM TRA
-        </h2>
-        <h1 class="text-2xl xs:text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-          ĐỀ ÁN TÁI CẤU TRÚC VÀ CHUẨN HÓA PHƯƠNG THỨC HOẠT ĐỘNG
-        </h1>
-        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed pt-1">
-          Kính trình: <b class="text-white">Ban Thường vụ Đoàn Đại học Bách khoa Hà Nội</b> xem xét, cho ý kiến chỉ đạo phương án kiện toàn tổ chức, nâng cao chất lượng tham mưu, chuẩn hóa quy trình SOP và đẩy mạnh chuyển đổi số.
-        </p>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6" id="hero-title">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white p-1.5 shadow-2xl border border-slate-700 flex-shrink-0 flex items-center justify-center">
+          <img src="assets/logo_ban.png" alt="Logo Ban Tổ chức - Kiểm tra" class="w-full h-full object-contain">
+        </div>
+        <div class="space-y-2 sm:space-y-3">
+          <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400">
+            ĐOÀN TNCS HỒ CHÍ MINH ĐẠI HỌC BÁCH KHOA HÀ NỘI • BAN TỔ CHỨC - KIỂM TRA
+          </h2>
+          <h1 class="text-2xl xs:text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+            ĐỀ ÁN TÁI CẤU TRÚC VÀ CHUẨN HÓA PHƯƠNG THỨC HOẠT ĐỘNG
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed pt-1">
+            Kính trình: <b class="text-white">Ban Thường vụ Đoàn Đại học Bách khoa Hà Nội</b> xem xét, cho ý kiến chỉ đạo phương án kiện toàn tổ chức, nâng cao chất lượng tham mưu, chuẩn hóa quy trình SOP và đẩy mạnh chuyển đổi số.
+          </p>
+        </div>
       </div>
 
       <!-- 4 THẺ THỐNG KÊ VÀNG (GSAP COUNTER ANIMATED) -->
@@ -1868,9 +1879,14 @@
   <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-10 mt-16 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="space-y-1 text-center sm:text-left">
-          <h4 class="font-black text-white text-sm">BAN TỔ CHỨC - KIỂM TRA ĐOÀN ĐẠI HỌC BÁCH KHOA HÀ NỘI</h4>
-          <p class="text-slate-400">Đề án tái cấu trúc và chuẩn hóa phương thức hoạt động — Dự thảo trình xem xét Tháng 9/2026</p>
+        <div class="flex items-center gap-3 text-center sm:text-left">
+          <div class="w-11 h-11 rounded-xl bg-white p-1 flex items-center justify-center shadow-md border border-slate-700 flex-shrink-0">
+            <img src="assets/logo_ban.png" alt="Logo Ban Tổ chức - Kiểm tra" class="w-full h-full object-contain">
+          </div>
+          <div class="space-y-1">
+            <h4 class="font-black text-white text-sm">BAN TỔ CHỨC - KIỂM TRA ĐOÀN ĐẠI HỌC BÁCH KHOA HÀ NỘI</h4>
+            <p class="text-slate-400">Đề án tái cấu trúc và chuẩn hóa phương thức hoạt động — Dự thảo trình xem xét Tháng 9/2026</p>
+          </div>
         </div>
         <div class="flex items-center gap-3">
           <a href="De_An_Tai_Cau_Truc_Ban_TCKT_Doan_Vu.docx" download class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition shadow-md">
