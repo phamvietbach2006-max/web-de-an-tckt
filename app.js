@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRaciFilter();
   initMobileDrawer();
   initFloatingActionButtons();
+  initPlanFilter();
   if (window.lucide) {
     lucide.createIcons();
   }
@@ -494,3 +495,33 @@ window.closeFullscreenModal = function() {
     document.body.style.overflow = '';
   }
 };
+
+
+// 11. PLAN 2026 - 2027 TASK FILTER BY DEPT
+function initPlanFilter() {
+  const filterBtns = document.querySelectorAll('.plan-filter-btn');
+  const taskCards = document.querySelectorAll('.plan-task-card');
+  if (!filterBtns.length || !taskCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dept = btn.getAttribute('data-dept');
+
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        b.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+      });
+      btn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+      btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+      taskCards.forEach(card => {
+        const depts = card.getAttribute('data-depts') || '';
+        if (dept === 'all' || depts.includes(dept)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+}
