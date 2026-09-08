@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  initReadingProgress();
+  initScreenBorderProgress();
   initHeroAnimations();
   initSpotlightCards();
   initScrollSpyWithPill();
@@ -32,21 +32,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------------------------------------------------------------
-// 1. TOP READING PROGRESS BAR (GSAP + SCROLL)
+// 1. 4-EDGE ROUNDED SCREEN BORDER PROGRESS (GSAP / SVG POWERED)
 // -------------------------------------------------------------------------
-function initReadingProgress() {
-  const bar = document.getElementById('reading-progress-bar');
-  if (!bar) return;
+function initScreenBorderProgress() {
+  const thumb = document.getElementById('screen-border-thumb');
+  const track = document.getElementById('screen-border-track');
+  const svg = document.getElementById('screen-border-svg');
+  if (!thumb || !svg) return;
 
-  function updateBar() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-    bar.style.width = progress + '%';
+  let totalLength = 0;
+
+  function resizeBorder() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const inset = w < 640 ? 5 : 8;
+    const rx = w < 640 ? 14 : 20;
+
+    const rectW = Math.max(10, w - (inset * 2));
+    const rectH = Math.max(10, h - (inset * 2));
+
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+    [track, thumb].forEach(el => {
+      if (!el) return;
+      el.setAttribute('x', inset);
+      el.setAttribute('y', inset);
+      el.setAttribute('width', rectW);
+      el.setAttribute('height', rectH);
+      el.setAttribute('rx', rx);
+      el.setAttribute('ry', rx);
+    });
+
+    try {
+      totalLength = thumb.getTotalLength();
+    } catch (e) {
+      totalLength = 2 * (rectW + rectH) - ((8 - 2 * Math.PI) * rx);
+    }
+
+    thumb.style.strokeDasharray = `${totalLength}`;
+    updateProgress();
   }
 
-  window.addEventListener('scroll', updateBar, { passive: true });
-  updateBar();
+  function updateProgress() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+
+    if (totalLength > 0) {
+      const offset = totalLength * (1 - progress);
+      thumb.style.strokeDashoffset = `${offset}`;
+    }
+  }
+
+  window.addEventListener('resize', resizeBorder, { passive: true });
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  resizeBorder();
 }
 
 // -------------------------------------------------------------------------

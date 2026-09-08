@@ -54,8 +54,28 @@
 </head>
 <body class="bg-slate-900 text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- TOP READING PROGRESS BAR (GSAP SCROLL-DRIVEN) -->
-  <div id="reading-progress-bar"></div>
+  <!-- ========================================================================= -->
+  <!-- 4-EDGE ROUNDED SCREEN BORDER PROGRESS (GSAP / SVG SCROLL-DRIVEN)          -->
+  <!-- ========================================================================= -->
+  <div id="screen-border-progress" class="fixed inset-0 w-full h-full pointer-events-none z-50 overflow-hidden" aria-hidden="true">
+    <svg id="screen-border-svg" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="screen-border-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#3b82f6" />
+          <stop offset="35%" stop-color="#06b6d4" />
+          <stop offset="70%" stop-color="#f59e0b" />
+          <stop offset="100%" stop-color="#10b981" />
+        </linearGradient>
+        <filter id="screen-border-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="0" stdDeviation="3.5" flood-color="#06b6d4" flood-opacity="0.85" />
+        </filter>
+      </defs>
+      <!-- Subtle guide track around the 4 rounded edges of the viewport -->
+      <rect id="screen-border-track" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+      <!-- Animated progress thumb contouring the 4 rounded edges -->
+      <rect id="screen-border-thumb" fill="none" stroke="url(#screen-border-gradient)" stroke-width="3.5" stroke-linecap="round" filter="url(#screen-border-glow)" />
+    </svg>
+  </div>
 
   <!-- ========================================================================= -->
   <!-- HEADER CHÍNH DÍNH TRÊN CÙNG (STICKY HEADER) -->
