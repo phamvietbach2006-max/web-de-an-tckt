@@ -1,15 +1,22 @@
 /**
  * DE AN TAI CAU TRUC BAN TO CHUC - KIEM TRA
  * Doan TNCS Ho Chi Minh Dai hoc Bach khoa Ha Noi
- * Interactive scripts with GSAP 3.12, ScrollSpy & Mobile Optimizations
- * (OFFICIAL REVISION - 04 MẢNG - 67 NHÂN SỰ)
+ * World-Class UI/UX & Motion Design Powered by GSAP 3.12 & ScrollTrigger
  */
 
 let isProgrammaticScrolling = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-  initGsapAnimations();
-  initScrollSpy();
+  // Register ScrollTrigger if available
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  initReadingProgress();
+  initHeroAnimations();
+  initSpotlightCards();
+  initScrollSpyWithPill();
+  initScrollReveals();
   initAccordion();
   initKpiCalculator();
   initUnitLookup();
@@ -17,54 +24,88 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileDrawer();
   initFloatingActionButtons();
   initPlanFilter();
+  initDiagramInteractivity();
+
   if (window.lucide) {
     lucide.createIcons();
   }
 });
 
-// 1. GSAP COUNTER & HERO ENTRANCE (FAIL-SAFE & ROBUST)
-function initGsapAnimations() {
-  if (typeof gsap === 'undefined') return;
+// -------------------------------------------------------------------------
+// 1. TOP READING PROGRESS BAR (GSAP + SCROLL)
+// -------------------------------------------------------------------------
+function initReadingProgress() {
+  const bar = document.getElementById('reading-progress-bar');
+  if (!bar) return;
 
-  try {
-    gsap.fromTo('#hero-title', 
-      { y: 15, opacity: 0.5 },
-      {
-        duration: 0.7,
-        y: 0,
-        opacity: 1,
-        ease: 'power2.out',
-        clearProps: 'all'
-      }
-    );
-
-    gsap.fromTo('.stat-card',
-      { y: 15, opacity: 0.6 },
-      {
-        duration: 0.6,
-        y: 0,
-        opacity: 1,
-        stagger: 0.08,
-        ease: 'power2.out',
-        clearProps: 'all',
-        onComplete: () => {
-          document.querySelectorAll('.stat-card').forEach(el => el.removeAttribute('style'));
-        }
-      }
-    );
-  } catch (e) {
-    console.warn('GSAP entrance animation skipped:', e);
-    document.querySelectorAll('.stat-card, #hero-title').forEach(el => el.removeAttribute('style'));
+  function updateBar() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    bar.style.width = progress + '%';
   }
 
-  // Failsafe timeout: always strip any inline opacity or transform after 800ms
+  window.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+}
+
+// -------------------------------------------------------------------------
+// 2. HERO TIMELINE & ENTRANCE ANIMATION (GSAP MASTER TIMELINE)
+// -------------------------------------------------------------------------
+function initHeroAnimations() {
+  if (typeof gsap === 'undefined') {
+    document.querySelectorAll('.stat-card, #hero-title, #hero-badge, #hero-cta').forEach(el => el.removeAttribute('style'));
+    return;
+  }
+
+  try {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.fromTo('#hero-badge', 
+      { y: -15, opacity: 0 }, 
+      { y: 0, opacity: 1, duration: 0.6 }
+    )
+    .fromTo('#hero-title', 
+      { y: 20, opacity: 0.4 }, 
+      { y: 0, opacity: 1, duration: 0.7 }, 
+      '-=0.3'
+    )
+    .fromTo('#hero-cta', 
+      { scale: 0.95, opacity: 0 }, 
+      { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.4)' }, 
+      '-=0.3'
+    )
+    .fromTo('.stat-card', 
+      { y: 25, opacity: 0.5 }, 
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 0.6, 
+        stagger: 0.08, 
+        clearProps: 'transform,opacity',
+        onComplete: () => {
+          document.querySelectorAll('.stat-card').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          });
+        }
+      }, 
+      '-=0.2'
+    );
+  } catch (err) {
+    console.warn('Hero GSAP animation skipped:', err);
+    document.querySelectorAll('.stat-card, #hero-title, #hero-badge, #hero-cta').forEach(el => el.removeAttribute('style'));
+  }
+
+  // Failsafe timeout
   setTimeout(() => {
-    document.querySelectorAll('.stat-card, #hero-title').forEach(el => {
+    document.querySelectorAll('.stat-card, #hero-title, #hero-badge, #hero-cta').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
-  }, 800);
+  }, 900);
 
+  // Smooth Numeric Counters
   const counters = [
     { id: 'counter-total', target: 68 },
     { id: 'counter-core', target: 8 },
@@ -79,7 +120,7 @@ function initGsapAnimations() {
     let obj = { val: 0 };
     gsap.to(obj, {
       val: c.target,
-      duration: 1.5,
+      duration: 1.6,
       ease: 'power2.out',
       onUpdate: () => {
         el.innerText = Math.floor(obj.val).toString().padStart(2, '0');
@@ -88,14 +129,58 @@ function initGsapAnimations() {
   });
 }
 
-// 2. SCROLLSPY & SMOOTH NAVIGATION (CLEAN & FIXED)
-function initScrollSpy() {
+// -------------------------------------------------------------------------
+// 3. MOUSE-FOLLOWING SPOTLIGHT CARDS (GSAP.COM AESTHETIC)
+// -------------------------------------------------------------------------
+function initSpotlightCards() {
+  const cards = document.querySelectorAll('.spotlight-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+}
+
+// -------------------------------------------------------------------------
+// 4. SCROLLSPY & SMOOTH NAVIGATION WITH SLIDING ACTIVE PILL
+// -------------------------------------------------------------------------
+function initScrollSpyWithPill() {
   const navLinks = document.querySelectorAll('.nav-section-link');
   const sections = document.querySelectorAll('.doc-section');
   const navContainer = document.getElementById('main-nav-tabs');
+  const activePill = document.getElementById('nav-active-pill');
 
   function getOffset() {
-    return window.innerWidth < 640 ? 110 : 90;
+    return window.innerWidth < 640 ? 115 : 95;
+  }
+
+  function movePillTo(linkEl) {
+    if (!activePill || !linkEl || !navContainer) return;
+    const navRect = navContainer.getBoundingClientRect();
+    const linkRect = linkEl.getBoundingClientRect();
+    const targetLeft = linkRect.left - navRect.left + navContainer.scrollLeft;
+
+    if (typeof gsap !== 'undefined') {
+      gsap.to(activePill, {
+        x: targetLeft,
+        width: linkRect.width,
+        duration: 0.32,
+        ease: 'power2.out'
+      });
+    } else {
+      activePill.style.transform = `translateX(${targetLeft}px)`;
+      activePill.style.width = `${linkRect.width}px`;
+    }
+  }
+
+  // Initialize pill on the active link
+  const initialActive = document.querySelector('.nav-section-link.active') || navLinks[0];
+  if (initialActive) {
+    setTimeout(() => { movePillTo(initialActive); }, 150);
   }
 
   // Smooth scroll on click
@@ -115,18 +200,17 @@ function initScrollSpy() {
           behavior: 'smooth'
         });
 
-        // Update active class immediately
+        // Update active class & pill
         navLinks.forEach(l => {
-          l.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-md');
+          l.classList.remove('active', 'text-white');
           l.classList.add('text-slate-300');
         });
-        link.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-md');
+        link.classList.add('active', 'text-white');
         link.classList.remove('text-slate-300');
+        movePillTo(link);
 
-        // Close mobile drawer if open
         closeMobileDrawer();
 
-        // Release lock after scroll completes
         setTimeout(() => {
           isProgrammaticScrolling = false;
         }, 750);
@@ -134,7 +218,7 @@ function initScrollSpy() {
     });
   });
 
-  // Scroll listener for active link highlight (NO l.scrollIntoView to prevent page jump!)
+  // Scroll listener for active link highlight
   window.addEventListener('scroll', () => {
     if (isProgrammaticScrolling) return;
 
@@ -152,25 +236,59 @@ function initScrollSpy() {
     if (currentId) {
       navLinks.forEach(l => {
         if (l.getAttribute('href') === currentId) {
-          l.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-md');
-          l.classList.remove('text-slate-300');
-          // Smoothly scroll only the horizontal nav container (never window.scroll!)
-          if (navContainer) {
-            const navRect = navContainer.getBoundingClientRect();
-            const linkRect = l.getBoundingClientRect();
-            const diff = linkRect.left - navRect.left - (navContainer.clientWidth / 2) + (linkRect.width / 2);
-            navContainer.scrollLeft += diff;
+          if (!l.classList.contains('active')) {
+            navLinks.forEach(other => {
+              other.classList.remove('active', 'text-white');
+              other.classList.add('text-slate-300');
+            });
+            l.classList.add('active', 'text-white');
+            l.classList.remove('text-slate-300');
+            movePillTo(l);
+
+            // Keep nav scrolled to visible item
+            if (navContainer) {
+              const navRect = navContainer.getBoundingClientRect();
+              const linkRect = l.getBoundingClientRect();
+              const diff = linkRect.left - navRect.left - (navContainer.clientWidth / 2) + (linkRect.width / 2);
+              navContainer.scrollLeft += diff;
+            }
           }
-        } else {
-          l.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-md');
-          l.classList.add('text-slate-300');
         }
       });
     }
+  }, { passive: true });
+}
+
+// -------------------------------------------------------------------------
+// 5. SCROLL-DRIVEN REVEALS (GSAP SCROLLTRIGGER)
+// -------------------------------------------------------------------------
+function initScrollReveals() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  const sections = document.querySelectorAll('.doc-section');
+  sections.forEach(sec => {
+    gsap.fromTo(sec, 
+      { opacity: 0.9, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.65,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: sec,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        clearProps: 'transform,opacity'
+      }
+    );
   });
 }
 
-// 3. ACCORDION LOGIC
+// -------------------------------------------------------------------------
+// 6. ACCORDION LOGIC
+// -------------------------------------------------------------------------
 function initAccordion() {
   const triggers = document.querySelectorAll('.accordion-trigger');
   triggers.forEach(trigger => {
@@ -188,12 +306,17 @@ function initAccordion() {
       } else {
         content.classList.remove('hidden');
         if (icon) icon.classList.add('rotate-180');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(content, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+        }
       }
     });
   });
 }
 
-// 4. INTERACTIVE KPI CALCULATOR (100 DIEM - TABLE 5 & TABLE 6)
+// -------------------------------------------------------------------------
+// 7. INTERACTIVE KPI CALCULATOR (100 DIEM) WITH SMOOTH GSAP TRANSITIONS
+// -------------------------------------------------------------------------
 function initKpiCalculator() {
   const sliderCM = document.getElementById('slider-cm');
   const sliderPH = document.getElementById('slider-ph');
@@ -212,6 +335,8 @@ function initKpiCalculator() {
 
   if (!sliderCM || !sliderPH || !sliderKL || !sliderSK) return;
 
+  let currentTotal = 0;
+
   function updateKpi() {
     const cm = parseInt(sliderCM.value) || 0;
     const ph = parseInt(sliderPH.value) || 0;
@@ -224,31 +349,65 @@ function initKpiCalculator() {
     if (valSK) valSK.innerText = sk + ' / 10đ';
 
     const total = cm + ph + kl + sk;
-    if (totalScoreEl) totalScoreEl.innerText = total;
-    if (kpiProgressBar) kpiProgressBar.style.width = total + '%';
+
+    if (totalScoreEl) {
+      if (typeof gsap !== 'undefined') {
+        let scoreObj = { val: currentTotal };
+        gsap.to(scoreObj, {
+          val: total,
+          duration: 0.35,
+          ease: 'power1.out',
+          onUpdate: () => {
+            totalScoreEl.innerText = Math.round(scoreObj.val);
+          }
+        });
+      } else {
+        totalScoreEl.innerText = total;
+      }
+      currentTotal = total;
+    }
+
+    if (kpiProgressBar) {
+      kpiProgressBar.style.width = total + '%';
+    }
 
     // Official Tier evaluation (Table 6)
+    let newTier = '';
+    let badgeClass = '';
+    let descText = '';
+    let barClass = '';
+
     if (total >= 90) {
-      kpiBadge.innerText = 'LOẠI A - HOÀN THÀNH XUẤT SẮC';
-      kpiBadge.className = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-sm';
-      kpiDesc.innerText = 'Biểu dương, xem xét giao nhiệm vụ và đề xuất khen thưởng theo điều kiện áp dụng.';
-      if (kpiProgressBar) kpiProgressBar.className = 'h-full bg-emerald-500 rounded-full transition-all duration-300';
+      newTier = 'LOẠI A - HOÀN THÀNH XUẤT SẮC';
+      badgeClass = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-sm';
+      descText = 'Biểu dương, xem xét giao nhiệm vụ và đề xuất khen thưởng theo điều kiện áp dụng.';
+      barClass = 'h-full bg-emerald-500 rounded-full transition-all duration-300';
     } else if (total >= 75) {
-      kpiBadge.innerText = 'LOẠI B - HOÀN THÀNH TỐT';
-      kpiBadge.className = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-blue-100 text-blue-800 border border-blue-300 shadow-sm';
-      kpiDesc.innerText = 'Duy trì phân công, bồi dưỡng kỹ năng còn cần hoàn thiện.';
-      if (kpiProgressBar) kpiProgressBar.className = 'h-full bg-blue-500 rounded-full transition-all duration-300';
+      newTier = 'LOẠI B - HOÀN THÀNH TỐT';
+      badgeClass = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-blue-100 text-blue-800 border border-blue-300 shadow-sm';
+      descText = 'Duy trì phân công, bồi dưỡng kỹ năng còn cần hoàn thiện.';
+      barClass = 'h-full bg-blue-500 rounded-full transition-all duration-300';
     } else if (total >= 60) {
-      kpiBadge.innerText = 'LOẠI C - HOÀN THÀNH NHIỆM VỤ';
-      kpiBadge.className = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-amber-100 text-amber-800 border border-amber-300 shadow-sm';
-      kpiDesc.innerText = 'Xác định nội dung cần khắc phục, người hỗ trợ và thời hạn theo dõi.';
-      if (kpiProgressBar) kpiProgressBar.className = 'h-full bg-amber-500 rounded-full transition-all duration-300';
+      newTier = 'LOẠI C - HOÀN THÀNH NHIỆM VỤ';
+      badgeClass = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-amber-100 text-amber-800 border border-amber-300 shadow-sm';
+      descText = 'Xác định nội dung cần khắc phục, người hỗ trợ và thời hạn theo dõi.';
+      barClass = 'h-full bg-amber-500 rounded-full transition-all duration-300';
     } else {
-      kpiBadge.innerText = 'LOẠI D - CHƯA HOÀN THÀNH NHIỆM VỤ';
-      kpiBadge.className = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-rose-100 text-rose-800 border border-rose-300 shadow-sm';
-      kpiDesc.innerText = 'Trao đổi nguyên nhân, lập kế hoạch khắc phục, xem xét điều chỉnh nhiệm vụ.';
-      if (kpiProgressBar) kpiProgressBar.className = 'h-full bg-rose-500 rounded-full transition-all duration-300';
+      newTier = 'LOẠI D - CHƯA HOÀN THÀNH NHIỆM VỤ';
+      badgeClass = 'inline-block px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black bg-rose-100 text-rose-800 border border-rose-300 shadow-sm';
+      descText = 'Trao đổi nguyên nhân, lập kế hoạch khắc phục, xem xét điều chỉnh nhiệm vụ.';
+      barClass = 'h-full bg-rose-500 rounded-full transition-all duration-300';
     }
+
+    if (kpiBadge && kpiBadge.innerText !== newTier) {
+      kpiBadge.innerText = newTier;
+      kpiBadge.className = badgeClass;
+      if (typeof gsap !== 'undefined') {
+        gsap.fromTo(kpiBadge, { scale: 0.92 }, { scale: 1, duration: 0.25, ease: 'back.out(1.5)' });
+      }
+    }
+    if (kpiDesc) kpiDesc.innerText = descText;
+    if (kpiProgressBar) kpiProgressBar.className = barClass;
   }
 
   sliderCM.addEventListener('input', updateKpi);
@@ -259,7 +418,9 @@ function initKpiCalculator() {
   updateKpi();
 }
 
-// 5. INTERACTIVE UNIT LOOKUP TOOL (PHỤ LỤC 1 - TABLE 8)
+// -------------------------------------------------------------------------
+// 8. INTERACTIVE UNIT LOOKUP TOOL
+// -------------------------------------------------------------------------
 const unitDatabase = [
   { id: 'DV01', name: 'Đoàn trường Công nghệ Thông tin & Truyền thông', m1: 'A01 (Dự phòng: A02)', m2: 'B01 (Dự phòng: B02)', m3: 'C01 (Dự phòng: C02)', leader: 'Tổ trưởng: A01 | Tổ phó: B01' },
   { id: 'DV02', name: 'Đoàn trường Cơ khí', m1: 'A02 (Dự phòng: A01)', m2: 'B02 (Dự phòng: B01)', m3: 'C02 (Dự phòng: C01)', leader: 'Tổ trưởng: C02 | Tổ phó: A02' },
@@ -329,6 +490,9 @@ function initUnitLookup() {
         </div>
       </div>
     `;
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo(resultCard.firstElementChild, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3 });
+    }
   }
 
   selectEl.addEventListener('change', (e) => {
@@ -338,7 +502,9 @@ function initUnitLookup() {
   renderUnit('DV01');
 }
 
-// 6. RACI MATRIX FILTER (PHỤ LỤC 2 - TABLE 9)
+// -------------------------------------------------------------------------
+// 9. RACI MATRIX FILTER
+// -------------------------------------------------------------------------
 function initRaciFilter() {
   const filterBtns = document.querySelectorAll('.raci-filter-btn');
   const rows = document.querySelectorAll('.raci-row');
@@ -364,7 +530,9 @@ function initRaciFilter() {
   });
 }
 
-// 7. MOBILE DRAWER NAVIGATION
+// -------------------------------------------------------------------------
+// 10. MOBILE DRAWER NAVIGATION
+// -------------------------------------------------------------------------
 function initMobileDrawer() {
   const openBtn = document.getElementById('mobile-drawer-toggle');
   const closeBtn = document.getElementById('mobile-drawer-close');
@@ -399,7 +567,7 @@ function initMobileDrawer() {
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
           isProgrammaticScrolling = true;
-          const offset = window.innerWidth < 640 ? 110 : 90;
+          const offset = window.innerWidth < 640 ? 115 : 95;
           const pos = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
           window.scrollTo({ top: pos, behavior: 'smooth' });
           setTimeout(() => { isProgrammaticScrolling = false; }, 750);
@@ -409,7 +577,9 @@ function initMobileDrawer() {
   });
 }
 
-// 8. FLOATING ACTION BUTTONS
+// -------------------------------------------------------------------------
+// 11. FLOATING ACTION BUTTONS
+// -------------------------------------------------------------------------
 function initFloatingActionButtons() {
   const backToTopBtn = document.getElementById('fab-back-to-top');
   const fabTocBtn = document.getElementById('fab-toc');
@@ -435,10 +605,90 @@ function initFloatingActionButtons() {
     } else {
       if (backToTopBtn) backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
     }
+  }, { passive: true });
+}
+
+// -------------------------------------------------------------------------
+// 12. PLAN 2026 - 2027 TASK FILTER BY DEPT WITH GSAP TRANSITIONS
+// -------------------------------------------------------------------------
+function initPlanFilter() {
+  const filterBtns = document.querySelectorAll('.plan-filter-btn');
+  const taskCards = document.querySelectorAll('.plan-task-card');
+  if (!filterBtns.length || !taskCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dept = btn.getAttribute('data-dept');
+
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+        b.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+      });
+      btn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+      btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+      const visibleCards = [];
+      taskCards.forEach(card => {
+        const depts = card.getAttribute('data-depts') || '';
+        if (dept === 'all' || depts.includes(dept)) {
+          card.classList.remove('hidden');
+          visibleCards.push(card);
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (typeof gsap !== 'undefined' && visibleCards.length) {
+        gsap.fromTo(visibleCards, 
+          { opacity: 0, y: 10, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.03, ease: 'power2.out' }
+        );
+      }
+    });
   });
 }
 
-// 9. TOGGLE DIAGRAM MOBILE VS GRAPHIC
+// -------------------------------------------------------------------------
+// 13. FULLSCREEN MODAL WITH GSAP ZOOM
+// -------------------------------------------------------------------------
+window.openFullscreenModal = function(svgId, titleText) {
+  const modal = document.getElementById('fullscreen-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalContent = document.getElementById('modal-content');
+  const originalSvg = document.getElementById(svgId);
+
+  if (!modal || !originalSvg) return;
+
+  if (modalTitle) modalTitle.innerText = titleText || "Sơ đồ chi tiết";
+  modalContent.innerHTML = originalSvg.outerHTML;
+
+  const clonedSvg = modalContent.querySelector('svg');
+  if (clonedSvg) {
+    clonedSvg.removeAttribute('id');
+    clonedSvg.style.width = '100%';
+    clonedSvg.style.height = 'auto';
+    clonedSvg.style.maxHeight = '80vh';
+  }
+
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+
+  if (typeof gsap !== 'undefined') {
+    gsap.fromTo(modal.firstElementChild, 
+      { scale: 0.95, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.25, ease: 'power2.out' }
+    );
+  }
+};
+
+window.closeFullscreenModal = function() {
+  const modal = document.getElementById('fullscreen-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+};
+
 window.toggleDiagramView = function(diagId) {
   const mobileWrap = document.getElementById(diagId + '-mobile');
   const svgWrapper = document.getElementById(diagId + '-wrapper');
@@ -464,64 +714,19 @@ window.toggleDiagramView = function(diagId) {
   if (window.lucide) lucide.createIcons();
 };
 
-// 10. FULLSCREEN MODAL
-window.openFullscreenModal = function(svgId, titleText) {
-  const modal = document.getElementById('fullscreen-modal');
-  const modalTitle = document.getElementById('modal-title');
-  const modalContent = document.getElementById('modal-content');
-  const originalSvg = document.getElementById(svgId);
-
-  if (!modal || !originalSvg) return;
-
-  if (modalTitle) modalTitle.innerText = titleText || "Sơ đồ chi tiết";
-  modalContent.innerHTML = originalSvg.outerHTML;
-
-  const clonedSvg = modalContent.querySelector('svg');
-  if (clonedSvg) {
-    clonedSvg.removeAttribute('id');
-    clonedSvg.style.width = '100%';
-    clonedSvg.style.height = 'auto';
-    clonedSvg.style.maxHeight = '80vh';
-  }
-
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-};
-
-window.closeFullscreenModal = function() {
-  const modal = document.getElementById('fullscreen-modal');
-  if (modal) {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-};
-
-
-// 11. PLAN 2026 - 2027 TASK FILTER BY DEPT
-function initPlanFilter() {
-  const filterBtns = document.querySelectorAll('.plan-filter-btn');
-  const taskCards = document.querySelectorAll('.plan-task-card');
-  if (!filterBtns.length || !taskCards.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dept = btn.getAttribute('data-dept');
-
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-        b.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
-      });
-      btn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
-      btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-
-      taskCards.forEach(card => {
-        const depts = card.getAttribute('data-depts') || '';
-        if (dept === 'all' || depts.includes(dept)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+function initDiagramInteractivity() {
+  // Add subtle hover response on diagram node groups
+  const svgElements = document.querySelectorAll('#diag-1-svg g[filter], #diag-2-svg g[filter]');
+  svgElements.forEach(g => {
+    g.addEventListener('mouseenter', () => {
+      if (typeof gsap !== 'undefined') {
+        gsap.to(g, { scale: 1.015, transformOrigin: 'center center', duration: 0.2, ease: 'power1.out' });
+      }
+    });
+    g.addEventListener('mouseleave', () => {
+      if (typeof gsap !== 'undefined') {
+        gsap.to(g, { scale: 1, duration: 0.2, ease: 'power1.out' });
+      }
     });
   });
 }
