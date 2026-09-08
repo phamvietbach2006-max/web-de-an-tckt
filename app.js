@@ -66,8 +66,8 @@ function initGsapAnimations() {
   }, 800);
 
   const counters = [
-    { id: 'counter-total', target: 67 },
-    { id: 'counter-core', target: 7 },
+    { id: 'counter-total', target: 68 },
+    { id: 'counter-core', target: 8 },
     { id: 'counter-depts', target: 4 },
     { id: 'counter-units', target: 12 }
   ];
