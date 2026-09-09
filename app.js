@@ -500,7 +500,7 @@ function initUnitLookup() {
           <div class="p-3 rounded-xl bg-sky-50 border border-sky-200 space-y-1">
             <div class="font-black text-sky-950 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-sky-600"></span>
-              <span>Đại diện Mảng 1 (Đoàn vụ):</span>
+              <span>Đại diện Mảng Tổ chức & Phát triển Đoàn vụ:</span>
             </div>
             <p class="font-bold text-sky-900">${u.m1}</p>
             <p class="text-[11px] text-slate-500">Hướng dẫn hồ sơ tổ chức, nhân sự, đoàn viên, văn thư.</p>
@@ -509,7 +509,7 @@ function initUnitLookup() {
           <div class="p-3 rounded-xl bg-red-50 border border-red-200 space-y-1">
             <div class="font-black text-red-950 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-red-600"></span>
-              <span>Đại diện Mảng 2 (Đảng vụ - CĐS):</span>
+              <span>Đại diện Mảng Xây dựng Đảng & Chuyển đổi số:</span>
             </div>
             <p class="font-bold text-red-900">${u.m2}</p>
             <p class="text-[11px] text-slate-500">Theo dõi hồ sơ Đảng, đối soát số liệu, hỗ trợ kỹ thuật.</p>
@@ -518,7 +518,7 @@ function initUnitLookup() {
           <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-1">
             <div class="font-black text-amber-950 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-amber-600"></span>
-              <span>Đại diện Mảng 3 (Kiểm tra - ĐRL):</span>
+              <span>Đại diện Mảng Giám sát Kiểm tra & ĐRL:</span>
             </div>
             <p class="font-bold text-amber-900">${u.m3}</p>
             <p class="text-[11px] text-slate-500">Hướng dẫn đề án, tiến độ xét duyệt, minh chứng, phản ánh ĐRL.</p>
@@ -527,7 +527,7 @@ function initUnitLookup() {
 
         <div class="p-2.5 rounded-xl bg-slate-50 text-[11.5px] text-slate-600 flex items-center justify-between">
           <span><b>Kênh phối hợp:</b> 01 Nhóm chung Zalo/Teams • Hòm thư điện tử Ban</span>
-          <span class="text-indigo-600 font-bold">Mảng 4 phối hợp theo chương trình</span>
+          <span class="text-indigo-600 font-bold">Mảng Truyền thông & Nội bộ phối hợp theo chương trình</span>
         </div>
       </div>
     `;
@@ -671,7 +671,7 @@ function initPlanFilter() {
       const visibleCards = [];
       taskCards.forEach(card => {
         const depts = card.getAttribute('data-depts') || '';
-        if (dept === 'all' || depts.includes(dept)) {
+        if (dept === 'all' || depts.split(' ').includes(dept) || depts.includes(dept)) {
           card.classList.remove('hidden');
           visibleCards.push(card);
         } else {
