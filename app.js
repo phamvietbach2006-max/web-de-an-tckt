@@ -509,7 +509,7 @@ function initUnitLookup() {
           <div class="p-3 rounded-xl bg-red-50 border border-red-200 space-y-1">
             <div class="font-black text-red-950 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-red-600"></span>
-              <span>Đại diện Mảng Xây dựng Đảng & Chuyển đổi số:</span>
+              <span>Đại diện Mảng Phát triển Đảng & Chuyển đổi số:</span>
             </div>
             <p class="font-bold text-red-900">${u.m2}</p>
             <p class="text-[11px] text-slate-500">Theo dõi hồ sơ Đảng, đối soát số liệu, hỗ trợ kỹ thuật.</p>
